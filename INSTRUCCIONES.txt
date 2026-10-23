@@ -1,0 +1,222 @@
+=====================================================
+AMIIBO VAULT DASHBOARD - GUÍA RÁPIDA DE USO
+=====================================================
+
+¡Tu aplicación web ya está lista, con diseño Stitch Velvet Plum & Lavender y soporte completo para tu llavero AmiiboLink Zelda!
+
+-----------------------------------------------------
+1. CÓMO ABRIR LA APLICACIÓN
+-----------------------------------------------------
+Tienes accesos directos fáciles:
+- Opción A: Haz doble clic en "ABRIR_EN_CHROME.bat" para abrir en Google Chrome.
+- Opción B: Haz doble clic en "ABRIR_EN_EDGE.bat" para abrir en Microsoft Edge.
+- Opción C: Haz doble clic en "index.html" para abrir en tu navegador predeterminado.
+
+-----------------------------------------------------
+2. ¿CÓMO FUNCIONA EL BLUETOOTH DE TU AMIIBOLINK?
+-----------------------------------------------------
+• ¿Por qué el botón se ve gris o dice "(En espera)"?
+  Tu llavero AmiiboLink tiene un sistema inteligente de AHORRO DE BATERÍA.
+  Si pasan 15 a 20 segundos sin transferir datos, el llavero se apaga solo para que la pila no se agote.
+  ¡Esto es totalmente normal y no significa que esté roto!
+
+• Reconexión Inteligente (SIN ventanas emergentes repetidas):
+  Una vez que vinculas tu AmiiboLink por primera vez, la aplicación GUARDA tu dispositivo.
+  Cuando le des a "⚡ Escribir datos en AmiiboLink", la página reactivará la conexión de inmediato
+  en segundo plano SIN volver a pedirte que selecciones el dispositivo en la ventana emergente de Chrome.
+
+• Conexión Directa:
+  Arriba a la derecha tienes el botón "Conectar AmiiboLink". 
+  Si ya está conectado y haces clic sobre él, te permitirá reiniciar o refrescar la conexión fácilmente cuando lo necesites.
+
+-----------------------------------------------------
+3. CÓMO ESCRIBIR UN AMIIBO EN EL LLAVERO (Como en Umiibo)
+-----------------------------------------------------
+1. Presiona el botón del ojo Sheikah en tu llavero (luz verde encendida).
+2. Haz clic en "⚡ Escribir datos en AmiiboLink" en la figura que desees (ej. Mery o Link).
+3. La aplicación transmitirá los 32 bloques oficiales directamente a la memoria de tu llavero.
+4. Al terminar sonará una melodía de éxito y saldrá el cartel verde diciendo "¡TRANSFERENCIA EXITOSA!".
+5. ¡Listo! Ya puedes pasar el llavero por la palanca de tu Nintendo Switch.
+
+-----------------------------------------------------
+4. REGISTRAR UN NUEVO AMIIBO CON FOTO Y ARCHIVO REAL (.bin)
+-----------------------------------------------------
+1. En el menú de la izquierda, haz clic en el botón morado "+ Registrar Amiibo".
+2. Escribe el nombre del personaje.
+3. Elige su franquicia (Zelda, Mario, Smash Bros, Animal Crossing, Sanrio, etc.).
+4. Haz clic en "Subir foto" para ponerle su imagen.
+5. Arrastra o selecciona tu archivo real (.bin o .dump, como Mery.bin).
+6. Haz clic en "Registrar Amiibo".
+¡Se guardará en tu colección y podrás transferirlo a tu llavero cuantas veces quieras!
+
+-----------------------------------------------------
+5. DESCARTAR / ELIMINAR UN AMIIBO DE LA COLECCIÓN
+-----------------------------------------------------
+1. Haz clic en la tarjeta del Amiibo que deseas quitar.
+2. Presiona el botón rojo "Descartar Amiibo".
+3. Aparecerá un aviso de confirmación pidiéndote confirmar la eliminación.
+4. Pulsa "Sí, eliminar" para retirarlo definitivamente de tu bóveda (o "Cancelar" si cambias de opinión).
+
+-----------------------------------------------------
+6. EDITAR UN AMIIBO (BOTÓN DEL LÁPIZ EN LA TARJETA)
+-----------------------------------------------------
+Si registraste un Amiibo por error en la franquicia equivocada o quieres corregir su nombre:
+1. En la tarjeta del Amiibo en la lista principal, verás un botón circular con un icono de LÁPIZ arriba a la derecha.
+2. Haz clic directamente en el LÁPIZ (sin necesidad de entrar a la tarjeta).
+3. Se abrirá la ventana "Editar Amiibo".
+4. Selecciona la categoría correcta (por ejemplo, cambiar de Zelda a "Animal Crossing"), edita su nombre o foto si lo deseas.
+5. Haz clic en "Guardar Cambios". ¡Listo! Tu Amiibo se actualizará y quedará en su categoría correspondiente.
+
+-----------------------------------------------------
+7. MARCAR FAVORITOS (CORAZÓN Y SECCIÓN DESTACADA)
+-----------------------------------------------------
+1. En cada tarjeta, al lado del lápiz de edición, verás un botón circular con un CORAZÓN.
+2. Haz clic en el corazón para marcar cualquier Amiibo como favorito (se pondrá de color rojo vibrante ❤️).
+3. En el menú de la izquierda tienes la sección "Favoritos".
+4. Al hacer clic en "Favoritos", verás únicamente tus figuras preferidas con un contador en vivo.
+5. Puedes desmarcar un favorito en cualquier momento pulsando de nuevo el corazón.
+
+-----------------------------------------------------
+8. SECCIÓN "LOS MÁS RECIENTES"
+-----------------------------------------------------
+1. En el menú de la izquierda, debajo de "Inicio", ahora tienes la pestaña "Los más recientes" (icono de reloj).
+2. Al seleccionarla, la página te mostrará los últimos Amiibos que tú mismo has registrado en la bóveda, con un contador en tiempo real.
+3. El más nuevo siempre aparecerá de primero en la lista.
+
+-----------------------------------------------------
+9. ABANICO DE FILTROS PARA ANIMAL CROSSING (ESPECIE Y PERSONALIDAD)
+-----------------------------------------------------
+1. En el menú de la izquierda, entra a "Animal Crossing" o "Colaboración Sanrio".
+2. Al lado de donde dice "ARCHIVOS REGISTRADOS", aparecerá el botón: "Filtrar Vecinos" (en tono rosa terracota #cc8b86).
+3. Al pulsarlo, se desplegará el abanico con dos selectores inteligentes:
+   - Especie Animal: Gatos, Perros, Conejos, Ciervos, Lobos, Ardillas, etc.
+   - Personalidad: Alegre (Peppy), Dulce (Normal), Presumida (Snooty), Perezoso (Lazy), etc.
+4. Las tarjetas se filtrarán en vivo y mostrarán una pequeña insignia en tono #cc8b86 con su especie y personalidad (ej. Gato • Alegre en Merry).
+5. Puedes pulsar "Restablecer filtros" para volver a ver a todos los aldeanos.
+
+=====================================================
+10. ¿CÓMO DETECTA LA ESPECIE Y PERSONALIDAD AL REGISTRAR?
+=====================================================
+1. Auto-detección inteligente:
+   - La bóveda tiene un diccionario canónico integrado con más de 150 vecinos oficiales de Animal Crossing (tanto en español como en inglés, ej. Merry, Raymond/Narciso, Canela, Bob, Ankha/Patri, etc.).
+   - Al escribir el nombre del vecino (o subir su archivo .bin con su nombre), la página reconoce automáticamente su especie y personalidad al instante.
+2. Control manual total:
+   - Al seleccionar la categoría "Animal Crossing", se abren dos selectores visuales: "Especie Animal" y "Personalidad".
+   - Si la página reconoce al vecino, te marcará la insignia "✨ Reconocido" en tono rosa terracota #cc8b86.
+   - Si es un vecino inventado o personalizado, tú mismo puedes elegir o cambiar su especie y personalidad desde la lista desplegable.
+   - También puedes editar estos datos en cualquier momento haciendo clic en el lápiz de la tarjeta.
+=====================================================
+
+=====================================================
+11. EXTENSIÓN "COLABORACIÓN SANRIO" EN ANIMAL CROSSING
+=====================================================
+1. La barra lateral ya no muestra "Colaboración Sanrio" como una franquicia independiente suelta.
+2. Ahora está integrada directamente dentro de "Animal Crossing":
+   - Verás "Animal Crossing" con una flechita hacia abajo (˅).
+   - Al pulsar la flechita (o al hacer clic en Animal Crossing), se despliega el abanico secundario.
+   - Dentro del abanico aparece "Colaboración Sanrio" con su estrella dorada.
+3. Al pulsar "Colaboración Sanrio", se filtrarán específicamente las cartas de Sanrio (ej. Rilla) y el encabezado indicará "Animal Crossing • Extensión Sanrio".
+4. Si cambias a otra franquicia (Zelda, Mario, etc.), la extensión se pliega automáticamente para mantener tu barra lateral limpia y ordenada.
+=====================================================
+
+=====================================================
+12. SECCIÓN "ESPECIALES" (AMIIBOS GENERALES Y OTROS JUEGOS)
+=====================================================
+1. Se añadió la sección "Especiales" al final de la lista en la barra lateral.
+2. Esta categoría está pensada para figuras de juegos que no tienen una franquicia propia en la barra lateral (por ejemplo: Resident Evil Requiem/Revelations, Monster Hunter, Dark Souls, crossovers o creaciones custom).
+3. Al registrar o editar un Amiibo, puedes asignarlo directamente a "Especiales (Resident Evil, etc.)".
+=====================================================
+
+=====================================================
+13. ORDEN OFICIAL DE FRANQUICIAS Y SECCIÓN KIRBY
+=====================================================
+El menú lateral y los selectores siguen exactamente este orden:
+1. Super Smash Bros.
+2. The Legend of Zelda
+3. Super Mario
+4. Animal Crossing (con su abanico de Colaboración Sanrio)
+5. Splatoon
+6. Kirby
+7. Especiales (Resident Evil Requiem, Crossovers, Custom, etc.)
+=====================================================
+
+=====================================================
+14. NUEVA PALETA ROSA (#cc8b86) Y BOTONES INTERACTIVOS (X Y CORAZÓN)
+=====================================================
+1. Paleta Terracota / Rosa (#cc8b86):
+   - Integrada en el botón de filtros de Animal Crossing, insignias de reconocimiento y detalles sutiles.
+2. Botón de Cerrar (X) en todas las ventanas emergentes (Detalle, Registro y Edición):
+   - Estado normal: Fondo lila suave (#ead6ef) con icono en tono ciruela oscuro (#8a4971) y borde delicado. Ya no se ve gris.
+   - Al pasar el cursor (Hover): Se oscurece a morado ciruela intenso (#8a4971) con el icono blanco puro y un efecto de ligera elevación.
+3. Botón de Favorito (Corazón) con el mismo efecto que la X y el Lápiz:
+   - Estado normal (cuando no pasa nada): Se ve clarito y suave con fondo rosa pastel (#cc8b86 al 15%), borde delicado y el icono del corazón en rosa (#cc8b86).
+   - Al pasar el cursor (Hover): Se oscurece por completo, adoptando un fondo rojo oscuro intenso (#b03a35) y el corazón se ilumina en blanco puro brillante, exactamente con el mismo efecto que el lápiz y la X.
+   - Estado favorito activo: Se muestra en rojo vibrante (#f43f5e) con el corazón relleno y al pasar el mouse se intensifica aún más a rojo carmesí.
+4. Botón de Editar (Lápiz):
+   - Estado normal: Fondo lila clarito (#ead6ef).
+   - Al pasar el cursor: Fondo morado oscuro ciruela (#8a4971) con el icono blanco.
+=====================================================
+
+=====================================================
+15. NUEVA PALETA SLATE NAVY & ICE BLUE CON ACENTOS MINT GREEN
+=====================================================
+1. Paleta extraída de la plantilla:
+   - Fondo general / Lienzo: Azul Hielo Suave (#EDF5FC) para un aspecto limpio, moderno y fresco.
+   - Color Estructural / Primario: Slate Navy (#4F5A78 con hover #3C4661) en el logo, botones principales (+ Registrar Amiibo, Escribir datos, Conectar Bluetooth) y bordes.
+   - Selección Activa & Badges: Azul Hielo (#D0E7F9) con texto en Slate Profundo (#2B3859) para la categoría activa en la barra lateral y contadores.
+   - Acento Mint Green (#7BDF96): Utilizado en el rayo de escritura, iconos de acción, barra de progreso de volcado y resplandor al posar el cursor sobre las tarjetas.
+2. Botones de Cerrar (X) y Lápiz (Editar):
+   - Reposo: Azul hielo clarito (#D0E7F9) con icono en Slate Navy.
+   - Hover: Slate Navy oscuro (#4F5A78) con icono en blanco brillante.
+3. Elementos protegidos según lo solicitado:
+   - Botón "Descartar Amiibo" se mantiene en Rojo oficial (#DC2626).
+   - Icono del reloj en "Los más recientes" se mantiene en Ámbar (#F59E0B).
+   - Icono y botones de corazón en "Favoritos" conservan su paleta rojiza/rosada interactiva.
+4. Botón y Abanico de Filtro de Vecinos (Animal Crossing):
+   - Botón "Filtrar Vecinos": Se integró con la paleta general en Azul Hielo (#D0E7F9) y texto/icono Slate Navy, transformándose en Slate Navy (#4F5A78) con texto blanco al pasar el mouse.
+   - Panel de Filtros: Fondo degradado en Azul Hielo suave (#D0E7F9 / #EDF5FC), icono de huellita en Slate Navy (#4F5A78), selectores limpios y tipografía nítida para máxima coherencia visual.
+=====================================================
+
+=====================================================
+16. CURSORES PERSONALIZADOS SUPER SMASH BROS. (DOS MANOS)
+=====================================================
+La página utiliza exactamente las dos manos elegidas:
+1. Modo Navegación (Normal):
+   - Primera mano: Mano enguantada apuntando hacia arriba de forma estándar (hotspot calibrado en la punta del dedo).
+2. Modo Interactivo (Al posar el mouse sobre cualquier botón, enlace, tarjeta o filtro):
+   - Segunda mano: Mano levemente inclinada hacia adelante apuntando con perspectiva tridimensional, dando un efecto dinámico y natural al pasar sobre elementos clicables.
+3. Totalmente integrado:
+   - Ambas manos tienen transparencia limpia sin bordes y están incrustadas como Data URLs para cargar instantáneamente sin depender de archivos externos o conexión a internet.
+=====================================================
+
+=====================================================
+17. BANNERS PANORÁMICOS POR FRANQUICIA, GIFS & MINI-VIDEOS
+=====================================================
+Cada sección y franquicia cuenta con su propio banner panorámico temático:
+1. Ubicación exacta:
+   - Ubicado en la parte superior del catálogo principal, justo entre la barra de búsqueda y el título de la colección (The Legend of Zelda, Super Smash Bros., etc.).
+2. Banners oficiales predeterminados incluidos localmente:
+   - Inicio (Colección Completa): Banner panorámico mural de Nintendo con soporte para su propio GIF, video o imagen independiente.
+   - Los más recientes & Favoritos: Banners dedicados con soporte para GIFs, videos e imágenes independientes.
+   - The Legend of Zelda: Paisaje panorámico de las islas celestes de Tears of the Kingdom.
+   - Super Smash Bros.: El icónico mural panorámico "Everyone is Here" de Super Smash Bros. Ultimate.
+   - Super Mario: Paisaje panorámico 3D del Reino Champiñón con colinas, tuberías y bloques '?'.
+   - Animal Crossing: Playa tropical paradisíaca de New Horizons con palmeras y olas turquesa.
+   - Colaboración Sanrio: Fiesta de té en un jardín pastel con dulces y lazos kawaii.
+   - Splatoon: Ilustración oficial de Splatoon 3.
+   - Kirby: Cielo mágico de Dream Land con estrellas, arcoíris y nubes de algodón de azúcar.
+   - Especiales: Bóveda de coleccionista Nintendo con pedestales de trofeos y atmósfera de museo.
+3. Soporte para Mini-Videos y GIFs animados en TODAS las secciones e Inicio:
+   - ¡Puedes poner GIFs animados (.gif), mini-videos (.mp4, .webm) o fotos en CADA franquicia y en Inicio!
+   - Almacenamiento IndexedDB de alta capacidad: no hay límite de cuota de memoria (a diferencia del antiguo localStorage de 5MB que se llenaba tras 1 o 2 GIFs).
+   - Migración automática: Cualquier GIF previamente guardado se traslada a la base de datos de alta capacidad sin saturar el navegador.
+4. Botón "Cambiar banner":
+   - Te permite subir imágenes (.jpg, .png, .webp), GIFs animados (.gif) o mini videos (.mp4, .webm).
+5. Botón "Mover imagen" (Arrastrar y encuadrar):
+   - Funciona tanto con imágenes, GIFs como con mini-videos.
+   - Arrastra con el ratón o usa las flechas del teclado para mover el contenido libremente.
+   - Rueda del ratón o botones +/- para hacer zoom.
+   - Guarda la posición favorita para cada franquicia.
+6. Botón "Restablecer":
+   - Vuelve al banner, posición y tamaño original con un solo clic.
+=====================================================

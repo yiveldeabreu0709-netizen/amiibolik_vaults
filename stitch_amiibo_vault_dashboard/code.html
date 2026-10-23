@@ -1,0 +1,409 @@
+<!DOCTYPE html><html lang="es" style=""><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Amiibo Vault</title>
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    body {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    }
+    ::-webkit-scrollbar {
+      display: none;
+    }
+  </style>
+<style>
+  :root {
+    --primary-plum: #8a4971;
+    --primary-plum-hover: #763b60;
+    --soft-lavender: #ead6ef;
+    --soft-lavender-subtle: #f7eff9;
+  }
+  .theme-plum-bg {
+    background-color: #8a4971 !important;
+  }
+  .theme-plum-bg:hover {
+    background-color: #763b60 !important;
+  }
+  .theme-plum-text {
+    color: #8a4971 !important;
+  }
+  .theme-lavender-bg {
+    background-color: #ead6ef !important;
+  }
+  .theme-lavender-subtle {
+    background-color: #f8f1fa !important;
+  }
+  .theme-lavender-border {
+    border-color: #ead6ef !important;
+  }
+  .theme-plum-shadow {
+    box-shadow: 0 10px 25px -5px rgba(138, 73, 113, 0.35) !important;
+  }
+</style></head>
+<body class="bg-[#F9F9F9] font-sans tracking-tight text-gray-900 antialiased min-h-screen" style="background-color: rgb(250, 247, 251); overflow: hidden;">
+<!-- Sidebar Izquierdo -->
+<aside class="fixed left-0 top-0 h-full w-64 bg-white z-40 flex flex-col p-4 border-r border-gray-200/80 font-sans tracking-tight">
+<!-- Brand / Logo -->
+<div class="flex items-center gap-2.5 px-2 py-3 mb-6">
+<div class="w-8 h-8 rounded-lg bg-black flex items-center justify-center text-white shrink-0" style="background-color: #8a4971;">
+<span class="material-symbols-outlined text-[19px]">token</span>
+</div>
+<span class="font-bold text-lg text-gray-900 tracking-tight">Amiibo Vault</span>
+</div>
+<!-- Navegación Principal & Franquicias -->
+<div class="flex-1 overflow-y-auto space-y-6 pr-1">
+<nav class="space-y-1 font-sans">
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-gray-600 hover:bg-gray-100 hover:text-gray-900 transition-colors text-sm font-medium tracking-tight" href="#">
+<span class="material-symbols-outlined text-[20px]">home</span>
+<span class="">Inicio</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-gray-600 hover:bg-gray-100 hover:text-gray-900 transition-colors text-sm font-medium tracking-tight" href="#">
+<span class="material-symbols-outlined text-[20px]">explore</span>
+<span class="">Explorar</span>
+</a>
+</nav>
+<div>
+<p class="px-3 mb-2 text-xs font-semibold uppercase tracking-wider text-gray-400 font-sans">Franquicias</p>
+<nav class="space-y-1 font-sans">
+<a class="flex items-center justify-between px-3 py-2 rounded-lg text-gray-600 hover:bg-gray-100 hover:text-gray-900 transition-colors text-sm font-medium tracking-tight" href="#">
+<span class="truncate">Super Smash Bros.</span>
+</a>
+<a class="flex items-center justify-between px-3 py-2 rounded-lg bg-gray-100 text-gray-900 font-semibold transition-colors text-sm tracking-tight" href="#" style="background-color: rgb(234, 214, 239); color: rgb(138, 73, 113); font-weight: 600;">
+<span class="truncate">The Legend of Zelda</span>
+</a>
+<a class="flex items-center justify-between px-3 py-2 rounded-lg text-gray-600 hover:bg-gray-100 hover:text-gray-900 transition-colors text-sm font-medium tracking-tight" href="#">
+<span class="truncate">Super Mario</span>
+</a>
+<a class="flex items-center justify-between px-3 py-2 rounded-lg text-gray-600 hover:bg-gray-100 hover:text-gray-900 transition-colors text-sm font-medium tracking-tight" href="#"><span class="truncate">Animal Crossing</span><span class="material-symbols-outlined text-[18px] text-gray-400">expand_more</span></a>
+<a class="flex items-center justify-between pl-8 pr-3 py-1.5 rounded-lg text-gray-500 hover:bg-gray-50 hover:text-gray-800 transition-colors text-sm tracking-tight" href="#"><span class="truncate">Colaboración Sanrio</span><span class="material-symbols-outlined text-[15px] text-amber-500">star</span></a>
+<a class="flex items-center justify-between px-3 py-2 rounded-lg text-gray-600 hover:bg-gray-100 hover:text-gray-900 transition-colors text-sm font-medium tracking-tight" href="#">
+<span class="truncate">Splatoon</span>
+</a>
+<a class="flex items-center justify-between px-3 py-2 rounded-lg text-gray-600 hover:bg-gray-100 hover:text-gray-900 transition-colors text-sm font-medium tracking-tight" href="#">
+<span class="truncate">Metroid</span>
+</a>
+<a class="flex items-center justify-between px-3 py-2 rounded-lg text-gray-600 hover:bg-gray-100 hover:text-gray-900 transition-colors text-sm font-medium tracking-tight" href="#">
+<span class="truncate">Pokémon</span>
+</a>
+</nav>
+</div>
+</div>
+<!-- Bloque Inferior Fijo: Botón Registrar + Footer Sidebar -->
+<div class="pt-3 border-t border-gray-100 px-1 font-sans tracking-tight">
+<button class="w-full flex items-center justify-center gap-2 py-2.5 px-4 mb-3 bg-gray-900 hover:bg-gray-800 text-white text-sm font-medium rounded-xl shadow-sm hover:shadow transition-all duration-200 cursor-pointer" id="openRegisterBtn" onmouseout="this.style.backgroundColor='#8a4971'" onmouseover="this.style.backgroundColor='#763b60'" style="background-color: rgb(138, 73, 113); transition: background-color 0.2s;" type="button">
+<span class="material-symbols-outlined text-[18px]">add</span>
+<span class="">Registrar Amiibo</span>
+</button>
+<div class="flex items-center justify-between text-gray-400 text-xs font-medium px-2 py-1">
+<span class="">CATALOG V2.4</span>
+<span class="material-symbols-outlined text-[16px]">verified</span>
+</div>
+</div>
+</aside>
+<!-- Contenedor Principal (Pl-64 para el sidebar) -->
+<div class="pl-64">
+<!-- Header Superior -->
+<header class="fixed top-0 left-64 right-0 h-16 bg-white/95 backdrop-blur-md z-30 border-b border-gray-200/80 flex items-center justify-between px-8 font-sans">
+<div class="flex-1 max-w-2xl flex items-center gap-2">
+<div class="relative flex items-center w-full">
+<span class="material-symbols-outlined absolute left-3.5 text-gray-400 pointer-events-none text-[20px]">search</span>
+<input class="w-full h-10 pl-11 pr-14 bg-gray-50 border border-gray-200 rounded-lg text-sm font-sans tracking-tight text-gray-900 placeholder:text-gray-400 focus:outline-none focus:border-black focus:bg-white transition-all" placeholder="Buscar por figura, colección, serie o código NFC..." type="text">
+<div class="absolute right-3 flex items-center pointer-events-none">
+<kbd class="px-1.5 py-0.5 rounded border border-gray-200 bg-white font-sans text-[11px] font-medium text-gray-400 shadow-sm">⌘K</kbd>
+</div>
+</div><button aria-label="Filtros" class="w-10 h-10 shrink-0 rounded-lg border border-gray-200 flex items-center justify-center text-gray-600 hover:bg-gray-50 hover:text-gray-900 transition-colors" type="button"><span class="material-symbols-outlined text-[20px]">tune</span></button>
+</div>
+<div class="flex items-center gap-3"><!-- Indicador de Estado: Amiibo Link & Dropdown Bluetooth -->
+<div class="relative pr-8" id="amiiboLinkContainer">
+<!-- Botón de Estado estilo píldora -->
+<button class="rounded-full bg-white border border-gray-200 shadow-sm px-4 py-2 flex items-center gap-2 hover:bg-gray-50 transition-colors cursor-pointer" id="amiiboLinkBtn" type="button">
+<!-- Estado desconectado: bg-gray-400 | Estado conectado: bg-green-500 shadow-[0_0_8px_rgba(34,197,94,0.6)] -->
+<span class="w-2 h-2 rounded-full bg-gray-400" id="amiiboStatusDot" style="background-color: #8a4971;"></span>
+<span class="text-sm font-medium text-gray-700">Amiibo Link</span>
+</button>
+<!-- Menú Desplegable (Dropdown de Bluetooth visible/desplegado) -->
+<div class="absolute right-0 top-full mt-2 w-56 bg-white shadow-lg rounded-xl border border-gray-100 p-2 z-50" id="amiiboLinkDropdown">
+<button class="w-full flex items-center gap-2.5 px-3 py-2 text-sm text-gray-700 rounded-lg hover:bg-gray-50 transition-colors text-left cursor-pointer" id="connectBluetoothBtn" type="button">
+<span class="material-symbols-outlined text-[18px] text-blue-600" style="color: rgb(138, 73, 113);">bluetooth</span>
+<span class="">Conectar por Bluetooth</span>
+</button>
+</div>
+</div>
+
+
+</div>
+</header>
+<!-- Contenido Principal -->
+<main class="pt-24 pb-16 px-8 max-w-7xl mx-auto font-sans tracking-tight">
+<!-- Encabezado de la Colección -->
+<header class="mb-8">
+<div class="flex items-center gap-2 text-xs font-semibold tracking-wider uppercase text-gray-400 mb-2">
+<span class="">COLECCIÓN</span>
+<span class="">/</span>
+<span class="">NINTENDO SWITCH &amp; WII U</span>
+</div>
+<div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
+<div>
+<h1 class="text-4xl tracking-tight text-gray-900 font-bold">The Legend of Zelda</h1>
+<p class="text-base text-gray-500 mt-1">Catálogo de figuras y volcados de datos</p>
+</div>
+<div class="text-[11px] font-medium uppercase tracking-wider text-gray-500 bg-gray-100 border border-gray-200 px-3 py-1 rounded-full self-start sm:self-auto" style="background-color: rgb(234, 214, 239); color: rgb(138, 73, 113); border-color: rgba(138, 73, 113, 0.15); font-weight: 600;">
+            16 ARCHIVOS REGISTRADOS
+          </div>
+</div>
+</header>
+<!-- Grid de 4 Tarjetas Clicables -->
+<section class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+<!-- Tarjeta 1: Sephiroth (Super Smash Bros.) -->
+<article class="amiibo-card bg-white rounded-2xl p-6 border border-gray-200/80 shadow-sm flex flex-col justify-between transition-all duration-300 ease-out hover:-translate-y-2 hover:shadow-xl cursor-pointer will-change-transform" data-img="https://lh3.googleusercontent.com/aida-public/AB6AXuCenlHLR1c4aMJdJptFaNemeFexbDs-Tw1pxS_yi-k4VOacY-W4G3eDyTjYswph-DVb6DMvTrC7uJPDxN6rQ8x49OyOcksHe0qPk6cbbjQVxInZOxTMAQAeXZgPRoyhxqUyLmDf5GAFMAUVQWvS39o99nUobfBgB2f9JL_KLlLhQ4Z1H7cmADLaFMFqMLg9_No8k35DYFXWxHgEDocQorlX3OwuN_8jobbiG3ojBbBKPYwToH2c7QhevT-K3mRhmLFD" data-series="SUPER SMASH BROS. SERIES" data-title="Sephiroth">
+<div class="w-full h-64 flex items-center justify-center mb-4">
+<img alt="Sephiroth" class="h-56 lg:h-60 max-w-full object-contain mx-auto transition-transform duration-300 hover:scale-105" loading="lazy" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCenlHLR1c4aMJdJptFaNemeFexbDs-Tw1pxS_yi-k4VOacY-W4G3eDyTjYswph-DVb6DMvTrC7uJPDxN6rQ8x49OyOcksHe0qPk6cbbjQVxInZOxTMAQAeXZgPRoyhxqUyLmDf5GAFMAUVQWvS39o99nUobfBgB2f9JL_KLlLhQ4Z1H7cmADLaFMFqMLg9_No8k35DYFXWxHgEDocQorlX3OwuN_8jobbiG3ojBbBKPYwToH2c7QhevT-K3mRhmLFD">
+</div>
+<div>
+<span class="block text-xs uppercase tracking-wider text-gray-400 font-semibold mb-1">SUPER SMASH BROS.</span>
+<h2 class="text-xl text-gray-900 tracking-tight font-bold">Sephiroth</h2>
+</div>
+</article>
+<!-- Tarjeta 2: Zelda (Breath of the Wild) -->
+<article class="amiibo-card bg-white rounded-2xl p-6 border border-gray-200/80 shadow-sm flex flex-col justify-between transition-all duration-300 ease-out hover:-translate-y-2 hover:shadow-xl cursor-pointer will-change-transform" data-img="https://lh3.googleusercontent.com/aida-public/AB6AXuCoqz-ayng_bq8ge7B-MddqNV3uZATta5jZmC0dLHKGodJqpVGGPgrEN-BJC2J6jh3HJjDESvOGRWB4vMpRw64AJbRwhXewIxLY5h8qO5SJSIm2iqdfhCla3vs3V6_4vLW5JaUzKhEqEXXO86bJnAO6ykCrj0TjP4Cf-wlk8J9NPWdg5aIj81o5ctlwMVVLxuhrEFM96odAGN_w-dDX-lsr1PpL5NwrSx89XeIZz7TXM2m1sSkwsB8" data-series="THE LEGEND OF ZELDA" data-title="Zelda (Breath of the Wild)">
+<div class="w-full h-64 flex items-center justify-center mb-4">
+<img alt="Zelda (Breath of the Wild)" class="h-56 lg:h-60 max-w-full object-contain mx-auto transition-transform duration-300 hover:scale-105" loading="lazy" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBdrpst7ZXUoIQEYOqIcWxejklB1ntGZmeQ5LWLiSeXal9g7SrWjIFWnyKOmEL79mFlB7JrrMjhAdkBYYtiKEqePxOyjMbuONBDd2EpkFV_OEfKMetaMOmSmSApZcqLkWtUiLffETFyX8NaangCk-WwNEQ5Us7yz0oNYLHlclENARWkoUjoWUsp8h1uldFPpShF2X2G5e_LdsM3tQKNxD8CRtWUsuznl_k1_EpAN0ph31XQ-tAoCb0">
+</div>
+<div>
+<span class="block text-xs uppercase tracking-wider text-gray-400 font-semibold mb-1">THE LEGEND OF ZELDA</span>
+<h2 class="text-xl text-gray-900 tracking-tight font-bold">Zelda (Breath of the Wild)</h2>
+</div>
+</article>
+<!-- Tarjeta 3: Guardian -->
+<article class="amiibo-card bg-white rounded-2xl p-6 border border-gray-200/80 shadow-sm flex flex-col justify-between transition-all duration-300 ease-out hover:-translate-y-2 hover:shadow-xl cursor-pointer will-change-transform" data-img="https://lh3.googleusercontent.com/aida-public/AB6AXuAVtuDN2rNfLOyB9K8CwAzMy7pJAspbRwM3it53bW6uQFHVDoM3NXuuLlFxq7KBTpXHeXNQBppEPTCMqOl1Qf4K4rDcLW_Pv6FG_5Eurh1ZVXpr5D3tupIINRlTfv-LO1BcCUwablUqAJaxpk60Hj4VNa33aNDMPxriCesj4w2nWh9S1tOaUvTPf8mLSzZPnmOI19oaIHGuA-aTGPRoUSsqpuCkNcXbuZChVRrYMNjeuXWf2ZPFTmk" data-series="THE LEGEND OF ZELDA" data-title="Guardian">
+<div class="w-full h-64 flex items-center justify-center mb-4">
+<img alt="Guardian" class="h-56 lg:h-60 max-w-full object-contain mx-auto transition-transform duration-300 hover:scale-105" loading="lazy" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAvnMAWe4-8BhFyYz9RC4x2kXip_7lZnZfiiBnqYAO3VWQ5uAUpZi95qrH3nlm5Q6609Qa0qIuiWi8ghAUmE6VeCLZk1kP669lkCSHae6ZmvInzctJ6tIf_dg2g7sGUd0OFF0k2UeW57jggkcmMBhmh457bo7KIzkKoOyd0c5RPmiPbuZMXoND2bXg03k0Hpk-UlfoWvBKB_McuMUnopEl4FdnPlfgDiwhOtZOkQ2cRk06gASh6b2g">
+</div>
+<div>
+<span class="block text-xs uppercase tracking-wider text-gray-400 font-semibold mb-1">THE LEGEND OF ZELDA</span>
+<h2 class="text-xl text-gray-900 tracking-tight font-bold">Guardian</h2>
+</div>
+</article>
+<!-- Tarjeta 4: Link Lobo -->
+<article class="amiibo-card bg-white rounded-2xl p-6 border border-gray-200/80 shadow-sm flex flex-col justify-between transition-all duration-300 ease-out hover:-translate-y-2 hover:shadow-xl cursor-pointer will-change-transform" data-img="https://lh3.googleusercontent.com/aida-public/AB6AXuBUyKAtcoY0EXOt2I43tXnw8zBoWr51VPKb2BYd51VuDWCJNVI3kYUHzJlW4wLLzHhErAnqYa-2pjbdCCs5ZEaw-daQxK9bqTPXs70Ke3MnvucsoquGCm8vWaeDsokrOBJtwyYcIvvj57JBLRCAz9j0MVU3HsvhBKM54guQP1aJDWqpq1mO9q628mEw-ib_FnlmPLSuWiO4GKJnHN32y36l43lES3KgGorxvYRXIjyrqDzeN9kmwvA" data-series="THE LEGEND OF ZELDA" data-title="Link Lobo">
+<div class="w-full h-64 flex items-center justify-center mb-4">
+<img alt="Link Lobo" class="h-56 lg:h-60 max-w-full object-contain mx-auto transition-transform duration-300 hover:scale-105" loading="lazy" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA0BqV36mAIGxbGo0YobuZKjf6KRRfLhCBlBbOkWSgtspGgu5bHU10oAxlq0DoIbplQpBLNX0iLy1SBhXHBiVXUG6gld-ryRawQwCujD6KMYHFbJyUt12aOxdiOHPIe3GzPGxpurtGjlSWnXEAmlEhB2hveVRkw8T2E-ohrnjyBNQnIDpkwMXZ1h6aSZ0AmS3Gx_M4XWNfsDV1Lp57l1z4tm2DxRjE9CQTRCY7-uxjNx7474GFA-NU">
+</div>
+<div>
+<span class="block text-xs uppercase tracking-wider text-gray-400 font-semibold mb-1">THE LEGEND OF ZELDA</span>
+<h2 class="text-xl text-gray-900 tracking-tight font-bold">Link Lobo</h2>
+</div>
+</article>
+</section>
+</main>
+</div>
+<!-- Modal Interactivo: Registrar Amiibo -->
+<div aria-modal="true" class="fixed inset-0 z-50 items-center justify-center bg-black/60 backdrop-blur-sm p-4 transition-opacity duration-300 flex" id="registerModal" role="dialog">
+<div class="bg-white rounded-3xl shadow-2xl p-7 max-w-lg w-full mx-4 relative transform transition-all duration-300 flex flex-col font-sans">
+<!-- Botón de Cierre -->
+<button aria-label="Cerrar modal" class="absolute top-5 right-5 text-gray-400 hover:text-gray-700 bg-gray-100 hover:bg-gray-200 rounded-full p-2 transition-colors flex items-center justify-center cursor-pointer" id="closeRegisterModalBtn" type="button">
+<span class="material-symbols-outlined text-[20px]">close</span>
+</button>
+<!-- Encabezado -->
+<div class="mb-5 pr-8">
+<h3 class="text-xl md:text-2xl font-bold text-gray-900 tracking-tight">Registrar nuevo Amiibo</h3>
+<p class="text-xs sm:text-sm text-gray-500 mt-1">Completa la información técnica y sube el archivo correspondiente</p>
+</div>
+<!-- Formulario -->
+<form class="space-y-4" id="registerAmiiboForm" onsubmit="event.preventDefault();">
+<!-- Nombre del Amiibo -->
+<div>
+<label class="block text-xs font-semibold text-gray-700 uppercase tracking-wider mb-1.5" for="amiiboName">Nombre del Amiibo</label>
+<input class="w-full h-11 px-3.5 bg-gray-50 border border-gray-200 rounded-xl text-sm font-sans tracking-tight text-gray-900 placeholder:text-gray-400 focus:outline-none focus:border-black focus:bg-white transition-all" id="amiiboName" placeholder="Ej. Link (Tears of the Kingdom)" required="" type="text">
+</div>
+<!-- Franquicia correspondiente -->
+<div>
+<label class="block text-xs font-semibold text-gray-700 uppercase tracking-wider mb-1.5" for="amiiboFranchise">Franquicia correspondiente</label>
+<div class="relative">
+<select class="w-full h-11 pl-3.5 pr-10 bg-gray-50 border border-gray-200 rounded-xl text-sm font-sans tracking-tight text-gray-900 focus:outline-none focus:border-black focus:bg-white transition-all appearance-none cursor-pointer" id="amiiboFranchise">
+<option value="The Legend of Zelda">The Legend of Zelda</option>
+<option value="Super Mario">Super Mario</option>
+<option value="Super Smash Bros.">Super Smash Bros.</option>
+<option value="Animal Crossing">Animal Crossing</option>
+<option value="Splatoon">Splatoon</option>
+<option value="Metroid">Metroid</option>
+<option value="Pokémon">Pokémon</option>
+</select>
+<svg xmlns="http://www.w3.org/2000/svg" class="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none text-gray-400 w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5"></path></svg>
+</div>
+</div>
+<!-- Subida de Archivo -->
+<div>
+<label class="block text-xs font-semibold text-gray-700 uppercase tracking-wider mb-1.5">Archivo de volcado (.bin / .dump)</label>
+<div class="border-2 border-dashed border-gray-200 hover:border-gray-400 bg-gray-50/70 hover:bg-gray-50 rounded-2xl p-5 text-center cursor-pointer transition-all flex flex-col items-center justify-center group">
+<div class="w-10 h-10 rounded-full bg-white border border-gray-200 shadow-sm flex items-center justify-center text-gray-600 mb-2 group-hover:scale-105 transition-transform">
+<span class="material-symbols-outlined text-[20px]">cloud_upload</span>
+</div>
+<p class="text-sm font-medium text-gray-800">Subir archivo de volcado (.bin / .dump)</p>
+<p class="text-xs text-gray-400 mt-0.5">Arrastra el archivo aquí o haz clic para examinar (máx. 1MB)</p>
+<input accept=".bin,.dump" class="hidden" id="amiiboFileInput" type="file">
+</div>
+</div>
+<!-- Código o UID NFC (Opcional) -->
+<div>
+<label class="block text-xs font-semibold text-gray-700 uppercase tracking-wider mb-1.5" for="amiiboUid">
+          Código / UID NFC <span class="text-gray-400 font-normal lowercase">(opcional)</span>
+</label>
+<input class="w-full h-11 px-3.5 bg-gray-50 border border-gray-200 rounded-xl text-sm font-mono tracking-wider text-gray-900 placeholder:text-gray-400 focus:outline-none focus:border-black focus:bg-white transition-all uppercase" id="amiiboUid" placeholder="04 5A 7B E2 1C 63 80" type="text">
+</div>
+<!-- Acciones -->
+<div class="flex items-center justify-end gap-3 pt-3">
+<button class="py-2.5 px-4 rounded-xl border border-gray-200 text-gray-600 hover:bg-gray-100 hover:text-gray-900 text-sm font-medium transition-colors cursor-pointer" id="cancelRegisterBtn" type="button">
+          Cancelar
+        </button>
+<button class="py-2.5 px-5 bg-gray-900 hover:bg-black text-white text-sm font-medium rounded-xl shadow-sm hover:shadow transition-all flex items-center gap-1.5 cursor-pointer" id="submitRegisterBtn" style="background-color: rgb(138, 73, 113);" type="button">
+<span class="material-symbols-outlined text-[18px]">save</span>
+<span class="">Registrar Amiibo</span>
+</button>
+</div>
+</form>
+</div>
+</div>
+<!-- Modal Interactivo: Detalle / Descarga Amiibo -->
+<div aria-modal="true" class="fixed inset-0 z-50 items-center justify-center bg-black/60 backdrop-blur-sm p-4 transition-opacity duration-300 hidden" id="amiiboModal" role="dialog">
+<!-- Contenedor del Modal -->
+<div class="bg-white rounded-3xl shadow-2xl p-8 max-w-lg w-full mx-4 relative transform transition-all duration-300 flex flex-col font-sans">
+<button aria-label="Cerrar modal" class="absolute top-5 right-5 text-gray-400 hover:text-gray-700 bg-gray-100 hover:bg-gray-200 rounded-full p-2 transition-colors flex items-center justify-center cursor-pointer" id="closeModalBtn" type="button">
+<span class="material-symbols-outlined text-[20px]">close</span>
+</button>
+<div class="flex items-center gap-2 mb-4">
+<span class="text-[11px] font-semibold uppercase tracking-wider text-gray-500 bg-gray-100 px-3 py-1 rounded-full" id="modalSeries" style="background-color: rgb(234, 214, 239); color: rgb(138, 73, 113); font-weight: 600;">SUPER SMASH BROS. SERIES</span>
+</div>
+<div class="w-full h-64 bg-gray-50 rounded-2xl flex items-center justify-center p-6 mb-6">
+<img alt="Sephiroth" class="h-56 max-w-full object-contain mx-auto drop-shadow-xl transition-all duration-300" id="modalImg" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCenlHLR1c4aMJdJptFaNemeFexbDs-Tw1pxS_yi-k4VOacY-W4G3eDyTjYswph-DVb6DMvTrC7uJPDxN6rQ8x49OyOcksHe0qPk6cbbjQVxInZOxTMAQAeXZgPRoyhxqUyLmDf5GAFMAUVQWvS39o99nUobfBgB2f9JL_KLlLhQ4Z1H7cmADLaFMFqMLg9_No8k35DYFXWxHgEDocQorlX3OwuN_8jobbiG3ojBbBKPYwToH2c7QhevT-K3mRhmLFD">
+</div>
+<div class="flex flex-col gap-1 mb-6">
+<h3 class="text-2xl font-bold text-gray-900 tracking-tight" id="modalTitle">Sephiroth</h3>
+<p class="text-gray-500 text-sm">Juego: The Legend of Zelda: Tears of the Kingdom</p>
+<p class="text-xs text-gray-400 mt-1">Archivo NFC .bin • 540 Bytes • NTAG215</p>
+</div>
+<a class="w-full py-3.5 px-6 rounded-xl text-white font-medium text-sm flex items-center justify-center gap-2 shadow-sm hover:shadow transition-all cursor-pointer" href="#download" id="modalDownloadBtn" style="background-color: rgb(138, 73, 113);">
+<span class="material-symbols-outlined text-[20px]">file_download</span>
+<span class="">Descargar Archivo (.bin)</span>
+</a>
+</div>
+</div>
+<script>
+  // Modal de Detalle
+  const modal = document.getElementById('amiiboModal');
+  const modalImg = document.getElementById('modalImg');
+  const modalTitle = document.getElementById('modalTitle');
+  const modalSeries = document.getElementById('modalSeries');
+  const closeModalBtn = document.getElementById('closeModalBtn');
+  const cards = document.querySelectorAll('.amiibo-card');
+
+  function openModal(title, imgSrc, series) {
+    modalTitle.textContent = title;
+    modalImg.src = imgSrc;
+    modalImg.alt = title;
+    if (series && modalSeries) {
+      modalSeries.textContent = series;
+    }
+    modal.classList.remove('hidden');
+    modal.classList.add('flex');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeModal() {
+    modal.classList.add('hidden');
+    modal.classList.remove('flex');
+    if (registerModal.classList.contains('hidden')) {
+      document.body.style.overflow = '';
+    }
+  }
+
+  cards.forEach(card => {
+    card.addEventListener('click', () => {
+      const title = card.getAttribute('data-title');
+      const img = card.getAttribute('data-img');
+      const series = card.getAttribute('data-series');
+      openModal(title, img, series);
+    });
+  });
+
+  closeModalBtn.addEventListener('click', closeModal);
+
+  modal.addEventListener('click', (e) => {
+    if (e.target === modal) {
+      closeModal();
+    }
+  });
+
+  // Modal de Registro
+  const registerModal = document.getElementById('registerModal');
+  const openRegisterBtn = document.getElementById('openRegisterBtn');
+  const closeRegisterModalBtn = document.getElementById('closeRegisterModalBtn');
+  const cancelRegisterBtn = document.getElementById('cancelRegisterBtn');
+  const submitRegisterBtn = document.getElementById('submitRegisterBtn');
+
+  function openRegisterModal() {
+    registerModal.classList.remove('hidden');
+    registerModal.classList.add('flex');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeRegisterModal() {
+    registerModal.classList.add('hidden');
+    registerModal.classList.remove('flex');
+    if (modal.classList.contains('hidden')) {
+      document.body.style.overflow = '';
+    }
+  }
+
+  if (openRegisterBtn) {
+    openRegisterBtn.addEventListener('click', openRegisterModal);
+  }
+  if (closeRegisterModalBtn) {
+    closeRegisterModalBtn.addEventListener('click', closeRegisterModal);
+  }
+  if (cancelRegisterBtn) {
+    cancelRegisterBtn.addEventListener('click', closeRegisterModal);
+  }
+  if (submitRegisterBtn) {
+    submitRegisterBtn.addEventListener('click', () => {
+      closeRegisterModal();
+    });
+  }
+
+  registerModal.addEventListener('click', (e) => {
+    if (e.target === registerModal) {
+      closeRegisterModal();
+    }
+  });
+
+  // Manejo de tecla Escape para ambos modales
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      if (!registerModal.classList.contains('hidden')) {
+        closeRegisterModal();
+      } else if (!modal.classList.contains('hidden')) {
+        closeModal();
+      }
+    }
+  });
+</script>
+
+
+
+
+</body></html>

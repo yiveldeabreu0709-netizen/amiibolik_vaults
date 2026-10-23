@@ -1,0 +1,3708 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>Amiibo Vault</title>
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    /* ========================================================
+       CURSORES PERSONALIZADOS SUPER SMASH BROS. (DOS MANOS)
+       ======================================================== */
+    :root {
+      --cursor-default: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAApCAYAAABUdSs8AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAWwSURBVFhH5Vh9TJNHHC6UL/kQClhoO4RWtE6QQWEw1Fr52ApZlBDNpjGLTVh0YRNhm0OBWbMYHd/OUYMTiOgiMr+hJgq6JYVs4Y8RnTEpmUOEoUOmgclEKPAsd+37rn1R+XZ/7El+Kffe3e957u53v7uDx5sevrbYy0VMTAx4PJ6NLVq0iPzOPXx9fVlSLy8v+Pv7s2WZTDbnIo4QImdnZ+Tl5YFBYWEh7O3tqYjY2Ni5ExEaGkpJ1q9fj4GBAVYAgUajmftZcHJyoiRFRUU25ARlZWW0TiQSzZ0AZq3r6uq4/Kivr4e7uzsEAsH/QEBLSwuXH3q9Hh4eHjRAuZ1mE1TAzZs3ufwwGAzw8fEBn8//bwQwS+Dp6Tn3AhoaGrj8LzcGnhWE1dXVcHBwgGWrHuN2nC08V8BurZbWWdusLwfJ/cRxeXk5lx/7dDr4ikTwEQohFAq5YmYHljSL/fv3c/lxuqkJuvO1aOvoQHd3NyorK+Hi4kLbk+0ZEBAAtVo9MzFyuZw6TEtL4/LjmtGI/idP2PLg06eIUK7gzgQNVK7fSWP16tXUybp16zA4OGgjYGBoyKY8PGLCzpJCJGs0yMnJwYYNG1gRQUFB0xZRSxzExcXh0aNHNoRcmEZGcMJwDb/39bDfMnZk2MyGn5/feCEkm1k3stx0ii3VB8m38PBwdHV12RByMTY2ht6Bv+gvg5PnT0O8RAaBN80V1Cx8ZjBB8ywjgWRZP0gkEty6dcuGcDL4pasTN9rb0dPTg4KCAurPzs6O+NxL+PcR5+QwOVFTg+bmZhQXF4Osu2U/s0aEPutAmgh/Dw+zf/c+fIjIqCjqT6lU0ln4hhTme3uj5Tcj27C/vx+NjY1QqVQ2Iqqqqtg200Hf48eIMV/fWAFZjHNNRgbau7rw7+qBRn1mZibmzZtH7386nc6qduq480c3QhXhlI8ENY2BZcuW0Q8Ojo7QpKfj9t27Np1MJhNqa2vplayzs9Ombqo4cakOQrGYmVGy/GYw2Y7v4ACVWo0fjUaYRke5/WeE2w8eYNuuXTQAXV1dzaO3hlQqZdc6KvYNnPn+Kv583IfRsZkLIRnywk8GMBzBwcHjBRAkJibSBkSlTC5H6fFj+PluB0at9vVUMTI6itb2X6FOSWEHyOPxsrncLBQKBXPFgqubG3ILC3GhpQV3ensxZDJx/T8XRPLQyAhaOzqgLS2Fk/neCMsgJ0S+m5ubWYS7O95KTcXRixdhMBrRdu8euvv68OQFYp6aTLhz/z6a2tpQ80MjloSFUV82GXASyLSaMiwQibCnrAy1zc04bGjEoStXcPjqVehbW3Hlxg1ql69fx8GGBnxx+SKtP9nUhMhVK8EzZz5i5Jk3NZDznHkDEgt7MwHpFUcQ/W4qgmNiEBQRAS+hkJrAzw8BYWFYvGIF1mZlQbV5M9tvRs83kogYR95iMVLzctkyMU+BAKLAQHhbvZpD4uOx2JJ2ic3k+ZZOgtLO3h5iqRSaoiLkXtJjR0UFPjiqwyenv8Wn3x1n7bPzp5BZVYl8vR4flebDPzAQfEdHKiIhIWFaIs6QzkJpILYfq8DeC+ew7chXSE5Lw+tqNYIUCkhfCzVbeChC4lSI37QJW/K/xO6zZ5B99hQUyWo6AHJF4zqfEJGRkeYpVSqRW38W75eUwF8upw6tl8HaSB6ZLxRik1aL3JqTSM5Ihz2fz/xjY8o4R5z6y2R4r+QAtpYfQtTaZHhLJHDx8BgnxJk8VMRiLF2zis7CxgNaSJYupXWWTDhl7CEjIueEX1AgVm5+B6naPUj9PBuJH27DGo0Gqi1bWEvcvhUpuTvxds7HWK5SYv4CH+YCQqyE63xSCAkJGTfNHhIJZNHReDUhAdEbN0KRkkLLryxfTneFdVty+Ew2A74IBQsXLhwnZCKbbuRPhFNJSUnjyIiRq5yFlN75XoR/AKCVCCosUdCuAAAAAElFTkSuQmCC') 12 1, url('cursors/hand_default.png') 12 1, auto;
+      --cursor-pointer: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACEAAAApCAYAAAC7t0ACAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAZrSURBVFhHvVhpTFRXGH3IMsMuiDAgsggKBUFlsaAsggiOAlVcUkEkYMWgZXArRPgBNiAgaGn4MRBA9qAsERGMBtNU1DZEFiMJoUWSBtGilVpcgtCS09zrvJG5I1YEepKTN9w375zz7vbdgeNmjkxHR0dwHAcjIyOIxWLy+X9DnpqaGjVnKRQKybWKfWCuUaaqqqpg7O7uDgMDA4W2+e4VarJ48WKcO3cOL1++BMHY2BgaGxtha2sLFRUV6OrqzluIBhJAW1sbra2t1JxFQ0MD9PX1+R7JYwVmDTc3Nyq+YcMGvHnzhvWnePjwIZYtW0a/t2nTprnvDT6En5/ftCEGBgZgZWU1fyFkohCJRHj16hXrT3H79m26XGXDkc9qzAW+5ydmU1MT609RUVEBdXV1yJbwvIGGCAkJYf0p0tPT6X3Zkp0fWFtb810tX55TkZCQQO+ZmprOXwiyWfEh2tvb2QzyEHp6euRay3HccVZgrkCNmpub2QxIS0uT9xRPHR0dcs1hRWYLKi6VStkMKKupgcjUFGbm5iBDJ6slPNNYodmAiqamprIZMPjHE9y8cxt3OzvR09ODyspKvidgbGwMT09P8pkM6ezAF6vw8HA2gxImJiYQHBysNESz3sgcHByoEBF//fo166uAyclJ5BcWwnP9eoSFhcHS0nJqmP9EvWw5NrE3XF1dqYi3tzeePXvG+irhzcQEnj9/TgO3tLTIQ5Bhmq7kk8mj1H0CgQArV66kJZxvc3FxwdDQEOv5QZCSb29vT3dVXsfOzk4xCJk8/E2+EE3H3NzcaQvZh9Df34+SkhLwR0NCX1/fd0FoQhUVHEhMxA+999Dd14eMrEy4ubvD2MSEjqlEIqFCs8Xo6CicnJxoCNkZhCKBNKiqqSE5JxstXV2U1+93oX1gAH2PH+PJyAj+npxk9T4ZhaUlUNfQ4HskmabQ0tKiDQaGhsitqpIH4Xmtuxs/9vbgl+HfWb0ZY+DpEArqamH8ts4QSmkILy8v+TiRcrx7XwRKrjQphSHsfvArnr4YxevxcVZ/WvwzOYk/X7xA1+AgrnZ3Q1pXB5GZGe9ZKJ8XHMeV8kHIodXCxgZJmadxpeOuUpDr9+/jZm8vun57gN7hYQyOjOCvsTG8Gh+nfDk+Ttv6hofR8+gRfu7vx4179+TP51dXw+jdilMIQbFo0SIsWLDgba8IBPgyLg61bW1KQZo7O3C54y5q2trwXetVpDfU49iFChwtK8Wx8nIcr6xE0qWLONPShLwb13Dh1i1c7uigzyakJlMP8rIcx8WzGXhINd5NHDi5uyO7uBjNnZ1oJsY/3UHBjWtIrqvB9sRErP0iGBarVsFkhQ30l4hgZGWFJY6OcPD3x9ZjEkhKinCiogInq8txpqwUoqVLqS55Ydb4fZAHEQiF2Bsbi50x0Vi9bh0SiorgGxkJ1SkbEBUWiRT+1lq4EJEZGXDdsQNCbW0INTWn3i9nDd+LoKAgBVGeWxMOY39OFuzXe0Ac+xXiiwuR0lSPlMZaSkl5EYIOxcE1WIxvykqxXLbt8wwMDCTXGeGw7OhGaWhigpTqCqQ1XUJKSwOSqqpwpECKyOwsRJ49jcjMTMQVFeBo6XkkXCxH0oVqxOTkQN/QkD5vY2Mz4wBykHlCJpP4yCGkNNTj5MVqHCjKx4bYaKzw/hy2np5yrhEHQiyJR8TZ0/i6uBBxFYVw8PehIcjPRlb7o0H2EDKukTnpOFZ6HnvTv8USBwe6itjhIiTzwc7bGxFZWdhfkAevnTvpSyx9OzE/DSSEpoE+9pxKxSGpFGu2bVMyZinQ0oJfdDTCc3OxNjSUhiA/pFjtjwYpdGR9h0gk2JOdAaeNG5VMWaprCuETtQ+7s9Jh57WOtpGyzmp/NDRly2ulvz/2ZGfDNyqK/3fAtDSxtMTm+HiEJJ3AwqVvt2p/f/9PD2FhYUFFyL8Jdnx7CmEpKfCJioKhlRUE2tpQE2rIKIBQRwfmbs7YePAg/Z7z5s1Tw2Wz2jMFFTJ3doRYIqEGW44exdpdu+C4OYBydVgofGJisOX4cYQmJsI9JAQafKWei5+KAQEB8jfS0dWFS3AwDbI9OVmBpM0jIgJGK6z5GsFzbiA7lsmppqEBfXMRzByWU5p+Zguhnp6CuezYOPeQ7XwfJDkscxx3kX12PpDu4eFBz46Ezs7OxLiG/dJ0+BdiA60J8w1uvwAAAABJRU5ErkJggg==') 13 0, url('cursors/hand_inclined.png') 13 0, pointer;
+    }
+
+    html, body {
+      cursor: var(--cursor-default) !important;
+    }
+
+    /* Al posarse encima de cualquier elemento interactivo / clicable */
+    a, button, select, [role="button"], .cursor-pointer, .amiibo-card, 
+    input[type="file"], input[type="checkbox"], input[type="radio"], 
+    input[type="submit"], label[for], #acSidebarSubmenuToggle, .nav-filter {
+      cursor: var(--cursor-pointer) !important;
+    }
+
+    /* Estado activo / presionado al hacer clic */
+    html:active, body:active, a:active, button:active, .amiibo-card:active, 
+    .cursor-pointer:active, [role="button"]:active {
+      cursor: var(--cursor-pointer) !important;
+    }
+
+    /* Campos de texto mantienen el cursor de texto estándar */
+    input[type="text"], input[type="search"], textarea {
+      cursor: text !important;
+    }
+
+    #bannerDragHandle {
+      cursor: grab !important;
+    }
+    #bannerDragHandle:active {
+      cursor: grabbing !important;
+    }
+
+    body {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    }
+    ::-webkit-scrollbar {
+      display: none;
+    }
+    :root {
+      --primary-slate: #4F5A78;
+      --primary-slate-hover: #3C4661;
+      --primary-slate-dark: #2D354A;
+      --accent-mint: #7BDF96;
+      --accent-mint-hover: #67D784;
+      --ice-blue: #D0E7F9;
+      --ice-blue-subtle: #EDF5FC;
+      --ice-blue-border: #BBDDF5;
+    }
+    .theme-slate-bg {
+      background-color: #4F5A78 !important;
+    }
+    .theme-slate-bg:hover {
+      background-color: #3C4661 !important;
+    }
+    .theme-slate-text {
+      color: #4F5A78 !important;
+    }
+    .theme-mint-bg {
+      background-color: #7BDF96 !important;
+    }
+    .theme-ice-bg {
+      background-color: #D0E7F9 !important;
+    }
+    .theme-ice-subtle {
+      background-color: #EDF5FC !important;
+    }
+    .theme-ice-border {
+      border-color: #BBDDF5 !important;
+    }
+    .theme-slate-shadow {
+      box-shadow: 0 10px 25px -5px rgba(79, 90, 120, 0.35) !important;
+    }
+    .material-symbols-fill {
+      font-variation-settings: 'FILL' 1, 'wght' 600, 'GRAD' 0, 'opsz' 24 !important;
+    }
+
+    /* Animación pulso para botón Bluetooth */
+    @keyframes pulseRing {
+      0% { box-shadow: 0 0 0 0 rgba(79, 90, 120, 0.4); }
+      70% { box-shadow: 0 0 0 8px rgba(79, 90, 120, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(79, 90, 120, 0); }
+    }
+    .pulse-connect-btn {
+      animation: pulseRing 2s infinite;
+    }
+
+    /* Toast */
+    .toast-box {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      background: #0f172a;
+      color: #ffffff;
+      padding: 14px 22px;
+      border-radius: 14px;
+      font-size: 14px;
+      font-weight: 600;
+      box-shadow: 0 14px 35px rgba(0,0,0,0.3);
+      z-index: 1000;
+      transform: translateY(100px);
+      opacity: 0;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .toast-box.show {
+      transform: translateY(0);
+      opacity: 1;
+    }
+    .toast-box.success {
+      border-left: 5px solid #22c55e;
+    }
+    .toast-box.error {
+      border-left: 5px solid #ef4444;
+    }
+  </style>
+</head>
+<body class="bg-[#EDF5FC] font-sans tracking-tight text-gray-900 antialiased min-h-screen" style="background-color: #EDF5FC; overflow-x: hidden;">
+
+  <!-- Sidebar Izquierdo -->
+  <aside class="fixed left-0 top-0 h-full w-64 bg-white z-40 flex flex-col p-4 border-r border-gray-200/80 font-sans tracking-tight">
+    <!-- Brand / Logo -->
+    <div class="flex items-center gap-2.5 px-2 py-3 mb-6">
+      <div class="w-8 h-8 rounded-lg flex items-center justify-center text-white shrink-0" style="background-color: #4F5A78;">
+        <span class="material-symbols-outlined text-[19px]">token</span>
+      </div>
+      <span class="font-bold text-lg text-gray-900 tracking-tight">Amiibo Vault</span>
+    </div>
+
+    <!-- Navegación Principal & Franquicias -->
+    <div class="flex-1 overflow-y-auto space-y-6 pr-1">
+      <nav class="space-y-1 font-sans">
+        <a class="nav-filter flex items-center gap-3 px-3 py-2 rounded-lg text-gray-600 hover:bg-gray-100 hover:text-gray-900 transition-colors text-sm font-medium tracking-tight" data-filter="ALL" href="#">
+          <span class="material-symbols-outlined text-[20px]">home</span>
+          <span>Inicio</span>
+        </a>
+        <a class="nav-filter flex items-center justify-between px-3 py-2 rounded-lg text-gray-600 hover:bg-gray-100 hover:text-gray-900 transition-colors text-sm font-medium tracking-tight group" data-filter="RECIENTES" href="#">
+          <div class="flex items-center gap-3">
+            <span class="material-symbols-outlined text-[20px] text-amber-500 group-hover:scale-110 transition-transform">schedule</span>
+            <span>Los más recientes</span>
+          </div>
+          <span class="text-[11px] font-bold px-2 py-0.5 rounded-full bg-amber-100 text-amber-800 hidden" id="recentsCountBadge">0</span>
+        </a>
+        <a class="nav-filter flex items-center justify-between px-3 py-2 rounded-lg text-gray-600 hover:bg-gray-100 hover:text-gray-900 transition-colors text-sm font-medium tracking-tight group" data-filter="FAVORITOS" href="#">
+          <div class="flex items-center gap-3">
+            <span class="material-symbols-outlined text-[20px] text-rose-500 group-hover:scale-110 transition-transform">favorite</span>
+            <span>Favoritos</span>
+          </div>
+          <span class="text-[11px] font-bold px-2 py-0.5 rounded-full bg-rose-100 text-rose-700 hidden" id="favoritesCountBadge">0</span>
+        </a>
+      </nav>
+
+      <div>
+        <p class="px-3 mb-2 text-xs font-semibold uppercase tracking-wider text-gray-400 font-sans">Franquicias</p>
+        <nav class="space-y-1 font-sans" id="franchiseNavList">
+          <a class="nav-filter flex items-center justify-between px-3 py-2 rounded-lg text-gray-600 hover:bg-gray-100 hover:text-gray-900 transition-colors text-sm font-medium tracking-tight" data-filter="Super Smash Bros." href="#">
+            <span class="truncate">Super Smash Bros.</span>
+          </a>
+          <a class="nav-filter flex items-center justify-between px-3 py-2 rounded-lg transition-colors text-sm tracking-tight active-franchise" data-filter="The Legend of Zelda" href="#" style="background-color: rgb(208, 231, 249); color: rgb(43, 56, 89); font-weight: 700;">
+            <span class="truncate">The Legend of Zelda</span>
+          </a>
+          <a class="nav-filter flex items-center justify-between px-3 py-2 rounded-lg text-gray-600 hover:bg-gray-100 hover:text-gray-900 transition-colors text-sm font-medium tracking-tight" data-filter="Super Mario" href="#">
+            <span class="truncate">Super Mario</span>
+          </a>
+          <!-- GRUPO ANIMAL CROSSING CON EXTENSIÓN SANRIO -->
+          <div class="relative" id="acSidebarGroup">
+            <a class="nav-filter flex items-center justify-between px-3 py-2 rounded-lg text-gray-600 hover:bg-gray-100 hover:text-gray-900 transition-colors text-sm font-medium tracking-tight group" data-filter="Animal Crossing" href="#" id="acNavFilterLink">
+              <span class="truncate">Animal Crossing</span>
+              <span id="acSidebarSubmenuToggle" class="p-0.5 -mr-1 rounded hover:bg-black/10 transition-colors flex items-center justify-center cursor-pointer" title="Ver extensión Colaboración Sanrio" aria-label="Abrir abanico de Colaboración Sanrio">
+                <span class="material-symbols-outlined text-[18px] text-gray-400 group-hover:text-gray-700 transition-transform duration-300" id="acSidebarSubmenuChevron">expand_more</span>
+              </span>
+            </a>
+
+            <!-- SUB-MENÚ / ABANICO DESPLEGABLE: COLABORACIÓN SANRIO -->
+            <div id="acSidebarSubmenu" class="hidden mt-1 ml-4 pl-3 py-1 space-y-1 border-l-2 border-[#4F5A78]/30 transition-all duration-300">
+              <a class="nav-filter flex items-center gap-2 px-2.5 py-1.5 rounded-lg text-xs font-semibold text-gray-600 hover:bg-[#D0E7F9]/50 hover:text-[#4F5A78] transition-all tracking-tight group" data-filter="Sanrio" href="#" id="sanrioNavFilterLink">
+                <span class="material-symbols-outlined text-[15px] text-amber-500 shrink-0">stars</span>
+                <span class="truncate">Colaboración Sanrio</span>
+              </a>
+            </div>
+          </div>
+          <a class="nav-filter flex items-center justify-between px-3 py-2 rounded-lg text-gray-600 hover:bg-gray-100 hover:text-gray-900 transition-colors text-sm font-medium tracking-tight" data-filter="Splatoon" href="#">
+            <span class="truncate">Splatoon</span>
+          </a>
+          <a class="nav-filter flex items-center justify-between px-3 py-2 rounded-lg text-gray-600 hover:bg-gray-100 hover:text-gray-900 transition-colors text-sm font-medium tracking-tight" data-filter="Kirby" href="#">
+            <span class="truncate">Kirby</span>
+          </a>
+          <a class="nav-filter flex items-center justify-between px-3 py-2 rounded-lg text-gray-600 hover:bg-gray-100 hover:text-gray-900 transition-colors text-sm font-medium tracking-tight" data-filter="Especiales" href="#">
+            <span class="truncate">Especiales</span>
+          </a>
+        </nav>
+      </div>
+    </div>
+
+    <!-- Bloque Inferior Fijo: Botón Registrar + Footer Sidebar -->
+    <div class="pt-3 border-t border-gray-100 px-1 font-sans tracking-tight">
+      <button class="w-full flex items-center justify-center gap-2 py-2.5 px-4 mb-3 text-white text-sm font-medium rounded-xl shadow-sm hover:shadow transition-all duration-200 cursor-pointer" id="openRegisterBtn" onmouseout="this.style.backgroundColor='#4F5A78'" onmouseover="this.style.backgroundColor='#3C4661'" style="background-color: #4F5A78; transition: background-color 0.2s;" type="button">
+        <span class="material-symbols-outlined text-[18px] text-[#7BDF96]">add</span>
+        <span>Registrar Amiibo</span>
+      </button>
+      <div class="flex items-center justify-between text-gray-400 text-xs font-medium px-2 py-1">
+        <span>CATALOG V2.4</span>
+        <span class="material-symbols-outlined text-[16px] text-emerald-500">verified</span>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Contenedor Principal (Pl-64 para el sidebar) -->
+  <div class="pl-64">
+    <!-- Header Superior -->
+    <header class="fixed top-0 left-64 right-0 h-16 bg-white/95 backdrop-blur-md z-30 border-b border-gray-200/80 flex items-center justify-between px-8 font-sans">
+      <div class="flex-1 max-w-2xl flex items-center gap-2">
+        <div class="relative flex items-center w-full">
+          <span class="material-symbols-outlined absolute left-3.5 text-gray-400 pointer-events-none text-[20px]">search</span>
+          <input class="w-full h-10 pl-11 pr-14 bg-gray-50 border border-gray-200 rounded-lg text-sm font-sans tracking-tight text-gray-900 placeholder:text-gray-400 focus:outline-none focus:border-black focus:bg-white transition-all" id="globalSearchInput" placeholder="Buscar por figura, colección, serie o código NFC..." type="text">
+          <div class="absolute right-3 flex items-center pointer-events-none">
+            <kbd class="px-1.5 py-0.5 rounded border border-gray-200 bg-white font-sans text-[11px] font-medium text-gray-400 shadow-sm">⌘K</kbd>
+          </div>
+        </div>
+        <button aria-label="Filtros" class="w-10 h-10 shrink-0 rounded-lg border border-gray-200 flex items-center justify-center text-gray-600 hover:bg-gray-50 hover:text-gray-900 transition-colors" type="button">
+          <span class="material-symbols-outlined text-[20px]">tune</span>
+        </button>
+      </div>
+
+      <!-- BOTÓN DE CONEXIÓN BLUETOOTH DIRECTO DE 1 SOLO CLIC -->
+      <div class="flex items-center gap-3">
+        <button class="rounded-full bg-white border-2 border-[#4F5A78] text-[#4F5A78] hover:bg-[#D0E7F9]/30 shadow-sm px-4 py-2 flex items-center gap-2.5 transition-all cursor-pointer font-bold text-sm pulse-connect-btn" id="directBtConnectBtn" title="Presiona el botón de tu llavero y haz clic aquí para vincular" type="button">
+          <span class="w-2.5 h-2.5 rounded-full bg-gray-400 transition-all duration-300" id="headerBtDot"></span>
+          <span class="material-symbols-outlined text-[18px]" style="color: #4F5A78;">bluetooth</span>
+          <span id="headerBtLabel">Conectar AmiiboLink</span>
+        </button>
+      </div>
+    </header>
+
+    <!-- Contenido Principal -->
+    <main class="pt-24 pb-16 px-8 max-w-7xl mx-auto font-sans tracking-tight">
+      
+      <!-- AVISO DE BRAVE / DIAGNÓSTICO (Visible si Brave bloquea o si el usuario quiere consejos) -->
+      <div class="mb-6 p-4 bg-amber-50 rounded-2xl border border-amber-200 flex items-start justify-between gap-4 hidden" id="braveHintBanner">
+        <div class="flex items-start gap-3">
+          <span class="material-symbols-outlined text-amber-600 text-[24px] shrink-0 mt-0.5">shield</span>
+          <div>
+            <h4 class="text-xs font-bold text-amber-950 uppercase tracking-wider mb-0.5">Consejo para navegadores con Escudo (Brave):</h4>
+            <p class="text-xs text-amber-800 leading-relaxed">
+              Si usas <strong>Brave</strong> y la ventanita de Bluetooth no aparece o se cancela, haz clic en el <strong>icono del león naranja</strong> (Escudos de Brave) en la barra de direcciones y selecciona <strong>"Desactivar escudos para este sitio"</strong>, o abre el archivo en <strong>Microsoft Edge</strong> (que ya viene instalado en Windows) donde el Bluetooth conecta a la primera.
+            </p>
+          </div>
+        </div>
+        <button type="button" class="text-amber-700 hover:text-amber-900 text-xs font-bold shrink-0 underline cursor-pointer" id="closeBraveHintBtn">Ocultar</button>
+      </div>
+
+      <!-- BANNER PANORÁMICO DE FRANQUICIA (PERSONALIZABLE & REPOSICIONABLE) -->
+      <div id="franchiseHeroContainer" class="relative w-full h-44 sm:h-52 md:h-60 rounded-3xl overflow-hidden mb-6 shadow-sm border border-gray-200/80 bg-slate-900 group transition-all duration-300 select-none">
+        <!-- Imagen del Banner (Móvil con translate & zoom) -->
+        <img id="franchiseHeroImg" src="banners/banner_zelda.jpg" alt="Banner de Franquicia" class="w-full h-full object-cover object-center will-change-transform pointer-events-none select-none transition-transform duration-200" style="transform: translate(0px, 0px) scale(1); transform-origin: center center;">
+        
+        <!-- Video del Banner (Para mini-videos y clips MP4/WebM en bucle continuo) -->
+        <video id="franchiseHeroVideo" autoplay loop muted playsinline class="hidden w-full h-full object-cover object-center will-change-transform pointer-events-none select-none transition-transform duration-200" style="transform: translate(0px, 0px) scale(1); transform-origin: center center;"></video>
+        
+        <!-- Degradado inferior para contraste y estética -->
+        <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/15 to-transparent pointer-events-none"></div>
+
+        <!-- Área de Arrastre Interactiva (Activa en modo reposicionamiento) -->
+        <div id="bannerDragHandle" class="hidden absolute inset-0 z-20 cursor-grab active:cursor-grabbing flex items-center justify-center bg-black/15 backdrop-blur-[1px] transition-all">
+          <div class="pointer-events-none px-4 py-2 rounded-2xl bg-black/75 backdrop-blur-md border border-white/20 text-white text-xs font-bold shadow-lg flex items-center gap-2 animate-bounce">
+            <span class="material-symbols-outlined text-[18px] text-[#7BDF96]">open_with</span>
+            <span>Arrastra para mover libremente • Rueda para zoom</span>
+          </div>
+        </div>
+
+        <!-- Barra Superior de Control de Posición (Aparece en modo reposición) -->
+        <div id="bannerRepositionBar" class="hidden absolute top-3 left-3 right-3 sm:left-4 sm:right-4 z-30 flex-wrap items-center justify-between gap-2 p-2.5 rounded-2xl bg-black/85 backdrop-blur-md border border-white/20 text-white shadow-xl transition-all font-sans">
+          <div class="flex items-center gap-2 pl-1.5 text-xs font-semibold">
+            <span class="material-symbols-outlined text-[19px] text-[#7BDF96]">pan_tool</span>
+            <span class="hidden sm:inline">Mueve la imagen arriba, abajo o a los lados</span>
+            <span class="sm:hidden">Mover imagen</span>
+          </div>
+
+          <div class="flex items-center gap-2 flex-wrap">
+            <!-- Controles de Zoom -->
+            <div class="flex items-center gap-1.5 bg-white/10 rounded-xl px-2 py-1 text-xs">
+              <button type="button" id="bannerZoomOutBtn" class="w-6 h-6 rounded-lg hover:bg-white/20 flex items-center justify-center font-bold text-sm cursor-pointer transition-colors" title="Alejar">-</button>
+              <span id="bannerZoomLabel" class="text-[11px] font-mono px-1 min-w-[38px] text-center">100%</span>
+              <button type="button" id="bannerZoomInBtn" class="w-6 h-6 rounded-lg hover:bg-white/20 flex items-center justify-center font-bold text-sm cursor-pointer transition-colors" title="Acercar">+</button>
+            </div>
+
+            <!-- Botón Centrar -->
+            <button type="button" id="bannerCenterBtn" class="px-2.5 py-1 rounded-xl bg-white/10 hover:bg-white/20 text-white text-xs font-medium transition-all cursor-pointer" title="Centrar al medio">
+              Centrar
+            </button>
+
+            <!-- Botón Cancelar -->
+            <button type="button" id="cancelRepositionBtn" class="px-3 py-1 rounded-xl bg-white/10 hover:bg-white/20 text-white text-xs font-medium transition-all cursor-pointer">
+              Cancelar
+            </button>
+
+            <!-- Botón Guardar Posición -->
+            <button type="button" id="saveRepositionBtn" class="px-3.5 py-1 rounded-xl bg-[#7BDF96] hover:bg-[#68cb82] text-[#20293d] text-xs font-bold transition-all cursor-pointer shadow-sm flex items-center gap-1 active:scale-95">
+              <span class="material-symbols-outlined text-[16px]">check</span>
+              <span>Guardar</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Etiqueta de la franquicia actual en el banner -->
+        <div id="bannerFranchiseBadgeContainer" class="absolute bottom-4 left-5 sm:left-6 flex items-center gap-3 pointer-events-none select-none z-10">
+          <div class="px-3 py-1 rounded-full bg-black/40 backdrop-blur-md border border-white/20 text-white text-xs font-bold tracking-wider uppercase flex items-center gap-1.5 shadow-sm">
+            <span class="w-2 h-2 rounded-full bg-[#7BDF96] animate-pulse"></span>
+            <span id="franchiseHeroBadge">The Legend of Zelda</span>
+          </div>
+        </div>
+
+        <!-- Controles para personalizar / mover banner propio -->
+        <div id="bannerControlsGroup" class="absolute bottom-4 right-5 sm:right-6 flex items-center gap-2 z-10">
+          <!-- Botón restablecer (visible si hay banner o posición personalizada) -->
+          <button type="button" id="resetBannerBtn" class="hidden px-3 py-1.5 rounded-xl bg-black/60 hover:bg-black/85 text-white/90 hover:text-white text-xs font-semibold backdrop-blur-md border border-white/25 transition-all cursor-pointer shadow-sm items-center gap-1.5 active:scale-95" title="Restablecer banner y posición original">
+            <span class="material-symbols-outlined text-[16px]">restart_alt</span>
+            <span class="hidden sm:inline">Restablecer</span>
+          </button>
+
+          <!-- Botón Mover imagen -->
+          <button type="button" id="repositionBannerBtn" class="px-3 py-1.5 rounded-xl bg-black/60 hover:bg-black/85 text-white/90 hover:text-white text-xs font-semibold backdrop-blur-md border border-white/25 transition-all cursor-pointer shadow-sm flex items-center gap-1.5 hover:shadow-md hover:scale-[1.02] active:scale-95" title="Mover la imagen arriba, abajo o hacia los lados">
+            <span class="material-symbols-outlined text-[17px]">pan_tool</span>
+            <span>Mover imagen</span>
+          </button>
+
+          <!-- Botón cambiar banner -->
+          <button type="button" id="changeBannerBtn" class="px-3.5 py-1.5 rounded-xl bg-[#4F5A78]/90 hover:bg-[#4F5A78] text-white text-xs font-semibold backdrop-blur-md border border-white/30 transition-all cursor-pointer shadow-sm flex items-center gap-1.5 hover:shadow-md hover:scale-[1.02] active:scale-95" title="Subir imagen, GIF animado o mini video para esta sección">
+            <span class="material-symbols-outlined text-[17px]">photo_camera</span>
+            <span>Cambiar banner</span>
+          </button>
+          <input type="file" id="franchiseBannerFileInput" accept="image/*,video/mp4,video/webm" class="hidden">
+        </div>
+      </div>
+
+      <!-- Encabezado de la Colección -->
+      <header class="mb-8">
+        <div class="flex items-center gap-2 text-xs font-semibold tracking-wider uppercase text-gray-400 mb-2">
+          <span>COLECCIÓN</span>
+          <span>/</span>
+          <span id="breadcrumbSub">NINTENDO SWITCH & WII U</span>
+        </div>
+        <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
+          <div>
+            <h1 class="text-4xl tracking-tight text-gray-900 font-bold" id="mainHeaderTitle">The Legend of Zelda</h1>
+            <p class="text-base text-gray-500 mt-1">Catálogo de figuras y volcados de datos</p>
+          </div>
+          <div class="flex items-center gap-2.5 flex-wrap self-start sm:self-auto">
+            <div class="text-[11px] font-medium uppercase tracking-wider text-gray-500 bg-gray-100 border border-gray-200 px-3 py-1 rounded-full" id="countBadge" style="background-color: rgb(208, 231, 249); color: rgb(43, 56, 89); border-color: rgba(79, 90, 120, 0.2); font-weight: 700;">
+              16 ARCHIVOS REGISTRADOS
+            </div>
+
+            <!-- BOTÓN ABANICO DE FILTROS ANIMAL CROSSING -->
+            <button type="button" id="acFilterToggleBtn" class="hidden items-center gap-1.5 px-3 py-1 text-xs font-bold rounded-full bg-[#D0E7F9] text-[#2D354A] border border-[#4F5A78]/30 hover:bg-[#4F5A78] hover:text-white hover:border-[#4F5A78] transition-all cursor-pointer shadow-sm group" title="Filtrar vecinos por especie y personalidad">
+              <span class="material-symbols-outlined text-[17px] text-[#4F5A78] group-hover:text-white transition-colors">tune</span>
+              <span>Filtrar Vecinos</span>
+              <span class="material-symbols-outlined text-[16px] text-[#4F5A78] group-hover:text-white transition-transform duration-200" id="acFilterChevron">expand_more</span>
+            </button>
+          </div>
+        </div>
+      </header>
+
+      <!-- PANEL ABANICO DE FILTROS (ANIMAL CROSSING) -->
+      <div id="acFilterFanPanel" class="hidden mb-6 p-4 bg-gradient-to-r from-[#D0E7F9]/40 via-[#EDF5FC] to-white rounded-2xl border border-[#4F5A78]/25 shadow-sm transition-all duration-300 font-sans">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-3 border-b border-[#4F5A78]/15 mb-3">
+          <div class="flex items-center gap-2">
+            <span class="w-7 h-7 rounded-full bg-[#4F5A78] text-white flex items-center justify-center shrink-0 shadow-sm">
+              <span class="material-symbols-outlined text-[17px]">pets</span>
+            </span>
+            <div>
+              <h3 class="text-xs font-bold text-[#2D354A] uppercase tracking-wider">Filtro de Vecinos de Animal Crossing</h3>
+              <p class="text-[11px] text-[#4F5A78]">Encuentra a tus aldeanos por especie y personalidad</p>
+            </div>
+          </div>
+          <button type="button" id="acClearFiltersBtn" class="text-xs font-bold text-[#4F5A78] hover:text-[#2D354A] hover:underline cursor-pointer self-start sm:self-auto">
+            Restablecer filtros
+          </button>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+          <!-- Filtro de Especie -->
+          <div>
+            <label class="block text-xs font-bold text-[#2D354A] uppercase tracking-wider mb-1" for="acSpeciesSelect">
+              Especie Animal
+            </label>
+            <div class="relative">
+              <select id="acSpeciesSelect" class="w-full h-9 pl-3 pr-8 bg-white border border-[#4F5A78]/30 rounded-xl text-xs font-medium text-gray-800 focus:outline-none focus:border-[#4F5A78] transition-all appearance-none cursor-pointer shadow-sm">
+                <option value="ALL">Todas las especies</option>
+                <option value="Gato">🐱 Gatos</option>
+                <option value="Perro">🐶 Perros</option>
+                <option value="Conejo">🐰 Conejos</option>
+                <option value="Ardilla">🐿️ Ardillas</option>
+                <option value="Ciervo">🦌 Ciervos</option>
+                <option value="Lobo">🐺 Lobos</option>
+                <option value="Oso">🐻 Osos</option>
+                <option value="Osito">🧸 Ositos (Cubs)</option>
+                <option value="Pato">🦆 Patos</option>
+                <option value="Pingüino">🐧 Pingüinos</option>
+                <option value="Rana">🐸 Ranas</option>
+                <option value="Caballo">🐴 Caballos</option>
+                <option value="Oveja">🐑 Ovejas</option>
+                <option value="Cabra">🐐 Cabras</option>
+                <option value="Ratón">🐭 Ratones</option>
+                <option value="Hámster">🐹 Hámsters</option>
+                <option value="Mono">🐵 Monos</option>
+                <option value="Gorila">🦍 Gorilas</option>
+                <option value="Elefante">🐘 Elefantes</option>
+                <option value="Pulpo">🐙 Pulpos</option>
+                <option value="Especial">⭐ Personajes Especiales (NPC)</option>
+              </select>
+              <svg xmlns="http://www.w3.org/2000/svg" class="absolute right-2.5 top-1/2 -translate-y-1/2 pointer-events-none text-[#4F5A78] w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5"></path></svg>
+            </div>
+          </div>
+
+          <!-- Filtro de Personalidad -->
+          <div>
+            <label class="block text-xs font-bold text-[#2D354A] uppercase tracking-wider mb-1" for="acPersonalitySelect">
+              Personalidad
+            </label>
+            <div class="relative">
+              <select id="acPersonalitySelect" class="w-full h-9 pl-3 pr-8 bg-white border border-[#4F5A78]/30 rounded-xl text-xs font-medium text-gray-800 focus:outline-none focus:border-[#4F5A78] transition-all appearance-none cursor-pointer shadow-sm">
+                <option value="ALL">Todas las personalidades</option>
+                <option value="Alegre">✨ Alegre (Peppy) — Ej. Merry, Cuqui</option>
+                <option value="Dulce">🌸 Dulce / Normal — Ej. Tere, Marina</option>
+                <option value="Presumida">💎 Presumida (Snooty) — Ej. Patri, Pastel</option>
+                <option value="Hermana">💜 Hermana mayor (Sisterly) — Ej. Cereza</option>
+                <option value="Perezoso">💤 Perezoso (Lazy) — Ej. Parches, Bob, Ariel</option>
+                <option value="Atlético">⚡ Atlético (Jock) — Ej. Boliche, Fabián</option>
+                <option value="Gruñón">☕ Gruñón (Cranky) — Ej. Colmillo, Octavio</option>
+                <option value="Esmirriado">🎩 Esmirriado / Petulante (Smug) — Ej. Narciso, Muni</option>
+                <option value="Especial">⭐ Especial (NPC) — Canela, Totakeke, etc.</option>
+              </select>
+              <svg xmlns="http://www.w3.org/2000/svg" class="absolute right-2.5 top-1/2 -translate-y-1/2 pointer-events-none text-[#4F5A78] w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5"></path></svg>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Grid de Tarjetas Clicables -->
+      <section class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6" id="amiiboGrid">
+        <!-- Rellenado dinámicamente -->
+      </section>
+    </main>
+  </div>
+
+  <!-- ========================================================
+       MODAL: REGISTRAR NUEVO AMIIBO
+       ======================================================== -->
+  <div aria-modal="true" class="fixed inset-0 z-50 items-center justify-center bg-black/60 backdrop-blur-sm p-4 transition-opacity duration-300 hidden" id="registerModal" role="dialog">
+    <div class="bg-white rounded-3xl shadow-2xl p-7 max-w-lg w-full mx-4 relative transform transition-all duration-300 flex flex-col font-sans max-h-[90vh] overflow-y-auto">
+      <button aria-label="Cerrar modal" class="absolute top-5 right-5 text-[#4F5A78] hover:text-white bg-[#D0E7F9]/70 hover:bg-[#4F5A78] border border-[#4F5A78]/20 hover:border-[#4F5A78] rounded-full p-2 transition-all duration-200 flex items-center justify-center cursor-pointer shadow-sm hover:scale-105" id="closeRegisterModalBtn" type="button">
+        <span class="material-symbols-outlined text-[20px]">close</span>
+      </button>
+
+      <div class="mb-5 pr-8">
+        <h3 class="text-xl md:text-2xl font-bold text-gray-900 tracking-tight">Registrar nuevo Amiibo</h3>
+        <p class="text-xs sm:text-sm text-gray-500 mt-1">Completa la información técnica, foto y sube el archivo correspondiente</p>
+      </div>
+
+      <form class="space-y-4" id="registerAmiiboForm" onsubmit="event.preventDefault();">
+        <div>
+          <label class="block text-xs font-semibold text-gray-700 uppercase tracking-wider mb-1.5" for="amiiboName">Nombre del Amiibo</label>
+          <input class="w-full h-11 px-3.5 bg-gray-50 border border-gray-200 rounded-xl text-sm font-sans tracking-tight text-gray-900 placeholder:text-gray-400 focus:outline-none focus:border-black focus:bg-white transition-all" id="amiiboName" placeholder="Ej. Link (Tears of the Kingdom)" required="" type="text">
+        </div>
+
+        <div>
+          <label class="block text-xs font-semibold text-gray-700 uppercase tracking-wider mb-1.5" for="amiiboFranchise">Franquicia correspondiente</label>
+          <div class="relative">
+            <select class="w-full h-11 pl-3.5 pr-10 bg-gray-50 border border-gray-200 rounded-xl text-sm font-sans tracking-tight text-gray-900 focus:outline-none focus:border-black focus:bg-white transition-all appearance-none cursor-pointer" id="amiiboFranchise">
+              <option value="Super Smash Bros.">Super Smash Bros.</option>
+              <option value="The Legend of Zelda">The Legend of Zelda</option>
+              <option value="Super Mario">Super Mario</option>
+              <option value="Animal Crossing">Animal Crossing</option>
+              <option value="Splatoon">Splatoon</option>
+              <option value="Kirby">Kirby</option>
+              <option value="Sanrio">Colaboración Sanrio</option>
+              <option value="Especiales">Especiales (Resident Evil, etc.)</option>
+            </select>
+            <svg xmlns="http://www.w3.org/2000/svg" class="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none text-gray-400 w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5"></path></svg>
+          </div>
+        </div>
+
+        <!-- DETALLES DE VECINO (SÓLO SI ES ANIMAL CROSSING O SANRIO) -->
+        <div id="registerAcVillagerFields" class="hidden p-3.5 bg-gradient-to-r from-[#D0E7F9]/35 via-[#EDF5FC] to-white border border-[#4F5A78]/25 rounded-2xl space-y-3">
+          <div class="flex items-center justify-between flex-wrap gap-1">
+            <span class="text-xs font-bold text-[#2D354A] flex items-center gap-1.5 uppercase tracking-wider">
+              <span class="material-symbols-outlined text-[16px] text-[#4F5A78]">pets</span>
+              <span>Datos de Vecino</span>
+            </span>
+            <span class="text-[10px] text-[#2D354A] bg-[#D0E7F9] border border-[#4F5A78]/20 font-medium px-2 py-0.5 rounded-full" id="registerAcAutoDetectStatus">Auto-detectado por nombre</span>
+          </div>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            <div>
+              <label class="block text-[11px] font-bold text-[#2D354A] uppercase tracking-wider mb-1" for="registerAcSpecies">Especie Animal</label>
+              <div class="relative">
+                <select id="registerAcSpecies" class="w-full h-9 pl-3 pr-7 bg-white border border-[#4F5A78]/30 rounded-xl text-xs font-medium text-gray-800 focus:outline-none focus:border-[#4F5A78] transition-all appearance-none cursor-pointer shadow-sm">
+                  <option value="Vecino">✨ Autodetectar por nombre</option>
+                  <option value="Gato">🐱 Gatos</option>
+                  <option value="Perro">🐶 Perros</option>
+                  <option value="Conejo">🐰 Conejos</option>
+                  <option value="Ardilla">🐿️ Ardillas</option>
+                  <option value="Ciervo">🦌 Ciervos</option>
+                  <option value="Lobo">🐺 Lobos</option>
+                  <option value="Oso">🐻 Osos</option>
+                  <option value="Osito">🧸 Ositos (Cubs)</option>
+                  <option value="Pato">🦆 Patos</option>
+                  <option value="Pingüino">🐧 Pingüinos</option>
+                  <option value="Rana">🐸 Ranas</option>
+                  <option value="Caballo">🐴 Caballos</option>
+                  <option value="Oveja">🐑 Ovejas</option>
+                  <option value="Cabra">🐐 Cabras</option>
+                  <option value="Ratón">🐭 Ratones</option>
+                  <option value="Hámster">🐹 Hámsters</option>
+                  <option value="Mono">🐵 Monos</option>
+                  <option value="Gorila">🦍 Gorilas</option>
+                  <option value="Elefante">🐘 Elefantes</option>
+                  <option value="Pulpo">🐙 Pulpos</option>
+                  <option value="Especial">⭐ Personaje Especial (NPC)</option>
+                </select>
+                <svg xmlns="http://www.w3.org/2000/svg" class="absolute right-2 top-1/2 -translate-y-1/2 pointer-events-none text-[#4F5A78] w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5"></path></svg>
+              </div>
+            </div>
+            <div>
+              <label class="block text-[11px] font-bold text-[#2D354A] uppercase tracking-wider mb-1" for="registerAcPersonality">Personalidad</label>
+              <div class="relative">
+                <select id="registerAcPersonality" class="w-full h-9 pl-3 pr-7 bg-white border border-[#4F5A78]/30 rounded-xl text-xs font-medium text-gray-800 focus:outline-none focus:border-[#4F5A78] transition-all appearance-none cursor-pointer shadow-sm">
+                  <option value="Estándar">✨ Autodetectar por nombre</option>
+                  <option value="Alegre">✨ Alegre (Peppy)</option>
+                  <option value="Dulce">🌸 Dulce (Normal)</option>
+                  <option value="Presumida">💎 Presumida (Snooty)</option>
+                  <option value="Hermana">💜 Hermana mayor (Sisterly)</option>
+                  <option value="Perezoso">💤 Perezoso (Lazy)</option>
+                  <option value="Atlético">⚡ Atlético (Jock)</option>
+                  <option value="Gruñón">☕ Gruñón (Cranky)</option>
+                  <option value="Esmirriado">🎩 Esmirriado / Petulante (Smug)</option>
+                  <option value="Especial">⭐ Especial (NPC)</option>
+                </select>
+                <svg xmlns="http://www.w3.org/2000/svg" class="absolute right-2 top-1/2 -translate-y-1/2 pointer-events-none text-[#4F5A78] w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5"></path></svg>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- FOTO DEL AMIIBO -->
+        <div>
+          <label class="block text-xs font-semibold text-gray-700 uppercase tracking-wider mb-1.5">Foto o Imagen de la Figura</label>
+          <div class="flex items-center gap-3.5 p-3 bg-gray-50/80 rounded-2xl border border-gray-200">
+            <div class="w-16 h-16 rounded-xl bg-white border border-gray-200 flex items-center justify-center overflow-hidden shrink-0 shadow-sm" id="photoPreviewContainer">
+              <span class="material-symbols-outlined text-gray-300 text-[26px]" id="photoPlaceholderIcon">add_photo_alternate</span>
+              <img id="photoPreviewImg" class="w-full h-full object-contain hidden" alt="Vista previa">
+            </div>
+            <div class="flex-1">
+              <button type="button" class="py-2 px-3 bg-white hover:bg-gray-100 border border-gray-200 text-gray-700 text-xs font-semibold rounded-xl transition-colors cursor-pointer flex items-center gap-1.5 shadow-sm" id="choosePhotoBtn">
+                <span class="material-symbols-outlined text-[16px]" style="color: #4F5A78;">upload</span>
+                <span>Subir foto (PNG, JPG, WebP)</span>
+              </button>
+              <p class="text-[11px] text-gray-400 mt-1" id="photoStatusText">Selecciona la imagen para que aparezca en tu tarjeta</p>
+              <input type="file" id="amiiboPhotoInput" accept="image/*" class="hidden" aria-label="Subir foto o imagen del Amiibo">
+            </div>
+          </div>
+        </div>
+
+        <!-- ARCHIVO .BIN -->
+        <div>
+          <label class="block text-xs font-semibold text-gray-700 uppercase tracking-wider mb-1.5">Archivo de volcado (.bin / .dump)</label>
+          <div class="border-2 border-dashed border-gray-200 hover:border-gray-400 bg-gray-50/70 hover:bg-gray-50 rounded-2xl p-5 text-center cursor-pointer transition-all flex flex-col items-center justify-center group" id="dropzoneArea">
+            <div class="w-10 h-10 rounded-full bg-white border border-gray-200 shadow-sm flex items-center justify-center text-gray-600 mb-2 group-hover:scale-105 transition-transform">
+              <span class="material-symbols-outlined text-[20px]">cloud_upload</span>
+            </div>
+            <p class="text-sm font-medium text-gray-800" id="dropzoneMainText">Subir archivo de volcado (.bin / .dump)</p>
+            <p class="text-xs text-gray-400 mt-0.5" id="dropzoneSubText">Arrastra el archivo aquí o haz clic para examinar (máx. 1MB)</p>
+            <input accept=".bin,.dump,.nfc" class="hidden" id="amiiboFileInput" type="file" aria-label="Subir archivo .bin o .dump del Amiibo">
+          </div>
+        </div>
+
+        <!-- UID NFC (OPCIONAL) -->
+        <div>
+          <label class="block text-xs font-semibold text-gray-700 uppercase tracking-wider mb-1.5" for="amiiboUid">
+            Código / UID NFC <span class="text-gray-400 font-normal lowercase">(opcional)</span>
+          </label>
+          <input class="w-full h-11 px-3.5 bg-gray-50 border border-gray-200 rounded-xl text-sm font-mono tracking-wider text-gray-900 placeholder:text-gray-400 focus:outline-none focus:border-[#4F5A78] focus:bg-white transition-all uppercase" id="amiiboUid" placeholder="04 5A 7B E2 1C 63 80" type="text">
+        </div>
+
+        <div class="flex items-center justify-end gap-3 pt-3">
+          <button class="py-2.5 px-4 rounded-xl border border-gray-200 text-gray-600 hover:bg-gray-100 hover:text-gray-900 text-sm font-medium transition-colors cursor-pointer" id="cancelRegisterBtn" type="button">
+            Cancelar
+          </button>
+          <button class="py-2.5 px-5 text-white text-sm font-medium rounded-xl shadow-sm hover:shadow transition-all flex items-center gap-1.5 cursor-pointer" id="submitRegisterBtn" style="background-color: #4F5A78;" type="button">
+            <span class="material-symbols-outlined text-[18px] text-[#7BDF96]">save</span>
+            <span>Registrar Amiibo</span>
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- ========================================================
+       MODAL: EDITAR AMIIBO (LÁPIZ)
+       ======================================================== -->
+  <div aria-modal="true" class="fixed inset-0 z-50 items-center justify-center bg-black/60 backdrop-blur-sm p-4 transition-opacity duration-300 hidden" id="editModal" role="dialog">
+    <div class="bg-white rounded-3xl shadow-2xl p-7 max-w-lg w-full mx-4 relative transform transition-all duration-300 flex flex-col font-sans max-h-[90vh] overflow-y-auto">
+      <button aria-label="Cerrar modal" class="absolute top-5 right-5 text-[#4F5A78] hover:text-white bg-[#D0E7F9]/70 hover:bg-[#4F5A78] border border-[#4F5A78]/20 hover:border-[#4F5A78] rounded-full p-2 transition-all duration-200 flex items-center justify-center cursor-pointer shadow-sm hover:scale-105" id="closeEditModalBtn" type="button">
+        <span class="material-symbols-outlined text-[20px]">close</span>
+      </button>
+
+      <div class="mb-5 pr-8">
+        <div class="flex items-center gap-2 mb-1">
+          <span class="material-symbols-outlined text-[24px]" style="color: #4F5A78;">edit</span>
+          <h3 class="text-xl md:text-2xl font-bold text-gray-900 tracking-tight">Editar Amiibo</h3>
+        </div>
+        <p class="text-xs sm:text-sm text-gray-500">Corrige la categoría/franquicia, nombre o imagen de este Amiibo</p>
+      </div>
+
+      <form class="space-y-4" id="editAmiiboForm" onsubmit="event.preventDefault();">
+        <div>
+          <label class="block text-xs font-semibold text-gray-700 uppercase tracking-wider mb-1.5" for="editAmiiboName">Nombre del Amiibo</label>
+          <input class="w-full h-11 px-3.5 bg-gray-50 border border-gray-200 rounded-xl text-sm font-sans tracking-tight text-gray-900 placeholder:text-gray-400 focus:outline-none focus:border-[#4F5A78] focus:bg-white transition-all" id="editAmiiboName" required="" type="text">
+        </div>
+
+        <div>
+          <label class="block text-xs font-semibold text-gray-700 uppercase tracking-wider mb-1.5" for="editAmiiboFranchise">Franquicia / Categoría</label>
+          <div class="relative">
+            <select class="w-full h-11 pl-3.5 pr-10 bg-gray-50 border border-gray-200 rounded-xl text-sm font-sans tracking-tight text-gray-900 focus:outline-none focus:border-[#4F5A78] focus:bg-white transition-all appearance-none cursor-pointer" id="editAmiiboFranchise">
+              <option value="Super Smash Bros.">Super Smash Bros.</option>
+              <option value="The Legend of Zelda">The Legend of Zelda</option>
+              <option value="Super Mario">Super Mario</option>
+              <option value="Animal Crossing">Animal Crossing</option>
+              <option value="Splatoon">Splatoon</option>
+              <option value="Kirby">Kirby</option>
+              <option value="Sanrio">Colaboración Sanrio</option>
+              <option value="Especiales">Especiales (Resident Evil, etc.)</option>
+            </select>
+            <svg xmlns="http://www.w3.org/2000/svg" class="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none text-gray-400 w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5"></path></svg>
+          </div>
+        </div>
+
+        <!-- DETALLES DE VECINO EN EDICIÓN (SÓLO SI ES ANIMAL CROSSING O SANRIO) -->
+        <div id="editAcVillagerFields" class="hidden p-3.5 bg-gradient-to-r from-[#D0E7F9]/35 via-[#EDF5FC] to-white border border-[#4F5A78]/25 rounded-2xl space-y-3">
+          <div class="flex items-center justify-between flex-wrap gap-1">
+            <span class="text-xs font-bold text-[#2D354A] flex items-center gap-1.5 uppercase tracking-wider">
+              <span class="material-symbols-outlined text-[16px] text-[#4F5A78]">pets</span>
+              <span>Datos de Vecino</span>
+            </span>
+            <span class="text-[10px] text-[#2D354A] bg-[#D0E7F9] border border-[#4F5A78]/20 font-medium px-2 py-0.5 rounded-full" id="editAcAutoDetectStatus">Auto-detectado por nombre</span>
+          </div>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            <div>
+              <label class="block text-[11px] font-bold text-[#2D354A] uppercase tracking-wider mb-1" for="editAcSpecies">Especie Animal</label>
+              <div class="relative">
+                <select id="editAcSpecies" class="w-full h-9 pl-3 pr-7 bg-white border border-[#4F5A78]/30 rounded-xl text-xs font-medium text-gray-800 focus:outline-none focus:border-[#4F5A78] transition-all appearance-none cursor-pointer shadow-sm">
+                  <option value="Vecino">✨ Autodetectar por nombre</option>
+                  <option value="Gato">🐱 Gatos</option>
+                  <option value="Perro">🐶 Perros</option>
+                  <option value="Conejo">🐰 Conejos</option>
+                  <option value="Ardilla">🐿️ Ardillas</option>
+                  <option value="Ciervo">🦌 Ciervos</option>
+                  <option value="Lobo">🐺 Lobos</option>
+                  <option value="Oso">🐻 Osos</option>
+                  <option value="Osito">🧸 Ositos (Cubs)</option>
+                  <option value="Pato">🦆 Patos</option>
+                  <option value="Pingüino">🐧 Pingüinos</option>
+                  <option value="Rana">🐸 Ranas</option>
+                  <option value="Caballo">🐴 Caballos</option>
+                  <option value="Oveja">🐑 Ovejas</option>
+                  <option value="Cabra">🐐 Cabras</option>
+                  <option value="Ratón">🐭 Ratones</option>
+                  <option value="Hámster">🐹 Hámsters</option>
+                  <option value="Mono">🐵 Monos</option>
+                  <option value="Gorila">🦍 Gorilas</option>
+                  <option value="Elefante">🐘 Elefantes</option>
+                  <option value="Pulpo">🐙 Pulpos</option>
+                  <option value="Especial">⭐ Personaje Especial (NPC)</option>
+                </select>
+                <svg xmlns="http://www.w3.org/2000/svg" class="absolute right-2 top-1/2 -translate-y-1/2 pointer-events-none text-[#4F5A78] w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5"></path></svg>
+              </div>
+            </div>
+            <div>
+              <label class="block text-[11px] font-bold text-[#2D354A] uppercase tracking-wider mb-1" for="editAcPersonality">Personalidad</label>
+              <div class="relative">
+                <select id="editAcPersonality" class="w-full h-9 pl-3 pr-7 bg-white border border-[#4F5A78]/30 rounded-xl text-xs font-medium text-gray-800 focus:outline-none focus:border-[#4F5A78] transition-all appearance-none cursor-pointer shadow-sm">
+                  <option value="Estándar">✨ Autodetectar por nombre</option>
+                  <option value="Alegre">✨ Alegre (Peppy)</option>
+                  <option value="Dulce">🌸 Dulce (Normal)</option>
+                  <option value="Presumida">💎 Presumida (Snooty)</option>
+                  <option value="Hermana">💜 Hermana mayor (Sisterly)</option>
+                  <option value="Perezoso">💤 Perezoso (Lazy)</option>
+                  <option value="Atlético">⚡ Atlético (Jock)</option>
+                  <option value="Gruñón">☕ Gruñón (Cranky)</option>
+                  <option value="Esmirriado">🎩 Esmirriado / Petulante (Smug)</option>
+                  <option value="Especial">⭐ Especial (NPC)</option>
+                </select>
+                <svg xmlns="http://www.w3.org/2000/svg" class="absolute right-2 top-1/2 -translate-y-1/2 pointer-events-none text-[#4F5A78] w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5"></path></svg>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- FOTO DEL AMIIBO -->
+        <div>
+          <label class="block text-xs font-semibold text-gray-700 uppercase tracking-wider mb-1.5">Foto o Imagen de la Figura</label>
+          <div class="flex items-center gap-3.5 p-3 bg-gray-50/80 rounded-2xl border border-gray-200">
+            <div class="w-16 h-16 rounded-xl bg-white border border-gray-200 flex items-center justify-center overflow-hidden shrink-0 shadow-sm" id="editPhotoPreviewContainer">
+              <img id="editPhotoPreviewImg" class="w-full h-full object-contain" alt="Vista previa">
+            </div>
+            <div class="flex-1">
+              <button type="button" class="py-2 px-3 bg-white hover:bg-gray-100 border border-gray-200 text-gray-700 text-xs font-semibold rounded-xl transition-colors cursor-pointer flex items-center gap-1.5 shadow-sm" id="editChoosePhotoBtn">
+                <span class="material-symbols-outlined text-[16px]" style="color: #4F5A78;">upload</span>
+                <span>Cambiar foto (PNG, JPG, WebP)</span>
+              </button>
+              <p class="text-[11px] text-gray-400 mt-1" id="editPhotoStatusText">Mantener actual o subir una nueva</p>
+              <input type="file" id="editAmiiboPhotoInput" accept="image/*" class="hidden" aria-label="Cambiar foto o imagen del Amiibo">
+            </div>
+          </div>
+        </div>
+
+        <!-- ARCHIVO .BIN (OPCIONAL DE ACTUALIZAR) -->
+        <div>
+          <label class="block text-xs font-semibold text-gray-700 uppercase tracking-wider mb-1.5">Archivo de volcado (.bin / .dump)</label>
+          <div class="border-2 border-dashed border-gray-200 hover:border-gray-400 bg-gray-50/70 hover:bg-gray-50 rounded-2xl p-4 text-center cursor-pointer transition-all flex flex-col items-center justify-center group" id="editDropzoneArea">
+            <div class="w-9 h-9 rounded-full bg-white border border-gray-200 shadow-sm flex items-center justify-center text-gray-600 mb-1.5 group-hover:scale-105 transition-transform">
+              <span class="material-symbols-outlined text-[18px]">cloud_upload</span>
+            </div>
+            <p class="text-xs font-medium text-gray-800" id="editDropzoneMainText">Archivo .bin cargado</p>
+            <p class="text-[11px] text-gray-400 mt-0.5" id="editDropzoneSubText">Haz clic si deseas reemplazar el archivo existente</p>
+            <input accept=".bin,.dump,.nfc" class="hidden" id="editAmiiboFileInput" type="file" aria-label="Reemplazar archivo .bin o .dump del Amiibo">
+          </div>
+        </div>
+
+        <div class="flex items-center justify-end gap-3 pt-3">
+          <button class="py-2.5 px-4 rounded-xl border border-gray-200 text-gray-600 hover:bg-gray-100 hover:text-gray-900 text-sm font-medium transition-colors cursor-pointer" id="cancelEditBtn" type="button">
+            Cancelar
+          </button>
+          <button class="py-2.5 px-5 text-white text-sm font-medium rounded-xl shadow-sm hover:shadow transition-all flex items-center gap-1.5 cursor-pointer" id="submitEditBtn" style="background-color: #4F5A78;" type="button">
+            <span class="material-symbols-outlined text-[18px] text-[#7BDF96]">check</span>
+            <span>Guardar Cambios</span>
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- ========================================================
+       MODAL: DETALLE / ESCRIBIR EN AMIIBOLINK
+       ======================================================== -->
+  <div aria-modal="true" class="fixed inset-0 z-50 items-center justify-center bg-black/60 backdrop-blur-sm p-4 transition-opacity duration-300 hidden" id="amiiboModal" role="dialog">
+    <div class="bg-white rounded-3xl shadow-2xl p-8 max-w-lg w-full mx-4 relative transform transition-all duration-300 flex flex-col font-sans max-h-[92vh] overflow-y-auto">
+      <button aria-label="Cerrar modal" class="absolute top-5 right-5 text-[#4F5A78] hover:text-white bg-[#D0E7F9]/70 hover:bg-[#4F5A78] border border-[#4F5A78]/20 hover:border-[#4F5A78] rounded-full p-2 transition-all duration-200 flex items-center justify-center cursor-pointer shadow-sm hover:scale-105" id="closeModalBtn" type="button">
+        <span class="material-symbols-outlined text-[20px]">close</span>
+      </button>
+
+      <div class="flex items-center gap-2 mb-4">
+        <span class="text-[11px] font-semibold uppercase tracking-wider text-gray-500 bg-gray-100 px-3 py-1 rounded-full" id="modalSeries" style="background-color: rgb(208, 231, 249); color: rgb(43, 56, 89); font-weight: 700;">SUPER SMASH BROS. SERIES</span>
+      </div>
+
+      <div class="w-full h-60 bg-gray-50 rounded-2xl flex items-center justify-center p-6 mb-5">
+        <img alt="Amiibo" class="h-52 max-w-full object-contain mx-auto drop-shadow-xl transition-all duration-300" id="modalImg" src="">
+      </div>
+
+      <div class="flex items-start justify-between gap-2 mb-5">
+        <div class="flex flex-col gap-1">
+          <h3 class="text-2xl font-bold text-gray-900 tracking-tight" id="modalTitle">Sephiroth</h3>
+          <p class="text-gray-500 text-sm" id="modalGame">Juego: The Legend of Zelda: Tears of the Kingdom</p>
+          <p class="text-xs text-gray-400 mt-1" id="modalMeta">Archivo NFC .bin • 540 Bytes • NTAG215</p>
+        </div>
+        <div class="flex items-center gap-1.5 shrink-0">
+          <button type="button" id="modalFavBtn" class="p-2 rounded-xl text-[#cc8b86] hover:text-white bg-[#cc8b86]/15 hover:bg-[#b03a35] border border-[#cc8b86]/35 hover:border-[#b03a35] hover:scale-105 transition-all duration-200 cursor-pointer shadow-sm" title="Marcar como favorito">
+            <span class="material-symbols-outlined text-[19px] transition-colors" id="modalFavIcon">favorite</span>
+          </button>
+          <button type="button" id="modalEditAmiiboBtn" class="p-2 rounded-xl text-[#4F5A78] hover:text-white bg-[#D0E7F9]/60 hover:bg-[#4F5A78] border border-[#4F5A78]/25 hover:border-[#4F5A78] hover:scale-105 transition-all duration-200 cursor-pointer shadow-sm" title="Editar este Amiibo">
+            <span class="material-symbols-outlined text-[19px] transition-colors">edit</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- PANEL EN PROGRESO -->
+      <div class="mb-5 p-4 bg-slate-50 rounded-2xl border border-slate-200 hidden" id="writeProgressBarContainer">
+        <div class="flex items-center gap-2 mb-2">
+          <span class="material-symbols-outlined text-[#4F5A78] animate-spin text-[20px]">sync</span>
+          <span class="text-sm font-bold text-[#2D354A]" id="writeProgressStatus">Escribiendo datos...</span>
+          <span class="ml-auto text-xs font-bold text-[#4F5A78]" id="writeProgressPercent">0%</span>
+        </div>
+        <div class="w-full h-3 bg-slate-200 rounded-full overflow-hidden mb-2">
+          <div class="h-full bg-[#7BDF96] transition-all duration-200" id="writeProgressFill" style="width: 0%;"></div>
+        </div>
+        <p class="text-xs text-slate-500 font-mono" id="writeLogDetail">Iniciando transferencia Bluetooth...</p>
+      </div>
+
+      <!-- PANEL DE ÉXITO -->
+      <div class="mb-5 p-5 bg-emerald-50 rounded-2xl border-2 border-emerald-400 flex flex-col items-center text-center hidden" id="successBanner">
+        <div class="w-14 h-14 bg-emerald-500 text-white rounded-full flex items-center justify-center mb-3 shadow-md shadow-emerald-200">
+          <span class="material-symbols-outlined text-[32px]">check</span>
+        </div>
+        <h4 class="text-lg font-extrabold text-emerald-900 mb-1">¡TRANSFERENCIA EXITOSA!</h4>
+        <p class="text-sm text-emerald-800 font-medium mb-3" id="successAmiiboNameText">
+          El Amiibo se grabó correctamente en tu dispositivo AmiiboLink.
+        </p>
+        <div class="bg-white/80 border border-emerald-200 rounded-xl py-2 px-4 text-xs font-semibold text-emerald-900 mb-4 flex items-center gap-2">
+          <span class="material-symbols-outlined text-emerald-600 text-[18px]">sports_esports</span>
+          <span>¡Ya está listo! Pásalo por la palanca de tu Nintendo Switch.</span>
+        </div>
+        <button type="button" class="py-2.5 px-6 bg-emerald-600 hover:bg-emerald-700 text-white text-sm font-bold rounded-xl transition-colors cursor-pointer shadow-sm" id="btnSuccessClose">
+          Entendido, cerrar
+        </button>
+      </div>
+
+      <!-- PANEL DE ERROR -->
+      <div class="mb-5 p-5 bg-red-50 rounded-2xl border-2 border-red-300 flex flex-col items-center text-center hidden" id="errorBanner">
+        <div class="w-14 h-14 bg-red-500 text-white rounded-full flex items-center justify-center mb-3 shadow-md shadow-red-200">
+          <span class="material-symbols-outlined text-[30px]">priority_high</span>
+        </div>
+        <h4 class="text-lg font-extrabold text-red-900 mb-1">NO SE PUDO TRANSFERIR</h4>
+        <p class="text-xs text-red-700 font-medium mb-3" id="errorReasonText">
+          El dispositivo no respondió o se perdió la conexión Bluetooth.
+        </p>
+
+        <div class="w-full text-left bg-white/90 border border-red-200 rounded-xl p-3 mb-4 space-y-1.5 text-xs text-red-900">
+          <div class="font-bold text-red-950 uppercase tracking-wide text-[10px] mb-1">Qué debes hacer:</div>
+          <div class="flex items-start gap-1.5">
+            <span class="text-red-500 font-bold">1.</span>
+            <span><strong>Presiona el botón central del ojo Sheikah</strong> en tu llavero Zelda para encender su luz verde.</span>
+          </div>
+          <div class="flex items-start gap-1.5">
+            <span class="text-red-500 font-bold">2.</span>
+            <span>Asegúrate de tener el Bluetooth de tu PC encendido y el dispositivo cerca.</span>
+          </div>
+          <div class="flex items-start gap-1.5">
+            <span class="text-red-500 font-bold">3.</span>
+            <span>Pulsa el botón <strong>"Reintentar escritura"</strong> abajo.</span>
+          </div>
+        </div>
+
+        <button type="button" class="w-full py-2.5 px-4 bg-red-600 hover:bg-red-700 text-white text-sm font-bold rounded-xl transition-colors cursor-pointer shadow-sm flex items-center justify-center gap-1.5" id="btnRetryWrite">
+          <span class="material-symbols-outlined text-[18px]">replay</span>
+          <span>Reintentar escritura ahora</span>
+        </button>
+      </div>
+
+      <!-- Botones de Acción -->
+      <div class="flex flex-col gap-2.5" id="modalActionsGroup">
+        <button class="w-full py-3.5 px-6 rounded-xl text-white font-medium text-sm flex items-center justify-center gap-2 shadow-sm hover:shadow transition-all cursor-pointer" id="modalWriteBtn" onmouseout="this.style.backgroundColor='#4F5A78'" onmouseover="this.style.backgroundColor='#3C4661'" style="background-color: #4F5A78;" type="button">
+          <span class="material-symbols-outlined text-[20px] text-[#7BDF96]">bolt</span>
+          <span>Escribir datos en AmiiboLink</span>
+        </button>
+
+        <button class="w-full py-3 px-6 rounded-xl text-white bg-red-600 hover:bg-red-700 font-medium text-sm flex items-center justify-center gap-2 shadow-sm hover:shadow transition-all cursor-pointer" id="modalDiscardBtn" type="button">
+          <span class="material-symbols-outlined text-[19px]">delete</span>
+          <span>Descartar Amiibo</span>
+        </button>
+      </div>
+
+      <!-- Aviso de Confirmación de Descarte / Eliminación -->
+      <div class="p-4 bg-red-50 border border-red-200 rounded-2xl flex flex-col gap-3 hidden" id="deleteConfirmBox">
+        <div class="flex items-start gap-3">
+          <div class="w-9 h-9 rounded-full bg-red-100 flex items-center justify-center shrink-0 mt-0.5">
+            <span class="material-symbols-outlined text-red-600 text-[20px]">warning</span>
+          </div>
+          <div>
+            <h4 class="text-sm font-bold text-red-950 tracking-tight">¿Eliminar este Amiibo?</h4>
+            <p class="text-xs text-red-700 mt-1 leading-relaxed" id="deleteConfirmText">
+              ¿Estás seguro de que deseas descartar este Amiibo de tu colección?
+            </p>
+          </div>
+        </div>
+        <div class="flex items-center gap-2.5 justify-end pt-1">
+          <button type="button" id="btnCancelDelete" class="px-4 py-2 rounded-xl text-xs font-semibold text-gray-700 bg-white border border-gray-300 hover:bg-gray-100 transition-colors cursor-pointer">
+            Cancelar
+          </button>
+          <button type="button" id="btnConfirmDelete" class="px-4 py-2 rounded-xl text-xs font-bold text-white bg-red-600 hover:bg-red-700 transition-colors cursor-pointer shadow-sm flex items-center gap-1.5">
+            <span class="material-symbols-outlined text-[16px]">delete_forever</span>
+            <span>Sí, eliminar</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notificaciones -->
+  <div class="toast-box" id="toast">
+    <span id="toastMsg">Mensaje</span>
+  </div>
+
+  <script>
+    // AUDIO FEEDBACK
+    function playAudioTone(type) {
+      try {
+        const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+        if (type === 'success') {
+          // Melodía ascendente estilo Nintendo (Do-Mi-Sol-Do agudo)
+          const notes = [523.25, 659.25, 783.99, 1046.50];
+          notes.forEach((freq, idx) => {
+            const osc = audioCtx.createOscillator();
+            const gain = audioCtx.createGain();
+            osc.type = 'triangle';
+            osc.frequency.value = freq;
+            gain.gain.setValueAtTime(0.12, audioCtx.currentTime + idx * 0.08);
+            gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + idx * 0.08 + 0.35);
+            osc.connect(gain);
+            gain.connect(audioCtx.destination);
+            osc.start(audioCtx.currentTime + idx * 0.08);
+            osc.stop(audioCtx.currentTime + idx * 0.08 + 0.35);
+          });
+        } else if (type === 'error') {
+          // Melodía descendente suave estilo Nintendo (Sol-Mi-Do, mismo estilo que éxito pero bajando)
+          const notes = [783.99, 523.25, 392.00];
+          notes.forEach((freq, idx) => {
+            const osc = audioCtx.createOscillator();
+            const gain = audioCtx.createGain();
+            osc.type = 'triangle';
+            osc.frequency.value = freq;
+            gain.gain.setValueAtTime(0.12, audioCtx.currentTime + idx * 0.12);
+            gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + idx * 0.12 + 0.3);
+            osc.connect(gain);
+            gain.connect(audioCtx.destination);
+            osc.start(audioCtx.currentTime + idx * 0.12);
+            osc.stop(audioCtx.currentTime + idx * 0.12 + 0.3);
+          });
+        }
+      } catch (e) {}
+    }
+
+    // IMAGEN DE RESERVA VECTORIAL (Zero errores 404/CORB)
+    const DEFAULT_AMIIBO_IMAGE = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 240' fill='none'%3E%3Crect width='200' height='240' rx='24' fill='%23F8F1FA'/%3E%3Ccircle cx='100' cy='95' r='48' fill='%23EAD6EF'/%3E%3Cpath d='M85 85C85 76.7157 91.7157 70 100 70C108.284 70 115 76.7157 115 85C115 93.2843 108.284 100 100 100' stroke='%238A4971' stroke-width='6' stroke-linecap='round'/%3E%3Ccircle cx='100' cy='120' r='5' fill='%238A4971'/%3E%3Cellipse cx='100' cy='190' rx='58' ry='15' fill='%23EAD6EF' stroke='%238A4971' stroke-width='3' stroke-dasharray='6 6'/%3E%3Ctext x='100' y='218' font-family='sans-serif' font-size='11' font-weight='700' fill='%238A4971' text-anchor='middle'%3ENFC NTAG215%3C/text%3E%3C/svg%3E";
+
+    // CATÁLOGO
+    const STITCH_INITIAL_CARDS = [
+      {
+        id: "0840000003ba0002",
+        name: "Sephiroth",
+        series: "Super Smash Bros.",
+        displaySeries: "SUPER SMASH BROS.",
+        game: "Super Smash Bros. Ultimate",
+        image: "sephiroth.png"
+      },
+      {
+        id: "0101000002f00002",
+        name: "Zelda (Breath of the Wild)",
+        series: "The Legend of Zelda",
+        displaySeries: "THE LEGEND OF ZELDA",
+        game: "The Legend of Zelda: Breath of the Wild",
+        image: "https://lh3.googleusercontent.com/aida-public/AB6AXuBdrpst7ZXUoIQEYOqIcWxejklB1ntGZmeQ5LWLiSeXal9g7SrWjIFWnyKOmEL79mFlB7JrrMjhAdkBYYtiKEqePxOyjMbuONBDd2EpkFV_OEfKMetaMOmSmSApZcqLkWtUiLffETFyX8NaangCk-WwNEQ5Us7yz0oNYLHlclENARWkoUjoWUsp8h1uldFPpShF2X2G5e_LdsM3tQKNxD8CRtWUsuznl_k1_EpAN0ph31XQ-tAoCb0"
+      },
+      {
+        id: "0101000002f20002",
+        name: "Guardian",
+        series: "The Legend of Zelda",
+        displaySeries: "THE LEGEND OF ZELDA",
+        game: "The Legend of Zelda: Breath of the Wild",
+        image: "https://lh3.googleusercontent.com/aida-public/AB6AXuAvnMAWe4-8BhFyYz9RC4x2kXip_7lZnZfiiBnqYAO3VWQ5uAUpZi95qrH3nlm5Q6609Qa0qIuiWi8ghAUmE6VeCLZk1kP669lkCSHae6ZmvInzctJ6tIf_dg2g7sGUd0OFF0k2UeW57jggkcmMBhmh457bo7KIzkKoOyd0c5RPmiPbuZMXoND2bXg03k0Hpk-UlfoWvBKB_McuMUnopEl4FdnPlfgDiwhOtZOkQ2cRk06gASh6b2g"
+      },
+      {
+        id: "0100000002f30002",
+        name: "Link Lobo",
+        series: "The Legend of Zelda",
+        displaySeries: "THE LEGEND OF ZELDA",
+        game: "The Legend of Zelda: Twilight Princess",
+        image: "https://lh3.googleusercontent.com/aida-public/AB6AXuBUyKAtcoY0EXOt2I43tXnw8zBoWr51VPKb2BYd51VuDWCJNVI3kYUHzJlW4wLLzHhErAnqYa-2pjbdCCs5ZEaw-daQxK9bqTPXs70Ke3MnvucsoquGCm8vWaeDsokrOBJtwyYcIvvj57JBLRCAz9j0MVU3HsvhBKM54guQP1aJDWqpq1mO9q628mEw-ib_FnlmPLSuWiO4GKJnHN32y36l43lES3KgGorxvYRXIjyrqDzeN9kmwvA"
+      },
+      {
+        id: "0103000003b90002",
+        name: "Link (Tears of the Kingdom)",
+        series: "The Legend of Zelda",
+        displaySeries: "THE LEGEND OF ZELDA",
+        game: "The Legend of Zelda: Tears of the Kingdom",
+        image: "https://raw.githubusercontent.com/N3evin/AmiiboAPI/master/images/icon_01030000-03b90002.png"
+      },
+      {
+        id: "0000000000000002",
+        name: "Mario",
+        series: "Super Mario",
+        displaySeries: "SUPER MARIO",
+        game: "Super Mario Odyssey",
+        image: "https://raw.githubusercontent.com/N3evin/AmiiboAPI/master/images/icon_00000000-00000002.png"
+      },
+      {
+        id: "0004000000030002",
+        name: "Bowser",
+        series: "Super Mario",
+        displaySeries: "SUPER MARIO",
+        game: "Super Mario 3D World",
+        image: "https://raw.githubusercontent.com/N3evin/AmiiboAPI/master/images/icon_00040000-00030002.png"
+      },
+      {
+        id: "08000000003c0002",
+        name: "Inkling Chica",
+        series: "Splatoon",
+        displaySeries: "SPLATOON",
+        game: "Splatoon 3",
+        image: "inkling_chica.png"
+      },
+      {
+        id: "1f00000002540c02",
+        name: "Kirby",
+        series: "Kirby",
+        displaySeries: "KIRBY",
+        game: "Kirby and the Forgotten Land",
+        image: "https://raw.githubusercontent.com/N3evin/AmiiboAPI/master/images/icon_1f000000-02540c02.png"
+      },
+      {
+        id: "01c00000001a0002",
+        name: "Isabelle (Canela)",
+        series: "Animal Crossing",
+        displaySeries: "ANIMAL CROSSING",
+        game: "Animal Crossing: New Horizons",
+        image: "https://raw.githubusercontent.com/N3evin/AmiiboAPI/master/images/icon_01c00000-001a0002.png"
+      },
+      {
+        id: "0500000003000002",
+        name: "Rilla (Sanrio)",
+        series: "Sanrio",
+        displaySeries: "COLABORACIÓN SANRIO",
+        game: "Animal Crossing: New Horizons",
+        image: "https://raw.githubusercontent.com/N3evin/AmiiboAPI/master/images/icon_01c00000-001a0002.png"
+      }
+    ];
+
+    // ESTADO
+    let catalog = [...STITCH_INITIAL_CARDS];
+    let customAmiibos = [];
+    let deletedAmiiboIds = new Set();
+    let favoriteAmiiboIds = new Set();
+    let currentFilter = "The Legend of Zelda";
+    let activeAmiibo = null;
+    let uploadedBinFile = null;
+    let uploadedPhotoBase64 = null;
+
+    // BLUETOOTH
+    let bleDevice = null;
+    let bleServer = null;
+    let bleWriteChar = null;
+    let bleNotifyChar = null;
+
+    const NUS_SERVICE = '6e400001-b5a3-f393-e0a9-e50e24dcca9e';
+    const NUS_TX_WRITE = '6e400002-b5a3-f393-e0a9-e50e24dcca9e';
+    const NUS_RX_NOTIFY = '6e400003-b5a3-f393-e0a9-e50e24dcca9e';
+
+    // FILTROS DE ANIMAL CROSSING
+    let acSelectedSpecies = 'ALL';
+    let acSelectedPersonality = 'ALL';
+
+    const AC_VILLAGERS_DB = {
+      // Gatos
+      "merry": { species: "Gato", personality: "Alegre" },
+      "susi": { species: "Gato", personality: "Alegre" },
+      "raymond": { species: "Gato", personality: "Esmirriado" },
+      "narciso": { species: "Gato", personality: "Esmirriado" },
+      "bob": { species: "Gato", personality: "Perezoso" },
+      "michi": { species: "Gato", personality: "Perezoso" },
+      "ankha": { species: "Gato", personality: "Presumida" },
+      "patri": { species: "Gato", personality: "Presumida" },
+      "rosie": { species: "Gato", personality: "Alegre" },
+      "minina": { species: "Gato", personality: "Alegre" },
+      "lolly": { species: "Gato", personality: "Dulce" },
+      "feli": { species: "Gato", personality: "Dulce" },
+      "tangy": { species: "Gato", personality: "Alegre" },
+      "tricia": { species: "Gato", personality: "Alegre" },
+      "punchy": { species: "Gato", personality: "Perezoso" },
+      "félix": { species: "Gato", personality: "Perezoso" },
+      "mitzi": { species: "Gato", personality: "Dulce" },
+      "misi": { species: "Gato", personality: "Dulce" },
+      "kabuki": { species: "Gato", personality: "Gruñón" },
+      "kiki": { species: "Gato", personality: "Dulce" },
+      "ágata": { species: "Gato", personality: "Dulce" },
+      "kid cat": { species: "Gato", personality: "Atlético" },
+      "gatomán": { species: "Gato", personality: "Atlético" },
+      "tom": { species: "Gato", personality: "Gruñón" },
+      "micho": { species: "Gato", personality: "Gruñón" },
+      "moe": { species: "Gato", personality: "Perezoso" },
+      "tristán": { species: "Gato", personality: "Perezoso" },
+      "purrl": { species: "Gato", personality: "Presumida" },
+      "olivia": { species: "Gato", personality: "Presumida" },
+      "katt": { species: "Gato", personality: "Hermana" },
+      "katia": { species: "Gato", personality: "Hermana" },
+      "felicity": { species: "Gato", personality: "Alegre" },
+      "silvana": { species: "Gato", personality: "Alegre" },
+      "rudy": { species: "Gato", personality: "Atlético" },
+      "stinky": { species: "Gato", personality: "Atlético" },
+      "tabby": { species: "Gato", personality: "Alegre" },
+
+      // Perros
+      "cookie": { species: "Perro", personality: "Alegre" },
+      "cuqui": { species: "Perro", personality: "Alegre" },
+      "goldie": { species: "Perro", personality: "Dulce" },
+      "tere": { species: "Perro", personality: "Dulce" },
+      "lucky": { species: "Perro", personality: "Perezoso" },
+      "pupas": { species: "Perro", personality: "Perezoso" },
+      "cherry": { species: "Perro", personality: "Hermana" },
+      "cereza": { species: "Perro", personality: "Hermana" },
+      "bea": { species: "Perro", personality: "Dulce" },
+      "bones": { species: "Perro", personality: "Perezoso" },
+      "cobi": { species: "Perro", personality: "Perezoso" },
+      "butch": { species: "Perro", personality: "Gruñón" },
+      "bruno": { species: "Perro", personality: "Gruñón" },
+      "daisy": { species: "Perro", personality: "Dulce" },
+      "marcel": { species: "Perro", personality: "Perezoso" },
+      "biskit": { species: "Perro", personality: "Perezoso" },
+      "shep": { species: "Perro", personality: "Esmirriado" },
+      "pastor": { species: "Perro", personality: "Esmirriado" },
+      "walker": { species: "Perro", personality: "Perezoso" },
+      "jacinto": { species: "Perro", personality: "Perezoso" },
+      "benjamin": { species: "Perro", personality: "Perezoso" },
+      "portia": { species: "Perro", personality: "Presumida" },
+      "maddie": { species: "Perro", personality: "Alegre" },
+      "mac": { species: "Perro", personality: "Atlético" },
+      "isabelle": { species: "Especial", personality: "Especial" },
+      "canela": { species: "Especial", personality: "Especial" },
+      "k.k. slider": { species: "Especial", personality: "Especial" },
+      "totakeke": { species: "Especial", personality: "Especial" },
+      "digby": { species: "Especial", personality: "Especial" },
+      "candrés": { species: "Especial", personality: "Especial" },
+
+      // Conejos
+      "sasha": { species: "Conejo", personality: "Perezoso" },
+      "ariel": { species: "Conejo", personality: "Perezoso" },
+      "francine": { species: "Conejo", personality: "Presumida" },
+      "natacha": { species: "Conejo", personality: "Presumida" },
+      "chrissy": { species: "Conejo", personality: "Alegre" },
+      "lali": { species: "Conejo", personality: "Alegre" },
+      "coco": { species: "Conejo", personality: "Dulce" },
+      "cocoloca": { species: "Conejo", personality: "Dulce" },
+      "ruby": { species: "Conejo", personality: "Alegre" },
+      "rubí": { species: "Conejo", personality: "Alegre" },
+      "genji": { species: "Conejo", personality: "Atlético" },
+      "dotty": { species: "Conejo", personality: "Alegre" },
+      "mota": { species: "Conejo", personality: "Alegre" },
+      "o'hare": { species: "Conejo", personality: "Esmirriado" },
+      "trótter": { species: "Conejo", personality: "Esmirriado" },
+      "tiffany": { species: "Conejo", personality: "Presumida" },
+      "bunnie": { species: "Conejo", personality: "Alegre" },
+      "linda": { species: "Conejo", personality: "Alegre" },
+      "carmen": { species: "Conejo", personality: "Alegre" },
+      "snake": { species: "Conejo", personality: "Atlético" },
+      "rapi": { species: "Conejo", personality: "Atlético" },
+      "toby": { species: "Conejo", personality: "Esmirriado" },
+      "hopkins": { species: "Conejo", personality: "Perezoso" },
+      "pompón": { species: "Conejo", personality: "Perezoso" },
+      "cole": { species: "Conejo", personality: "Perezoso" },
+      "carbón": { species: "Conejo", personality: "Perezoso" },
+      "gaston": { species: "Conejo", personality: "Gruñón" },
+      "gastón": { species: "Conejo", personality: "Gruñón" },
+      "mira": { species: "Conejo", personality: "Hermana" },
+      "bonbon": { species: "Conejo", personality: "Alegre" },
+      "bombón": { species: "Conejo", personality: "Alegre" },
+
+      // Ardillas
+      "marshal": { species: "Ardilla", personality: "Esmirriado" },
+      "marshall": { species: "Ardilla", personality: "Esmirriado" },
+      "muni": { species: "Ardilla", personality: "Esmirriado" },
+      "ione": { species: "Ardilla", personality: "Dulce" },
+      "poppy": { species: "Ardilla", personality: "Dulce" },
+      "filbert": { species: "Ardilla", personality: "Perezoso" },
+      "tendo": { species: "Ardilla", personality: "Perezoso" },
+      "pecan": { species: "Ardilla", personality: "Presumida" },
+      "almendra": { species: "Ardilla", personality: "Presumida" },
+      "peanut": { species: "Ardilla", personality: "Alegre" },
+      "static": { species: "Ardilla", personality: "Gruñón" },
+      "estático": { species: "Ardilla", personality: "Gruñón" },
+      "mint": { species: "Ardilla", personality: "Presumida" },
+      "menta": { species: "Ardilla", personality: "Presumida" },
+      "caroline": { species: "Ardilla", personality: "Dulce" },
+      "blaire": { species: "Ardilla", personality: "Presumida" },
+      "sylvana": { species: "Ardilla", personality: "Dulce" },
+      "hazel": { species: "Ardilla", personality: "Hermana" },
+      "tami": { species: "Ardilla", personality: "Hermana" },
+      "cally": { species: "Ardilla", personality: "Dulce" },
+      "agent s": { species: "Ardilla", personality: "Alegre" },
+      "agente s": { species: "Ardilla", personality: "Alegre" },
+
+      // Ciervos
+      "shino": { species: "Ciervo", personality: "Alegre" },
+      "yuki": { species: "Ciervo", personality: "Alegre" },
+      "fauna": { species: "Ciervo", personality: "Dulce" },
+      "beau": { species: "Ciervo", personality: "Perezoso" },
+      "cornejo": { species: "Ciervo", personality: "Perezoso" },
+      "diana": { species: "Ciervo", personality: "Presumida" },
+      "bambina": { species: "Ciervo", personality: "Presumida" },
+      "erik": { species: "Ciervo", personality: "Perezoso" },
+      "reno": { species: "Ciervo", personality: "Perezoso" },
+      "zell": { species: "Ciervo", personality: "Esmirriado" },
+      "fibrilio": { species: "Ciervo", personality: "Esmirriado" },
+      "bam": { species: "Ciervo", personality: "Atlético" },
+      "corchea": { species: "Ciervo", personality: "Atlético" },
+      "fuchsia": { species: "Ciervo", personality: "Hermana" },
+      "fresi": { species: "Ciervo", personality: "Hermana" },
+      "deirdre": { species: "Ciervo", personality: "Hermana" },
+      "bruce": { species: "Ciervo", personality: "Gruñón" },
+      "ruedo": { species: "Ciervo", personality: "Gruñón" },
+      "lopez": { species: "Ciervo", personality: "Esmirriado" },
+      "chelsea": { species: "Ciervo", personality: "Dulce" },
+
+      // Lobos
+      "audie": { species: "Lobo", personality: "Alegre" },
+      "mónica": { species: "Lobo", personality: "Alegre" },
+      "monica": { species: "Lobo", personality: "Alegre" },
+      "whitney": { species: "Lobo", personality: "Presumida" },
+      "lupita": { species: "Lobo", personality: "Presumida" },
+      "fang": { species: "Lobo", personality: "Gruñón" },
+      "colmillo": { species: "Lobo", personality: "Gruñón" },
+      "wolfgang": { species: "Lobo", personality: "Gruñón" },
+      "skye": { species: "Lobo", personality: "Dulce" },
+      "cielo": { species: "Lobo", personality: "Dulce" },
+      "kyle": { species: "Lobo", personality: "Esmirriado" },
+      "lupo": { species: "Lobo", personality: "Esmirriado" },
+      "freya": { species: "Lobo", personality: "Presumida" },
+      "silvia": { species: "Lobo", personality: "Presumida" },
+      "chief": { species: "Lobo", personality: "Gruñón" },
+      "zoilo": { species: "Lobo", personality: "Gruñón" },
+      "dobie": { species: "Lobo", personality: "Gruñón" },
+      "facundo": { species: "Lobo", personality: "Gruñón" },
+      "vivian": { species: "Lobo", personality: "Presumida" },
+      "viviana": { species: "Lobo", personality: "Presumida" },
+
+      // Pingüinos
+      "roald": { species: "Pingüino", personality: "Atlético" },
+      "boliche": { species: "Pingüino", personality: "Atlético" },
+      "aurora": { species: "Pingüino", personality: "Dulce" },
+      "cube": { species: "Pingüino", personality: "Perezoso" },
+      "cubo": { species: "Pingüino", personality: "Perezoso" },
+      "boomer": { species: "Pingüino", personality: "Perezoso" },
+      "coni": { species: "Pingüino", personality: "Perezoso" },
+      "sprinkle": { species: "Pingüino", personality: "Alegre" },
+      "rina": { species: "Pingüino", personality: "Alegre" },
+      "flo": { species: "Pingüino", personality: "Hermana" },
+      "frida": { species: "Pingüino", personality: "Hermana" },
+      "wade": { species: "Pingüino", personality: "Perezoso" },
+      "puck": { species: "Pingüino", personality: "Perezoso" },
+      "iggly": { species: "Pingüino", personality: "Atlético" },
+
+      // Osos y Ositos (Cubs)
+      "judy": { species: "Osito", personality: "Presumida" },
+      "pastel": { species: "Osito", personality: "Presumida" },
+      "stitches": { species: "Osito", personality: "Perezoso" },
+      "parches": { species: "Osito", personality: "Perezoso" },
+      "maple": { species: "Osito", personality: "Dulce" },
+      "dulce": { species: "Osito", personality: "Dulce" },
+      "bluebear": { species: "Osito", personality: "Alegre" },
+      "celeste": { species: "Osito", personality: "Alegre" },
+      "pekoe": { species: "Osito", personality: "Dulce" },
+      "pili": { species: "Osito", personality: "Dulce" },
+      "poncho": { species: "Osito", personality: "Atlético" },
+      "cheri": { species: "Osito", personality: "Alegre" },
+      "cerecilla": { species: "Osito", personality: "Alegre" },
+      "chester": { species: "Osito", personality: "Perezoso" },
+      "kody": { species: "Osito", personality: "Atlético" },
+      "vladimir": { species: "Osito", personality: "Gruñón" },
+      "marty": { species: "Osito", personality: "Perezoso" },
+      "teddy": { species: "Oso", personality: "Atlético" },
+      "tutu": { species: "Oso", personality: "Alegre" },
+      "tutú": { species: "Oso", personality: "Alegre" },
+      "ursula": { species: "Oso", personality: "Hermana" },
+      "megan": { species: "Oso", personality: "Dulce" },
+      "grizzly": { species: "Oso", personality: "Gruñón" },
+      "curt": { species: "Oso", personality: "Gruñón" },
+      "pinky": { species: "Oso", personality: "Alegre" },
+      "chow": { species: "Oso", personality: "Gruñón" },
+      "nate": { species: "Oso", personality: "Perezoso" },
+      "klaus": { species: "Oso", personality: "Esmirriado" },
+
+      // Pulpos
+      "marina": { species: "Pulpo", personality: "Dulce" },
+      "zucker": { species: "Pulpo", personality: "Perezoso" },
+      "kikolo": { species: "Pulpo", personality: "Perezoso" },
+      "octavian": { species: "Pulpo", personality: "Gruñón" },
+      "octavio": { species: "Pulpo", personality: "Gruñón" },
+      "cephalobot": { species: "Pulpo", personality: "Esmirriado" },
+
+      // Ovejas y Cabras
+      "dom": { species: "Oveja", personality: "Atlético" },
+      "fabián": { species: "Oveja", personality: "Atlético" },
+      "pietro": { species: "Oveja", personality: "Esmirriado" },
+      "muffy": { species: "Oveja", personality: "Hermana" },
+      "muñeca": { species: "Oveja", personality: "Hermana" },
+      "wendy": { species: "Oveja", personality: "Alegre" },
+      "lana": { species: "Oveja", personality: "Alegre" },
+      "stella": { species: "Oveja", personality: "Dulce" },
+      "estela": { species: "Oveja", personality: "Dulce" },
+      "willow": { species: "Oveja", personality: "Presumida" },
+      "frita": { species: "Oveja", personality: "Hermana" },
+      "vesta": { species: "Oveja", personality: "Dulce" },
+      "étoile": { species: "Oveja", personality: "Dulce" },
+      "etoile": { species: "Oveja", personality: "Dulce" },
+      "timbra": { species: "Oveja", personality: "Presumida" },
+      "sherb": { species: "Cabra", personality: "Perezoso" },
+      "morfeo": { species: "Cabra", personality: "Perezoso" },
+      "chevre": { species: "Cabra", personality: "Dulce" },
+      "nan": { species: "Cabra", personality: "Dulce" },
+      "nana": { species: "Cabra", personality: "Dulce" },
+      "kidd": { species: "Cabra", personality: "Esmirriado" },
+      "pashmina": { species: "Cabra", personality: "Hermana" },
+      "gruff": { species: "Cabra", personality: "Gruñón" },
+      "billy": { species: "Cabra", personality: "Atlético" },
+      "velma": { species: "Cabra", personality: "Presumida" },
+
+      // Patos y Ranas
+      "molly": { species: "Pato", personality: "Dulce" },
+      "deira": { species: "Pato", personality: "Dulce" },
+      "ketchup": { species: "Pato", personality: "Alegre" },
+      "picarina": { species: "Pato", personality: "Alegre" },
+      "bill": { species: "Pato", personality: "Atlético" },
+      "scoot": { species: "Pato", personality: "Atlético" },
+      "paquito": { species: "Pato", personality: "Atlético" },
+      "pate": { species: "Pato", personality: "Alegre" },
+      "drake": { species: "Pato", personality: "Perezoso" },
+      "joey": { species: "Pato", personality: "Perezoso" },
+      "lily": { species: "Rana", personality: "Dulce" },
+      "lirita": { species: "Rana", personality: "Dulce" },
+      "ribbot": { species: "Rana", personality: "Atlético" },
+      "ranabot": { species: "Rana", personality: "Atlético" },
+      "henry": { species: "Rana", personality: "Esmirriado" },
+      "jeremiah": { species: "Rana", personality: "Perezoso" },
+      "camofrog": { species: "Rana", personality: "Gruñón" },
+
+      // Caballos y Hámsters
+      "julian": { species: "Caballo", personality: "Esmirriado" },
+      "julián": { species: "Caballo", personality: "Esmirriado" },
+      "reneigh": { species: "Caballo", personality: "Hermana" },
+      "corcelia": { species: "Caballo", personality: "Hermana" },
+      "colton": { species: "Caballo", personality: "Esmirriado" },
+      "roscoe": { species: "Caballo", personality: "Gruñón" },
+      "victoria": { species: "Caballo", personality: "Alegre" },
+      "flurry": { species: "Hámster", personality: "Dulce" },
+      "lluvia": { species: "Hámster", personality: "Dulce" },
+      "apple": { species: "Hámster", personality: "Alegre" },
+      "manzana": { species: "Hámster", personality: "Alegre" },
+      "hamlet": { species: "Hámster", personality: "Atlético" },
+      "clay": { species: "Hámster", personality: "Perezoso" },
+      "graham": { species: "Hámster", personality: "Esmirriado" },
+
+      // Gorilas, Monos, Elefantes
+      "rilla": { species: "Gorila", personality: "Alegre" },
+      "chai": { species: "Elefante", personality: "Alegre" },
+      "tia": { species: "Elefante", personality: "Dulce" },
+      "dizzy": { species: "Elefante", personality: "Perezoso" },
+
+      // Especiales / NPCs
+      "tom nook": { species: "Especial", personality: "Especial" },
+      "nook": { species: "Especial", personality: "Especial" },
+      "timmy": { species: "Especial", personality: "Especial" },
+      "tommy": { species: "Especial", personality: "Especial" },
+      "blathers": { species: "Especial", personality: "Especial" },
+      "sócrates": { species: "Especial", personality: "Especial" },
+      "celeste": { species: "Especial", personality: "Especial" },
+      "kicks": { species: "Especial", personality: "Especial" },
+      "reese": { species: "Especial", personality: "Especial" },
+      "cyrus": { species: "Especial", personality: "Especial" },
+      "resetti": { species: "Especial", personality: "Especial" },
+      "kapp'n": { species: "Especial", personality: "Especial" },
+      "brewster": { species: "Especial", personality: "Especial" },
+      "fígaro": { species: "Especial", personality: "Especial" },
+      "leif": { species: "Especial", personality: "Especial" },
+      "pascal": { species: "Especial", personality: "Especial" },
+      "redd": { species: "Especial", personality: "Especial" },
+      "rover": { species: "Especial", personality: "Especial" },
+      "gulliver": { species: "Especial", personality: "Especial" },
+      "saharah": { species: "Especial", personality: "Especial" }
+    };
+
+    function lookupAcVillager(name) {
+      if (!name) return null;
+      const raw = name.toLowerCase().trim();
+      for (const [key, info] of Object.entries(AC_VILLAGERS_DB)) {
+        const regex = new RegExp(`(^|\\b|\\W)${key}(\\b|\\W|$)`, 'i');
+        if (regex.test(raw)) {
+          return info;
+        }
+      }
+      for (const [key, info] of Object.entries(AC_VILLAGERS_DB)) {
+        if (raw.includes(key)) {
+          return info;
+        }
+      }
+      return null;
+    }
+
+    function getVillagerInfo(item) {
+      if (item.species && item.personality) {
+        return { species: item.species, personality: item.personality };
+      }
+      const found = lookupAcVillager(item.name);
+      if (found) return found;
+      return { species: item.species || "Vecino", personality: item.personality || "Estándar" };
+    }
+
+    // DOM
+    const amiiboGrid = document.getElementById('amiiboGrid');
+    const mainHeaderTitle = document.getElementById('mainHeaderTitle');
+    const breadcrumbSub = document.getElementById('breadcrumbSub');
+    const countBadge = document.getElementById('countBadge');
+    const globalSearchInput = document.getElementById('globalSearchInput');
+    const braveHintBanner = document.getElementById('braveHintBanner');
+    const closeBraveHintBtn = document.getElementById('closeBraveHintBtn');
+
+    // BANNER PANORÁMICO DE FRANQUICIA (PERSONALIZABLE & REPOSICIONABLE & MULTIMEDIA/GIF/VIDEO)
+    const franchiseHeroContainer = document.getElementById('franchiseHeroContainer');
+    const franchiseHeroImg = document.getElementById('franchiseHeroImg');
+    const franchiseHeroVideo = document.getElementById('franchiseHeroVideo');
+    const franchiseHeroBadge = document.getElementById('franchiseHeroBadge');
+    const changeBannerBtn = document.getElementById('changeBannerBtn');
+    const repositionBannerBtn = document.getElementById('repositionBannerBtn');
+    const resetBannerBtn = document.getElementById('resetBannerBtn');
+    const franchiseBannerFileInput = document.getElementById('franchiseBannerFileInput');
+    const bannerDragHandle = document.getElementById('bannerDragHandle');
+    const bannerRepositionBar = document.getElementById('bannerRepositionBar');
+    const bannerControlsGroup = document.getElementById('bannerControlsGroup');
+    const bannerZoomOutBtn = document.getElementById('bannerZoomOutBtn');
+    const bannerZoomInBtn = document.getElementById('bannerZoomInBtn');
+    const bannerZoomLabel = document.getElementById('bannerZoomLabel');
+    const bannerCenterBtn = document.getElementById('bannerCenterBtn');
+    const cancelRepositionBtn = document.getElementById('cancelRepositionBtn');
+    const saveRepositionBtn = document.getElementById('saveRepositionBtn');
+
+    let isRepositioningMode = false;
+    let isDraggingBanner = false;
+    let dragStartX = 0;
+    let dragStartY = 0;
+    let initialDragX = 0;
+    let initialDragY = 0;
+    let currentBannerPos = { x: 0, y: 0, scale: 1.0 };
+    let savedBannerPosBeforeEdit = { x: 0, y: 0, scale: 1.0 };
+
+    // INDEXEDDB PARA ALMACENAR MINI-VIDEOS Y GIFS ANIMADOS SIN LÍMITE DE TAMAÑO
+    let _bannerDbPromise = null;
+    function getBannerDB() {
+      if (!_bannerDbPromise) {
+        _bannerDbPromise = new Promise((resolve) => {
+          try {
+            if (typeof indexedDB === 'undefined') {
+              resolve(null);
+              return;
+            }
+            const req = indexedDB.open('AmiiboVaultMediaDB', 1);
+            req.onupgradeneeded = (e) => {
+              const db = e.target.result;
+              if (!db.objectStoreNames.contains('banners')) {
+                db.createObjectStore('banners');
+              }
+            };
+            req.onsuccess = (e) => resolve(e.target.result);
+            req.onerror = (e) => {
+              console.warn('IndexedDB open error:', e.target.error);
+              resolve(null);
+            };
+          } catch (err) {
+            console.warn('IndexedDB exception:', err);
+            resolve(null);
+          }
+        });
+      }
+      return _bannerDbPromise;
+    }
+
+    async function saveBannerMedia(key, data) {
+      try {
+        const db = await getBannerDB();
+        if (!db) return false;
+        return new Promise((resolve) => {
+          try {
+            const tx = db.transaction('banners', 'readwrite');
+            const store = tx.objectStore('banners');
+            store.put(data, key);
+            tx.oncomplete = () => resolve(true);
+            tx.onerror = (err) => {
+              console.warn('IndexedDB put error:', err);
+              resolve(false);
+            };
+          } catch (e) {
+            console.warn('IndexedDB put tx error:', e);
+            resolve(false);
+          }
+        });
+      } catch (err) {
+        console.warn('saveBannerMedia error:', err);
+        return false;
+      }
+    }
+
+    async function getBannerMedia(key) {
+      try {
+        const db = await getBannerDB();
+        if (!db) return null;
+        return new Promise((resolve) => {
+          try {
+            const tx = db.transaction('banners', 'readonly');
+            const store = tx.objectStore('banners');
+            const req = store.get(key);
+            req.onsuccess = () => resolve(req.result || null);
+            req.onerror = () => resolve(null);
+          } catch (e) {
+            resolve(null);
+          }
+        });
+      } catch (err) {
+        return null;
+      }
+    }
+
+    async function removeBannerMedia(key) {
+      try {
+        const db = await getBannerDB();
+        if (!db) return false;
+        return new Promise((resolve) => {
+          try {
+            const tx = db.transaction('banners', 'readwrite');
+            const store = tx.objectStore('banners');
+            store.delete(key);
+            tx.oncomplete = () => resolve(true);
+            tx.onerror = () => resolve(false);
+          } catch (e) {
+            resolve(false);
+          }
+        });
+      } catch (err) {
+        return false;
+      }
+    }
+
+    // MIGRACIÓN AUTOMÁTICA: Si hay GIFs o vídeos pesados atascando localStorage, moverlos a IndexedDB
+    async function migrateBannersToIndexedDB() {
+      try {
+        const keysToMigrate = [];
+        for (let i = 0; i < localStorage.length; i++) {
+          const k = localStorage.key(i);
+          if (k && k.startsWith('amiibo_custom_banner_')) {
+            const v = localStorage.getItem(k);
+            if (v && v.length > 200 && !v.startsWith('__')) {
+              keysToMigrate.push({ key: k, value: v });
+            }
+          }
+        }
+        for (const item of keysToMigrate) {
+          const ok = await saveBannerMedia(item.key, item.value);
+          if (ok) {
+            try {
+              localStorage.setItem(item.key, '__idb__');
+            } catch (e) {}
+          }
+        }
+      } catch (err) {
+        console.warn('Migration error:', err);
+      }
+    }
+
+    const DEFAULT_FRANCHISE_BANNERS = {
+      "The Legend of Zelda": "banners/banner_zelda.jpg",
+      "Super Smash Bros.": "banners/banner_smash.png",
+      "Super Mario": "banners/banner_mario.jpg",
+      "Animal Crossing": "banners/banner_animal_crossing.jpg",
+      "Sanrio": "banners/banner_sanrio.jpg",
+      "Splatoon": "banners/banner_splatoon.jpg",
+      "Kirby": "banners/banner_kirby.jpg",
+      "Especiales": "banners/banner_especiales.jpg",
+      "ALL": "banners/banner_smash.png",
+      "RECIENTES": "banners/banner_zelda.jpg",
+      "FAVORITOS": "banners/banner_kirby.jpg"
+    };
+
+    const FRANCHISE_BANNER_TITLES = {
+      "The Legend of Zelda": "The Legend of Zelda",
+      "Super Smash Bros.": "Super Smash Bros. Ultimate",
+      "Super Mario": "Super Mario",
+      "Animal Crossing": "Animal Crossing: New Horizons",
+      "Sanrio": "Animal Crossing • Colaboración Sanrio",
+      "Splatoon": "Splatoon",
+      "Kirby": "Kirby",
+      "Especiales": "Especiales",
+      "ALL": "Inicio",
+      "RECIENTES": "Los más recientes",
+      "FAVORITOS": "Favoritos"
+    };
+
+    function applyBannerTransform() {
+      const x = Math.round(currentBannerPos.x);
+      const y = Math.round(currentBannerPos.y);
+      const s = Number(currentBannerPos.scale || 1.0).toFixed(2);
+      const transformStyle = `translate(${x}px, ${y}px) scale(${s})`;
+      if (franchiseHeroImg) franchiseHeroImg.style.transform = transformStyle;
+      if (franchiseHeroVideo) franchiseHeroVideo.style.transform = transformStyle;
+      if (bannerZoomLabel) {
+        bannerZoomLabel.innerText = Math.round((currentBannerPos.scale || 1.0) * 100) + '%';
+      }
+    }
+
+    function enterRepositionMode() {
+      isRepositioningMode = true;
+      savedBannerPosBeforeEdit = { ...currentBannerPos };
+      if (bannerRepositionBar) bannerRepositionBar.classList.remove('hidden');
+      if (bannerDragHandle) bannerDragHandle.classList.remove('hidden');
+      if (bannerControlsGroup) bannerControlsGroup.classList.add('hidden');
+      if (bannerZoomLabel) bannerZoomLabel.innerText = Math.round((currentBannerPos.scale || 1.0) * 100) + '%';
+      if (franchiseHeroImg) franchiseHeroImg.style.transition = 'transform 0.15s ease-out';
+      if (franchiseHeroVideo) franchiseHeroVideo.style.transition = 'transform 0.15s ease-out';
+    }
+
+    function exitRepositionMode() {
+      isRepositioningMode = false;
+      isDraggingBanner = false;
+      if (bannerRepositionBar) bannerRepositionBar.classList.add('hidden');
+      if (bannerDragHandle) bannerDragHandle.classList.add('hidden');
+      if (bannerControlsGroup) bannerControlsGroup.classList.remove('hidden');
+      if (franchiseHeroImg) franchiseHeroImg.style.transition = 'transform 0.25s ease-out';
+      if (franchiseHeroVideo) franchiseHeroVideo.style.transition = 'transform 0.25s ease-out';
+    }
+
+    async function updateFranchiseHeroBanner(filterKey) {
+      if (!franchiseHeroImg && !franchiseHeroVideo) return;
+      const key = filterKey || currentFilter;
+      const customKey = 'amiibo_custom_banner_' + key;
+      const posKey = 'amiibo_banner_pos_' + key;
+
+      // 1. Buscar primero en IndexedDB (soporta cualquier tamaño de GIF, video o foto sin límite de cuota)
+      let customBanner = await getBannerMedia(customKey);
+
+      // 2. Si no estaba en IndexedDB, buscar en localStorage (banners previamente guardados)
+      if (!customBanner) {
+        const lsVal = localStorage.getItem(customKey);
+        if (lsVal && !lsVal.startsWith('__')) {
+          customBanner = lsVal;
+        }
+      }
+
+      const storedPos = localStorage.getItem(posKey);
+
+      if (storedPos) {
+        try {
+          const parsed = JSON.parse(storedPos);
+          currentBannerPos = {
+            x: Number(parsed.x) || 0,
+            y: Number(parsed.y) || 0,
+            scale: Number(parsed.scale) || 1.0
+          };
+        } catch (e) {
+          currentBannerPos = { x: 0, y: 0, scale: 1.0 };
+        }
+      } else {
+        currentBannerPos = { x: 0, y: 0, scale: 1.0 };
+      }
+      applyBannerTransform();
+
+      const hasCustomPos = storedPos && (currentBannerPos.x !== 0 || currentBannerPos.y !== 0 || currentBannerPos.scale !== 1.0);
+
+      const isVideoBanner = customBanner && (
+        (typeof customBanner === 'string' && (customBanner.startsWith('data:video/') || /\.(mp4|webm|mov)$/i.test(customBanner))) ||
+        (customBanner instanceof Blob && customBanner.type.startsWith('video/'))
+      );
+
+      if (customBanner) {
+        if (isVideoBanner) {
+          if (franchiseHeroVideo) {
+            franchiseHeroVideo.src = (customBanner instanceof Blob) ? URL.createObjectURL(customBanner) : customBanner;
+            franchiseHeroVideo.classList.remove('hidden');
+            franchiseHeroVideo.play().catch(() => {});
+          }
+          if (franchiseHeroImg) franchiseHeroImg.classList.add('hidden');
+        } else {
+          if (franchiseHeroVideo) {
+            franchiseHeroVideo.classList.add('hidden');
+            franchiseHeroVideo.pause();
+            franchiseHeroVideo.src = '';
+          }
+          if (franchiseHeroImg) {
+            franchiseHeroImg.src = (customBanner instanceof Blob) ? URL.createObjectURL(customBanner) : customBanner;
+            franchiseHeroImg.classList.remove('hidden');
+          }
+        }
+
+        if (resetBannerBtn) {
+          resetBannerBtn.classList.remove('hidden');
+          resetBannerBtn.classList.add('flex');
+        }
+      } else {
+        if (franchiseHeroVideo) {
+          franchiseHeroVideo.classList.add('hidden');
+          franchiseHeroVideo.pause();
+          franchiseHeroVideo.src = '';
+        }
+        const defaultBanner = DEFAULT_FRANCHISE_BANNERS[key] || "banners/banner_zelda.jpg";
+        if (franchiseHeroImg) {
+          franchiseHeroImg.src = defaultBanner;
+          franchiseHeroImg.classList.remove('hidden');
+        }
+
+        if (resetBannerBtn) {
+          if (hasCustomPos) {
+            resetBannerBtn.classList.remove('hidden');
+            resetBannerBtn.classList.add('flex');
+          } else {
+            resetBannerBtn.classList.add('hidden');
+            resetBannerBtn.classList.remove('flex');
+          }
+        }
+      }
+
+      if (franchiseHeroBadge) {
+        franchiseHeroBadge.innerText = FRANCHISE_BANNER_TITLES[key] || key;
+      }
+    }
+
+    // ARRASTRE Y REPOSICIONAMIENTO CON MOUSE Y TOUCH
+    if (bannerDragHandle) {
+      // Mouse down
+      bannerDragHandle.addEventListener('mousedown', (e) => {
+        if (e.button !== 0) return;
+        isDraggingBanner = true;
+        dragStartX = e.clientX;
+        dragStartY = e.clientY;
+        initialDragX = currentBannerPos.x;
+        initialDragY = currentBannerPos.y;
+        if (franchiseHeroImg) franchiseHeroImg.style.transition = 'none';
+        if (franchiseHeroVideo) franchiseHeroVideo.style.transition = 'none';
+        e.preventDefault();
+      });
+
+      // Touch start
+      bannerDragHandle.addEventListener('touchstart', (e) => {
+        if (e.touches.length === 1) {
+          isDraggingBanner = true;
+          dragStartX = e.touches[0].clientX;
+          dragStartY = e.touches[0].clientY;
+          initialDragX = currentBannerPos.x;
+          initialDragY = currentBannerPos.y;
+          if (franchiseHeroImg) franchiseHeroImg.style.transition = 'none';
+        if (franchiseHeroVideo) franchiseHeroVideo.style.transition = 'none';
+        }
+      }, { passive: true });
+
+      // Rueda del ratón para Zoom
+      bannerDragHandle.addEventListener('wheel', (e) => {
+        e.preventDefault();
+        const delta = e.deltaY < 0 ? 0.08 : -0.08;
+        currentBannerPos.scale = Math.max(0.7, Math.min(3.5, Number((currentBannerPos.scale + delta).toFixed(2))));
+        applyBannerTransform();
+      }, { passive: false });
+    }
+
+    // Seguimiento global para que no se trabe si el cursor sale del banner
+    window.addEventListener('mousemove', (e) => {
+      if (!isDraggingBanner) return;
+      const dx = e.clientX - dragStartX;
+      const dy = e.clientY - dragStartY;
+      currentBannerPos.x = initialDragX + dx;
+      currentBannerPos.y = initialDragY + dy;
+      applyBannerTransform();
+    });
+
+    window.addEventListener('touchmove', (e) => {
+      if (!isDraggingBanner || e.touches.length !== 1) return;
+      const dx = e.touches[0].clientX - dragStartX;
+      const dy = e.touches[0].clientY - dragStartY;
+      currentBannerPos.x = initialDragX + dx;
+      currentBannerPos.y = initialDragY + dy;
+      applyBannerTransform();
+    }, { passive: true });
+
+    window.addEventListener('mouseup', () => {
+      if (isDraggingBanner) {
+        isDraggingBanner = false;
+        if (franchiseHeroImg) franchiseHeroImg.style.transition = 'transform 0.15s ease-out';
+        if (franchiseHeroVideo) franchiseHeroVideo.style.transition = 'transform 0.15s ease-out';
+      }
+    });
+
+    window.addEventListener('touchend', () => {
+      if (isDraggingBanner) {
+        isDraggingBanner = false;
+        if (franchiseHeroImg) franchiseHeroImg.style.transition = 'transform 0.15s ease-out';
+        if (franchiseHeroVideo) franchiseHeroVideo.style.transition = 'transform 0.15s ease-out';
+      }
+    });
+
+    // Flechas del teclado para micro-ajustes
+    document.addEventListener('keydown', (e) => {
+      if (!isRepositioningMode) return;
+      const step = e.shiftKey ? 30 : 10;
+      if (e.key === 'ArrowUp') {
+        e.preventDefault();
+        currentBannerPos.y -= step;
+        applyBannerTransform();
+      } else if (e.key === 'ArrowDown') {
+        e.preventDefault();
+        currentBannerPos.y += step;
+        applyBannerTransform();
+      } else if (e.key === 'ArrowLeft') {
+        e.preventDefault();
+        currentBannerPos.x -= step;
+        applyBannerTransform();
+      } else if (e.key === 'ArrowRight') {
+        e.preventDefault();
+        currentBannerPos.x += step;
+        applyBannerTransform();
+      }
+    });
+
+    if (repositionBannerBtn) {
+      repositionBannerBtn.addEventListener('click', () => {
+        enterRepositionMode();
+      });
+    }
+
+    if (bannerZoomInBtn) {
+      bannerZoomInBtn.addEventListener('click', () => {
+        currentBannerPos.scale = Math.min(3.5, Number((currentBannerPos.scale + 0.15).toFixed(2)));
+        applyBannerTransform();
+      });
+    }
+
+    if (bannerZoomOutBtn) {
+      bannerZoomOutBtn.addEventListener('click', () => {
+        currentBannerPos.scale = Math.max(0.7, Number((currentBannerPos.scale - 0.15).toFixed(2)));
+        applyBannerTransform();
+      });
+    }
+
+    if (bannerCenterBtn) {
+      bannerCenterBtn.addEventListener('click', () => {
+        currentBannerPos.x = 0;
+        currentBannerPos.y = 0;
+        currentBannerPos.scale = 1.0;
+        applyBannerTransform();
+      });
+    }
+
+    if (cancelRepositionBtn) {
+      cancelRepositionBtn.addEventListener('click', () => {
+        currentBannerPos = { ...savedBannerPosBeforeEdit };
+        applyBannerTransform();
+        exitRepositionMode();
+      });
+    }
+
+    if (saveRepositionBtn) {
+      saveRepositionBtn.addEventListener('click', () => {
+        const posKey = 'amiibo_banner_pos_' + currentFilter;
+        localStorage.setItem(posKey, JSON.stringify(currentBannerPos));
+        exitRepositionMode();
+        updateFranchiseHeroBanner(currentFilter);
+        playAudioTone('success');
+        notify(`¡Posición guardada para ${FRANCHISE_BANNER_TITLES[currentFilter] || currentFilter}!`, 'success');
+      });
+    }
+
+    if (changeBannerBtn && franchiseBannerFileInput) {
+      changeBannerBtn.addEventListener('click', () => {
+        franchiseBannerFileInput.value = '';
+        franchiseBannerFileInput.click();
+      });
+
+      franchiseBannerFileInput.addEventListener('change', async (e) => {
+        const file = e.target.files[0];
+        if (!file) return;
+
+        const isVideo = file.type.startsWith('video/') || /\.(mp4|webm|mov)$/i.test(file.name);
+        const isGif = file.type === 'image/gif' || /\.gif$/i.test(file.name);
+        const franchiseName = FRANCHISE_BANNER_TITLES[currentFilter] || currentFilter;
+        const customKey = 'amiibo_custom_banner_' + currentFilter;
+        const posKey = 'amiibo_banner_pos_' + currentFilter;
+
+        // 1. MINI-VIDEOS (MP4, WebM, MOV)
+        if (isVideo) {
+          const reader = new FileReader();
+          reader.onload = async (event) => {
+            try {
+              const videoData = event.target.result;
+              await saveBannerMedia(customKey, videoData);
+              try { localStorage.setItem(customKey, '__video__'); } catch (e) {}
+              currentBannerPos = { x: 0, y: 0, scale: 1.0 };
+              try { localStorage.removeItem(posKey); } catch (e) {}
+              await updateFranchiseHeroBanner(currentFilter);
+              playAudioTone('success');
+              notify(`¡Mini video guardado en bucle continuo para ${franchiseName}!`, 'success');
+              enterRepositionMode();
+            } catch (err) {
+              console.error('Video save error:', err);
+              notify('Error al procesar el video. Intenta con un clip más corto.', 'error');
+            }
+          };
+          reader.readAsDataURL(file);
+          return;
+        }
+
+        // 2. GIFS ANIMADOS (Preserva 100% de fotogramas y animaciones)
+        if (isGif) {
+          const reader = new FileReader();
+          reader.onload = async (event) => {
+            try {
+              const gifData = event.target.result;
+              // Guardar SIEMPRE en IndexedDB para no saturar nunca localStorage
+              await saveBannerMedia(customKey, gifData);
+              try { localStorage.setItem(customKey, '__idb__'); } catch (e) {}
+              currentBannerPos = { x: 0, y: 0, scale: 1.0 };
+              try { localStorage.removeItem(posKey); } catch (e) {}
+              await updateFranchiseHeroBanner(currentFilter);
+              playAudioTone('success');
+              notify(`¡GIF animado guardado con éxito para ${franchiseName}!`, 'success');
+              enterRepositionMode();
+            } catch (err) {
+              console.error('GIF save error:', err);
+              notify('Error al guardar el GIF animado. Intenta con otro archivo.', 'error');
+            }
+          };
+          reader.readAsDataURL(file);
+          return;
+        }
+
+        // 3. IMÁGENES ESTÁTICAS (PNG, JPG, WEBP)
+        const reader = new FileReader();
+        reader.onload = (event) => {
+          const img = new Image();
+          img.onload = async () => {
+            try {
+              const canvas = document.createElement('canvas');
+              const maxWidth = 1920;
+              const maxHeight = 800;
+              let width = img.width;
+              let height = img.height;
+
+              if (width > maxWidth) {
+                height = Math.round((height * maxWidth) / width);
+                width = maxWidth;
+              }
+              if (height > maxHeight) {
+                width = Math.round((width * maxHeight) / height);
+                height = maxHeight;
+              }
+
+              canvas.width = width;
+              canvas.height = height;
+              const ctx = canvas.getContext('2d');
+              ctx.drawImage(img, 0, 0, width, height);
+
+              const compressedBase64 = canvas.toDataURL('image/jpeg', 0.88);
+              await saveBannerMedia(customKey, compressedBase64);
+              try { localStorage.setItem(customKey, '__idb__'); } catch (e) {}
+              currentBannerPos = { x: 0, y: 0, scale: 1.0 };
+              try { localStorage.removeItem(posKey); } catch (e) {}
+              await updateFranchiseHeroBanner(currentFilter);
+              playAudioTone('success');
+              notify(`¡Banner guardado para ${franchiseName}! Arrastra para encuadrarlo.`, 'success');
+              enterRepositionMode();
+            } catch (err) {
+              console.error('Image save error:', err);
+              notify('Error al guardar la imagen. Intenta con otra foto.', 'error');
+            }
+          };
+          img.src = event.target.result;
+        };
+        reader.readAsDataURL(file);
+      });
+    }
+
+    if (resetBannerBtn) {
+      resetBannerBtn.addEventListener('click', async () => {
+        const customKey = 'amiibo_custom_banner_' + currentFilter;
+        const posKey = 'amiibo_banner_pos_' + currentFilter;
+        try { localStorage.removeItem(customKey); } catch (e) {}
+        try { localStorage.removeItem(posKey); } catch (e) {}
+        await removeBannerMedia(customKey);
+        currentBannerPos = { x: 0, y: 0, scale: 1.0 };
+        exitRepositionMode();
+        await updateFranchiseHeroBanner(currentFilter);
+        notify(`Banner y posición de ${FRANCHISE_BANNER_TITLES[currentFilter] || currentFilter} restablecidos al original.`, 'info');
+      });
+    }
+
+    // BOTÓN DE BLUETOOTH EN HEADER
+    const directBtConnectBtn = document.getElementById('directBtConnectBtn');
+    const headerBtDot = document.getElementById('headerBtDot');
+    const headerBtLabel = document.getElementById('headerBtLabel');
+    // MODAL DETALLE
+    const amiiboModal = document.getElementById('amiiboModal');
+    const closeModalBtn = document.getElementById('closeModalBtn');
+    const modalTitle = document.getElementById('modalTitle');
+    const modalImg = document.getElementById('modalImg');
+    const modalSeries = document.getElementById('modalSeries');
+    const modalGame = document.getElementById('modalGame');
+    const modalMeta = document.getElementById('modalMeta');
+    const modalWriteBtn = document.getElementById('modalWriteBtn');
+    const modalDiscardBtn = document.getElementById('modalDiscardBtn');
+    const modalEditAmiiboBtn = document.getElementById('modalEditAmiiboBtn');
+    const modalFavBtn = document.getElementById('modalFavBtn');
+    const modalFavIcon = document.getElementById('modalFavIcon');
+    const favoritesCountBadge = document.getElementById('favoritesCountBadge');
+    const recentsCountBadge = document.getElementById('recentsCountBadge');
+    // SUB-MENÚ ABANICO ANIMAL CROSSING EN SIDEBAR
+    const acSidebarSubmenuToggle = document.getElementById('acSidebarSubmenuToggle');
+    const acSidebarSubmenu = document.getElementById('acSidebarSubmenu');
+    const acSidebarSubmenuChevron = document.getElementById('acSidebarSubmenuChevron');
+
+    // FILTROS ANIMAL CROSSING (ABANICO HEADER)
+    const acFilterToggleBtn = document.getElementById('acFilterToggleBtn');
+    const acFilterChevron = document.getElementById('acFilterChevron');
+    const acFilterFanPanel = document.getElementById('acFilterFanPanel');
+    const acSpeciesSelect = document.getElementById('acSpeciesSelect');
+    const acPersonalitySelect = document.getElementById('acPersonalitySelect');
+    const acClearFiltersBtn = document.getElementById('acClearFiltersBtn');
+    const deleteConfirmBox = document.getElementById('deleteConfirmBox');
+    const deleteConfirmText = document.getElementById('deleteConfirmText');
+    const btnCancelDelete = document.getElementById('btnCancelDelete');
+    const btnConfirmDelete = document.getElementById('btnConfirmDelete');
+    const modalActionsGroup = document.getElementById('modalActionsGroup');
+
+    // PANELES DE ESTADO
+    const writeProgressBarContainer = document.getElementById('writeProgressBarContainer');
+    const writeProgressStatus = document.getElementById('writeProgressStatus');
+    const writeProgressPercent = document.getElementById('writeProgressPercent');
+    const writeProgressFill = document.getElementById('writeProgressFill');
+    const writeLogDetail = document.getElementById('writeLogDetail');
+
+    const successBanner = document.getElementById('successBanner');
+    const successAmiiboNameText = document.getElementById('successAmiiboNameText');
+    const btnSuccessClose = document.getElementById('btnSuccessClose');
+
+    const errorBanner = document.getElementById('errorBanner');
+    const errorReasonText = document.getElementById('errorReasonText');
+    const btnRetryWrite = document.getElementById('btnRetryWrite');
+
+    // MODAL REGISTRO
+    const registerModal = document.getElementById('registerModal');
+    const openRegisterBtn = document.getElementById('openRegisterBtn');
+    const closeRegisterModalBtn = document.getElementById('closeRegisterModalBtn');
+    const cancelRegisterBtn = document.getElementById('cancelRegisterBtn');
+    const submitRegisterBtn = document.getElementById('submitRegisterBtn');
+    const amiiboName = document.getElementById('amiiboName');
+    const amiiboFranchise = document.getElementById('amiiboFranchise');
+    const amiiboUid = document.getElementById('amiiboUid');
+    const dropzoneArea = document.getElementById('dropzoneArea');
+    const amiiboFileInput = document.getElementById('amiiboFileInput');
+    const dropzoneMainText = document.getElementById('dropzoneMainText');
+    const dropzoneSubText = document.getElementById('dropzoneSubText');
+    const registerAcVillagerFields = document.getElementById('registerAcVillagerFields');
+    const registerAcAutoDetectStatus = document.getElementById('registerAcAutoDetectStatus');
+    const registerAcSpecies = document.getElementById('registerAcSpecies');
+    const registerAcPersonality = document.getElementById('registerAcPersonality');
+
+    // FOTO
+    const choosePhotoBtn = document.getElementById('choosePhotoBtn');
+    const amiiboPhotoInput = document.getElementById('amiiboPhotoInput');
+    const photoPreviewImg = document.getElementById('photoPreviewImg');
+    const photoPlaceholderIcon = document.getElementById('photoPlaceholderIcon');
+    const photoStatusText = document.getElementById('photoStatusText');
+
+    // MODAL EDITAR (LÁPIZ)
+    const editModal = document.getElementById('editModal');
+    const closeEditModalBtn = document.getElementById('closeEditModalBtn');
+    const cancelEditBtn = document.getElementById('cancelEditBtn');
+    const submitEditBtn = document.getElementById('submitEditBtn');
+    const editAmiiboName = document.getElementById('editAmiiboName');
+    const editAmiiboFranchise = document.getElementById('editAmiiboFranchise');
+    const editAcVillagerFields = document.getElementById('editAcVillagerFields');
+    const editAcAutoDetectStatus = document.getElementById('editAcAutoDetectStatus');
+    const editAcSpecies = document.getElementById('editAcSpecies');
+    const editAcPersonality = document.getElementById('editAcPersonality');
+    const editPhotoPreviewImg = document.getElementById('editPhotoPreviewImg');
+    const editChoosePhotoBtn = document.getElementById('editChoosePhotoBtn');
+    const editAmiiboPhotoInput = document.getElementById('editAmiiboPhotoInput');
+    const editPhotoStatusText = document.getElementById('editPhotoStatusText');
+    const editDropzoneArea = document.getElementById('editDropzoneArea');
+    const editAmiiboFileInput = document.getElementById('editAmiiboFileInput');
+    const editDropzoneMainText = document.getElementById('editDropzoneMainText');
+    const editDropzoneSubText = document.getElementById('editDropzoneSubText');
+
+    let editingAmiibo = null;
+    let editUploadedPhotoBase64 = null;
+    let editUploadedBinBase64 = null;
+
+    const toast = document.getElementById('toast');
+    const toastMsg = document.getElementById('toastMsg');
+
+    function notify(text, type = 'info') {
+      toastMsg.innerText = text;
+      toast.className = `toast-box show ${type}`;
+      setTimeout(() => {
+        toast.className = 'toast-box';
+      }, 4000);
+    }
+
+    // INICIAR
+    window.addEventListener('DOMContentLoaded', async () => {
+      await migrateBannersToIndexedDB();
+      loadCustomStorage();
+      updateFranchiseHeroBanner(currentFilter);
+      updateAcFilterButtonState();
+      renderCards();
+      fetchOnlineAmiiboData();
+
+      // Detectar si está en Brave y mostrar banner sutil de ayuda si es necesario
+      if (navigator.brave && typeof navigator.brave.isBrave === 'function') {
+        braveHintBanner.classList.remove('hidden');
+      }
+    });
+
+    closeBraveHintBtn.addEventListener('click', () => {
+      braveHintBanner.classList.add('hidden');
+    });
+
+    function loadCustomStorage() {
+      try {
+        const stored = localStorage.getItem('amiibo_vault_items_v3');
+        if (stored) {
+          customAmiibos = JSON.parse(stored);
+          customAmiibos.forEach(a => {
+            if (a.id === '0840000003ba0002' || a.name === 'Sephiroth') {
+              if (!a.image || a.image.includes('lh3.googleusercontent.com')) {
+                a.image = 'sephiroth.png';
+              }
+            }
+            if (a.id === '08000000003c0002' || a.name === 'Inkling Chica' || a.name === 'Inkling') {
+              if (!a.image || a.image.includes('raw.githubusercontent.com') || a.image.includes('AmiiboAPI') || a.image.includes('lh3.googleusercontent.com')) {
+                a.image = 'inkling_chica.png';
+              }
+            }
+          });
+        }
+        const storedDeleted = localStorage.getItem('amiibo_vault_deleted_ids');
+        if (storedDeleted) {
+          deletedAmiiboIds = new Set(JSON.parse(storedDeleted));
+        }
+        const storedFavs = localStorage.getItem('amiibo_vault_favorite_ids');
+        if (storedFavs) {
+          favoriteAmiiboIds = new Set(JSON.parse(storedFavs));
+        }
+        updateFavoritesBadge();
+        updateRecentsBadge();
+      } catch (e) {
+        console.error(e);
+      }
+    }
+
+    function saveCustomStorage() {
+      localStorage.setItem('amiibo_vault_items_v3', JSON.stringify(customAmiibos));
+      updateRecentsBadge();
+    }
+
+    function saveDeletedStorage() {
+      localStorage.setItem('amiibo_vault_deleted_ids', JSON.stringify([...deletedAmiiboIds]));
+      updateRecentsBadge();
+    }
+
+    function updateRecentsBadge() {
+      if (recentsCountBadge) {
+        const count = customAmiibos.filter(item => !deletedAmiiboIds.has(item.id)).length;
+        recentsCountBadge.innerText = count;
+        if (count > 0) {
+          recentsCountBadge.classList.remove('hidden');
+        } else {
+          recentsCountBadge.classList.add('hidden');
+        }
+      }
+    }
+
+    function saveFavoritesStorage() {
+      localStorage.setItem('amiibo_vault_favorite_ids', JSON.stringify([...favoriteAmiiboIds]));
+      updateFavoritesBadge();
+    }
+
+    function updateFavoritesBadge() {
+      if (favoritesCountBadge) {
+        const count = favoriteAmiiboIds.size;
+        favoritesCountBadge.innerText = count;
+        if (count > 0) {
+          favoritesCountBadge.classList.remove('hidden');
+        } else {
+          favoritesCountBadge.classList.add('hidden');
+        }
+      }
+    }
+
+    async function fetchOnlineAmiiboData() {
+      // Si se abre directamente como archivo local (file:///), evitamos fetch a la API externa
+      // para no disparar el bloqueo de seguridad CORS (Origin: null) del navegador
+      if (window.location.protocol === 'file:') {
+        return;
+      }
+      try {
+        const res = await fetch('https://amiiboapi.com/api/amiibo/');
+        if (!res.ok) return;
+        const json = await res.json();
+        if (json && json.amiibo) {
+          const onlineItems = json.amiibo.map(a => ({
+            id: a.head + a.tail,
+            name: a.name,
+            series: a.gameSeries,
+            displaySeries: a.gameSeries.toUpperCase(),
+            game: a.amiiboSeries || a.gameSeries,
+            image: a.image
+          }));
+          catalog = [...STITCH_INITIAL_CARDS, ...onlineItems.filter(o => !STITCH_INITIAL_CARDS.some(s => s.id === o.id))];
+          renderCards();
+        }
+      } catch (e) {
+        console.log('Modo local.');
+      }
+    }
+
+    // RENDERIZAR GRID
+    function renderCards() {
+      amiiboGrid.innerHTML = '';
+      const query = globalSearchInput.value.toLowerCase().trim();
+      const all = [...customAmiibos, ...catalog].filter(item => !deletedAmiiboIds.has(item.id));
+
+      const filtered = all.filter(item => {
+        // Si hay texto en la barra de búsqueda, busca en TODAS las categorías y franquicias
+        if (query) {
+          const matchName = item.name && item.name.toLowerCase().includes(query);
+          const matchSeries = item.series && item.series.toLowerCase().includes(query);
+          const matchGame = item.game && item.game.toLowerCase().includes(query);
+          const matchDisplay = item.displaySeries && item.displaySeries.toLowerCase().includes(query);
+          const matchId = item.id && item.id.toLowerCase().includes(query);
+          return matchName || matchSeries || matchGame || matchDisplay || matchId;
+        }
+
+        // Si NO hay búsqueda activa, filtra según la categoría/franquicia de la barra lateral
+        let matchFranchise = true;
+        if (currentFilter === 'FAVORITOS') {
+          matchFranchise = favoriteAmiiboIds.has(item.id);
+        } else if (currentFilter === 'RECIENTES') {
+          matchFranchise = item.isCustom;
+        } else if (currentFilter === 'ALL') {
+          matchFranchise = true;
+        } else if (currentFilter === 'Animal Crossing') {
+          matchFranchise = item.series && (item.series.toLowerCase().includes('animal crossing') || item.series.toLowerCase().includes('sanrio'));
+        } else if (currentFilter === 'Sanrio') {
+          matchFranchise = (item.series && item.series.toLowerCase().includes('sanrio')) || (item.name && item.name.toLowerCase().includes('sanrio'));
+        } else if (currentFilter === 'Especiales') {
+          matchFranchise = item.series && (
+            item.series.toLowerCase().includes('especial') ||
+            item.series.toLowerCase().includes('otra') ||
+            item.series.toLowerCase().includes('resident')
+          );
+        } else {
+          matchFranchise = item.series && item.series.toLowerCase().includes(currentFilter.toLowerCase());
+        }
+
+        // Filtro específico del abanico de Animal Crossing (especie y personalidad)
+        if (matchFranchise && (currentFilter === 'Animal Crossing' || currentFilter === 'Sanrio')) {
+          const villager = getVillagerInfo(item);
+          if (acSelectedSpecies !== 'ALL' && villager.species !== acSelectedSpecies) {
+            return false;
+          }
+          if (acSelectedPersonality !== 'ALL' && villager.personality !== acSelectedPersonality) {
+            return false;
+          }
+        }
+
+        return matchFranchise;
+      });
+
+      countBadge.innerText = `${filtered.length} ARCHIVOS REGISTRADOS`;
+
+      if (filtered.length === 0) {
+        if (currentFilter === 'FAVORITOS') {
+          amiiboGrid.innerHTML = `
+            <div class="col-span-full py-16 text-center bg-white rounded-2xl border border-gray-200/80">
+              <span class="material-symbols-outlined text-5xl text-rose-300 mb-2">favorite_border</span>
+              <p class="text-gray-700 font-bold text-base mb-1">Aún no tienes favoritos guardados</p>
+              <p class="text-gray-400 text-xs">Haz clic en el corazón de cualquier Amiibo para añadirlo a esta sección.</p>
+            </div>
+          `;
+        } else if (currentFilter === 'RECIENTES') {
+          amiiboGrid.innerHTML = `
+            <div class="col-span-full py-16 text-center bg-white rounded-2xl border border-gray-200/80">
+              <span class="material-symbols-outlined text-5xl text-amber-400 mb-2">schedule</span>
+              <p class="text-gray-700 font-bold text-base mb-1">No hay registros recientes</p>
+              <p class="text-gray-400 text-xs">Los Amiibos que registres con el botón "+ Registrar Amiibo" aparecerán aquí ordenados por fecha.</p>
+            </div>
+          `;
+        } else if ((currentFilter === 'Animal Crossing' || currentFilter === 'Sanrio') && (acSelectedSpecies !== 'ALL' || acSelectedPersonality !== 'ALL')) {
+          amiiboGrid.innerHTML = `
+            <div class="col-span-full py-16 text-center bg-white rounded-2xl border border-gray-200/80">
+              <span class="material-symbols-outlined text-5xl text-[#4F5A78] mb-2">pets</span>
+              <p class="text-gray-700 font-bold text-base mb-1">No se encontraron vecinos con estos filtros</p>
+              <p class="text-gray-400 text-xs">Prueba seleccionando otra especie o personalidad en el abanico superior.</p>
+            </div>
+          `;
+        } else if (currentFilter === 'Especiales') {
+          amiiboGrid.innerHTML = `
+            <div class="col-span-full py-16 text-center bg-white rounded-2xl border border-gray-200/80">
+              <span class="material-symbols-outlined text-5xl text-purple-300 mb-2">auto_awesome</span>
+              <p class="text-gray-700 font-bold text-base mb-1">Aún no hay Amiibos Especiales registrados</p>
+              <p class="text-gray-400 text-xs">Usa el botón "+ Registrar Amiibo" para añadir figuras generales como Resident Evil Requiem, etc.</p>
+            </div>
+          `;
+        } else {
+          amiiboGrid.innerHTML = `
+            <div class="col-span-full py-16 text-center bg-white rounded-2xl border border-gray-200/80">
+              <span class="material-symbols-outlined text-4xl text-gray-300 mb-2">inventory_2</span>
+              <p class="text-gray-500 font-medium">No se encontraron archivos en esta categoría.</p>
+            </div>
+          `;
+        }
+        return;
+      }
+
+      filtered.forEach(item => {
+        const isFav = favoriteAmiiboIds.has(item.id);
+        const isAC = (item.series && (item.series.toLowerCase().includes('animal crossing') || item.series.toLowerCase().includes('sanrio')));
+        const villager = isAC ? getVillagerInfo(item) : null;
+        const card = document.createElement('article');
+        card.className = "amiibo-card bg-white rounded-2xl p-6 border border-gray-200/80 shadow-sm flex flex-col justify-between transition-all duration-300 ease-out hover:-translate-y-2 hover:shadow-xl hover:border-[#7BDF96]/60 cursor-pointer will-change-transform relative group";
+        card.innerHTML = `
+          <!-- Badge Registrado (Siempre visible arriba a la izquierda sin ser tapado) -->
+          ${item.isCustom ? '<span class="absolute top-3.5 left-3.5 z-20 bg-[#D0E7F9] text-[#2B3859] text-[10px] font-extrabold px-2.5 py-1 rounded-full uppercase tracking-wider shadow-sm border border-[#4F5A78]/20 pointer-events-none">Registrado</span>' : ''}
+
+          <!-- Botones de Acción Rápida (Corazón Favorito + Lápiz) -->
+          <div class="absolute top-3.5 right-3.5 flex items-center gap-1.5 z-20">
+            <!-- Botón Favorito (Corazón) -->
+            <button type="button" class="btn-card-fav w-8 h-8 rounded-full ${isFav ? 'bg-rose-500 text-white border-rose-500 hover:bg-rose-600 hover:border-rose-600' : 'bg-[#cc8b86]/15 text-[#cc8b86] border-[#cc8b86]/35 hover:bg-[#b03a35] hover:text-white hover:border-[#b03a35]'} border shadow-sm flex items-center justify-center transition-all duration-200 hover:scale-110 cursor-pointer" title="${isFav ? 'Quitar de favoritos' : 'Marcar como favorito'}">
+              <span class="material-symbols-outlined text-[18px] transition-colors ${isFav ? 'material-symbols-fill' : ''}">favorite</span>
+            </button>
+
+            <!-- Botón Lápiz para Editar -->
+            <button type="button" class="btn-card-edit w-8 h-8 rounded-full bg-[#D0E7F9]/70 hover:bg-[#4F5A78] text-[#4F5A78] hover:text-white border border-[#4F5A78]/25 hover:border-[#4F5A78] shadow-sm flex items-center justify-center transition-all duration-200 hover:scale-110 cursor-pointer" title="Editar Amiibo">
+              <span class="material-symbols-outlined text-[17px] transition-colors">edit</span>
+            </button>
+          </div>
+
+          <!-- Contenedor de Imagen con margen superior de despeje -->
+          <div class="w-full h-56 flex items-center justify-center mb-3 mt-4 relative">
+            <img alt="${item.name}" class="h-48 lg:h-52 max-w-full object-contain mx-auto transition-transform duration-300 hover:scale-105 drop-shadow-[0_8px_16px_rgba(0,0,0,0.12)] rounded-xl" loading="lazy" width="200" height="240" src="${item.image || DEFAULT_AMIIBO_IMAGE}" onerror="this.onerror=null; this.src='${DEFAULT_AMIIBO_IMAGE}';">
+          </div>
+          <div>
+            <div class="flex items-center gap-1.5 mb-1 flex-wrap">
+              <span class="block text-xs uppercase tracking-wider text-gray-400 font-semibold">${item.displaySeries || item.series.toUpperCase()}</span>
+              ${(villager && villager.species && villager.species !== 'Vecino') ? `<span class="text-[10px] font-bold px-2 py-0.5 rounded-md bg-[#D0E7F9] text-[#2D354A] border border-[#4F5A78]/25 uppercase tracking-tight">${villager.species} • ${villager.personality}</span>` : ''}
+            </div>
+            <h2 class="text-xl text-gray-900 tracking-tight font-bold">${item.name}</h2>
+          </div>
+        `;
+
+        const favBtn = card.querySelector('.btn-card-fav');
+        if (favBtn) {
+          favBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            e.preventDefault();
+            if (favoriteAmiiboIds.has(item.id)) {
+              favoriteAmiiboIds.delete(item.id);
+              notify(`"${item.name}" quitado de Favoritos`, 'info');
+            } else {
+              favoriteAmiiboIds.add(item.id);
+              playAudioTone('success');
+              notify(`❤️ "${item.name}" agregado a Favoritos`, 'success');
+            }
+            saveFavoritesStorage();
+            renderCards();
+          });
+        }
+
+        const editBtn = card.querySelector('.btn-card-edit');
+        if (editBtn) {
+          editBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            e.preventDefault();
+            openEditModal(item);
+          });
+        }
+
+        card.addEventListener('click', () => {
+          openDetailModal(item);
+        });
+
+        amiiboGrid.appendChild(card);
+      });
+    }
+
+    // NAVEGACIÓN
+    const navFilters = document.querySelectorAll('.nav-filter');
+    navFilters.forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.preventDefault();
+        navFilters.forEach(b => {
+          b.classList.remove('active-franchise');
+          b.style.backgroundColor = '';
+          b.style.color = '';
+          b.style.fontWeight = '';
+        });
+
+        btn.classList.add('active-franchise');
+        btn.style.backgroundColor = 'rgb(208, 231, 249)';
+        btn.style.color = 'rgb(43, 56, 89)';
+        btn.style.fontWeight = '700';
+
+        const filter = btn.getAttribute('data-filter');
+        currentFilter = filter;
+
+        if (filter === 'ALL') {
+          mainHeaderTitle.innerText = 'Colección Completa';
+          breadcrumbSub.innerText = 'NINTENDO SWITCH & WII U';
+          closeAcSidebarSubmenu();
+        } else if (filter === 'RECIENTES') {
+          mainHeaderTitle.innerText = 'Los más recientes';
+          breadcrumbSub.innerText = 'ÚLTIMOS AMIIBOS REGISTRADOS';
+          closeAcSidebarSubmenu();
+        } else if (filter === 'FAVORITOS') {
+          mainHeaderTitle.innerText = 'Mis Favoritos ❤️';
+          breadcrumbSub.innerText = 'COLECCIÓN DESTACADA';
+          closeAcSidebarSubmenu();
+        } else if (filter === 'Sanrio') {
+          mainHeaderTitle.innerText = 'Colaboración Sanrio ⭐';
+          breadcrumbSub.innerText = 'ANIMAL CROSSING • EXTENSIÓN SANRIO';
+          openAcSidebarSubmenu();
+        } else if (filter === 'Animal Crossing') {
+          mainHeaderTitle.innerText = 'Animal Crossing';
+          breadcrumbSub.innerText = 'ANIMAL CROSSING';
+          openAcSidebarSubmenu();
+        } else if (filter === 'Kirby') {
+          mainHeaderTitle.innerText = 'Kirby';
+          breadcrumbSub.innerText = 'KIRBY SERIES';
+          closeAcSidebarSubmenu();
+        } else if (filter === 'Especiales') {
+          mainHeaderTitle.innerText = 'Especiales';
+          breadcrumbSub.innerText = 'AMIIBOS GENERALES & RESIDENT EVIL';
+          closeAcSidebarSubmenu();
+        } else {
+          mainHeaderTitle.innerText = filter;
+          breadcrumbSub.innerText = filter.toUpperCase();
+          closeAcSidebarSubmenu();
+        }
+
+        // Actualizar banner panorámico de la franquicia
+        updateFranchiseHeroBanner(filter);
+
+        // Mostrar u ocultar el botón del abanico de filtros EXCLUSIVAMENTE en Animal Crossing
+        if (filter !== 'Animal Crossing') {
+          acSpeciesSelect.value = 'ALL';
+          acPersonalitySelect.value = 'ALL';
+          acSelectedSpecies = 'ALL';
+          acSelectedPersonality = 'ALL';
+        }
+        updateAcFilterButtonState();
+
+        renderCards();
+      });
+    });
+
+    // CONTROL DEL SUB-MENÚ ABANICO ANIMAL CROSSING EN SIDEBAR
+    function openAcSidebarSubmenu() {
+      if (!acSidebarSubmenu) return;
+      acSidebarSubmenu.classList.remove('hidden');
+      if (acSidebarSubmenuChevron) {
+        acSidebarSubmenuChevron.style.transform = 'rotate(180deg)';
+      }
+    }
+
+    function closeAcSidebarSubmenu() {
+      if (!acSidebarSubmenu) return;
+      acSidebarSubmenu.classList.add('hidden');
+      if (acSidebarSubmenuChevron) {
+        acSidebarSubmenuChevron.style.transform = '';
+      }
+    }
+
+    function toggleAcSidebarSubmenu() {
+      if (!acSidebarSubmenu) return;
+      if (acSidebarSubmenu.classList.contains('hidden')) {
+        openAcSidebarSubmenu();
+      } else {
+        closeAcSidebarSubmenu();
+      }
+    }
+
+    if (acSidebarSubmenuToggle) {
+      acSidebarSubmenuToggle.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        toggleAcSidebarSubmenu();
+      });
+    }
+
+    // EVENTOS DEL ABANICO DE FILTROS ANIMAL CROSSING
+    acFilterToggleBtn.addEventListener('click', () => {
+      const isHidden = acFilterFanPanel.classList.contains('hidden');
+      if (isHidden) {
+        acFilterFanPanel.classList.remove('hidden');
+        acFilterChevron.style.transform = 'rotate(180deg)';
+      } else {
+        acFilterFanPanel.classList.add('hidden');
+        acFilterChevron.style.transform = '';
+      }
+    });
+
+    acSpeciesSelect.addEventListener('change', () => {
+      acSelectedSpecies = acSpeciesSelect.value;
+      updateAcFilterButtonState();
+      renderCards();
+    });
+
+    acPersonalitySelect.addEventListener('change', () => {
+      acSelectedPersonality = acPersonalitySelect.value;
+      updateAcFilterButtonState();
+      renderCards();
+    });
+
+    acClearFiltersBtn.addEventListener('click', () => {
+      acSpeciesSelect.value = 'ALL';
+      acPersonalitySelect.value = 'ALL';
+      acSelectedSpecies = 'ALL';
+      acSelectedPersonality = 'ALL';
+      updateAcFilterButtonState();
+      renderCards();
+      notify('Filtros de vecinos restablecidos', 'info');
+    });
+
+    function updateAcFilterButtonState() {
+      if (!acFilterToggleBtn) return;
+      const isAC = currentFilter === 'Animal Crossing';
+      if (!isAC) {
+        acFilterToggleBtn.classList.add('hidden');
+        acFilterToggleBtn.classList.remove('flex');
+        if (acFilterFanPanel) acFilterFanPanel.classList.add('hidden');
+        if (acFilterChevron) acFilterChevron.style.transform = '';
+        return;
+      }
+
+      // Solo si está seleccionada la franquicia Animal Crossing se muestra
+      acFilterToggleBtn.classList.remove('hidden');
+      acFilterToggleBtn.classList.add('flex');
+
+      const hasActive = acSelectedSpecies !== 'ALL' || acSelectedPersonality !== 'ALL';
+      const icon = acFilterToggleBtn.querySelector('span:first-child');
+      const chevron = document.getElementById('acFilterChevron');
+      if (hasActive) {
+        acFilterToggleBtn.className = 'items-center gap-1.5 px-3 py-1 text-xs font-bold rounded-full bg-[#4F5A78] text-white border border-[#4F5A78] shadow-md transition-all cursor-pointer group flex';
+        if (icon) icon.className = 'material-symbols-outlined text-[17px] text-[#7BDF96] transition-colors';
+        if (chevron) chevron.className = 'material-symbols-outlined text-[16px] text-white transition-transform duration-200';
+      } else {
+        acFilterToggleBtn.className = 'items-center gap-1.5 px-3 py-1 text-xs font-bold rounded-full bg-[#D0E7F9] text-[#2D354A] border border-[#4F5A78]/30 hover:bg-[#4F5A78] hover:text-white hover:border-[#4F5A78] transition-all cursor-pointer shadow-sm group flex';
+        if (icon) icon.className = 'material-symbols-outlined text-[17px] text-[#4F5A78] group-hover:text-white transition-colors';
+        if (chevron) chevron.className = 'material-symbols-outlined text-[16px] text-[#4F5A78] group-hover:text-white transition-transform duration-200';
+      }
+    }
+
+    globalSearchInput.addEventListener('input', () => {
+      const q = globalSearchInput.value.trim();
+      if (q !== '') {
+        mainHeaderTitle.innerText = `Buscando "${q}"`;
+        breadcrumbSub.innerText = 'EN TODAS LAS CATEGORÍAS';
+        if (franchiseHeroBadge) franchiseHeroBadge.innerText = `Buscando "${q}"`;
+        acFilterToggleBtn.classList.add('hidden');
+        acFilterToggleBtn.classList.remove('flex');
+        if (acFilterFanPanel) acFilterFanPanel.classList.add('hidden');
+      } else {
+        if (currentFilter === 'ALL') {
+          mainHeaderTitle.innerText = 'Colección Completa';
+          breadcrumbSub.innerText = 'NINTENDO SWITCH & WII U';
+        } else if (currentFilter === 'RECIENTES') {
+          mainHeaderTitle.innerText = 'Los más recientes';
+          breadcrumbSub.innerText = 'ÚLTIMOS AMIIBOS REGISTRADOS';
+        } else if (currentFilter === 'FAVORITOS') {
+          mainHeaderTitle.innerText = 'Mis Favoritos ❤️';
+          breadcrumbSub.innerText = 'COLECCIÓN DESTACADA';
+        } else if (currentFilter === 'Sanrio') {
+          mainHeaderTitle.innerText = 'Colaboración Sanrio';
+          breadcrumbSub.innerText = 'ANIMAL CROSSING';
+        } else {
+          mainHeaderTitle.innerText = currentFilter;
+          breadcrumbSub.innerText = currentFilter.toUpperCase();
+        }
+        updateFranchiseHeroBanner(currentFilter);
+        updateAcFilterButtonState();
+      }
+      renderCards();
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
+        e.preventDefault();
+        globalSearchInput.focus();
+      }
+    });
+
+    // ========================================================
+    // MODAL DE DETALLE
+    // ========================================================
+    function resetModalBanners() {
+      writeProgressBarContainer.classList.add('hidden');
+      successBanner.classList.add('hidden');
+      errorBanner.classList.add('hidden');
+      deleteConfirmBox.classList.add('hidden');
+      modalActionsGroup.classList.remove('hidden');
+      modalWriteBtn.disabled = false;
+      writeProgressFill.style.width = '0%';
+    }
+
+    function openDetailModal(item) {
+      activeAmiibo = item;
+      modalTitle.textContent = item.name;
+      modalImg.src = item.image || DEFAULT_AMIIBO_IMAGE;
+      modalImg.onerror = function() { this.onerror = null; this.src = DEFAULT_AMIIBO_IMAGE; };
+      modalImg.alt = item.name;
+      const isAC = (item.series && (item.series.toLowerCase().includes('animal crossing') || item.series.toLowerCase().includes('sanrio')));
+      if (isAC) {
+        const villager = getVillagerInfo(item);
+        if (villager && villager.species && villager.species !== 'Vecino') {
+          modalSeries.textContent = `ANIMAL CROSSING • ${villager.species.toUpperCase()} (${villager.personality.toUpperCase()})`;
+        } else {
+          modalSeries.textContent = `${(item.displaySeries || item.series).toUpperCase()} SERIES`;
+        }
+      } else {
+        modalSeries.textContent = `${(item.displaySeries || item.series).toUpperCase()} SERIES`;
+      }
+      modalGame.textContent = `Juego: ${item.game || item.series}`;
+
+      if (item.rawBase64) {
+        modalMeta.textContent = 'Archivo NFC .bin Real Cargado • 540 Bytes • Listo para AmiiboLink';
+      } else {
+        modalMeta.textContent = 'Archivo NFC .bin • 540 Bytes • NTAG215';
+      }
+
+      resetModalBanners();
+
+      // Estado favorito en modal
+      const isFav = favoriteAmiiboIds.has(item.id);
+      updateModalFavUi(isFav);
+
+      modalWriteBtn.innerHTML = `
+        <span class="material-symbols-outlined text-[20px]">bolt</span>
+        <span>Escribir datos en AmiiboLink</span>
+      `;
+
+      amiiboModal.classList.remove('hidden');
+      amiiboModal.classList.add('flex');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeDetailModal() {
+      amiiboModal.classList.add('hidden');
+      amiiboModal.classList.remove('flex');
+      if (registerModal.classList.contains('hidden') && (!editModal || editModal.classList.contains('hidden'))) {
+        document.body.style.overflow = '';
+      }
+    }
+
+    function updateModalFavUi(isFav) {
+      if (!modalFavBtn || !modalFavIcon) return;
+      if (isFav) {
+        modalFavBtn.className = 'p-2 rounded-xl text-white bg-rose-500 border border-rose-500 hover:bg-rose-600 hover:border-rose-600 hover:scale-105 transition-all duration-200 cursor-pointer shadow-sm';
+        modalFavIcon.className = 'material-symbols-outlined text-[19px] material-symbols-fill transition-colors';
+        modalFavBtn.title = 'Quitar de favoritos';
+      } else {
+        modalFavBtn.className = 'p-2 rounded-xl text-[#cc8b86] hover:text-white bg-[#cc8b86]/15 hover:bg-[#b03a35] border border-[#cc8b86]/35 hover:border-[#b03a35] hover:scale-105 transition-all duration-200 cursor-pointer shadow-sm';
+        modalFavIcon.className = 'material-symbols-outlined text-[19px] transition-colors';
+        modalFavBtn.title = 'Marcar como favorito';
+      }
+    }
+
+    closeModalBtn.addEventListener('click', closeDetailModal);
+    btnSuccessClose.addEventListener('click', closeDetailModal);
+    modalFavBtn.addEventListener('click', () => {
+      if (!activeAmiibo) return;
+      const isFav = favoriteAmiiboIds.has(activeAmiibo.id);
+      if (isFav) {
+        favoriteAmiiboIds.delete(activeAmiibo.id);
+        updateModalFavUi(false);
+        notify(`"${activeAmiibo.name}" quitado de Favoritos`, 'info');
+      } else {
+        favoriteAmiiboIds.add(activeAmiibo.id);
+        updateModalFavUi(true);
+        playAudioTone('success');
+        notify(`❤️ "${activeAmiibo.name}" agregado a Favoritos`, 'success');
+      }
+      saveFavoritesStorage();
+      renderCards();
+    });
+    modalEditAmiiboBtn.addEventListener('click', () => {
+      if (!activeAmiibo) return;
+      const target = activeAmiibo;
+      closeDetailModal();
+      openEditModal(target);
+    });
+    btnRetryWrite.addEventListener('click', () => {
+      resetModalBanners();
+      modalWriteBtn.click();
+    });
+
+    amiiboModal.addEventListener('click', (e) => {
+      if (e.target === amiiboModal) closeDetailModal();
+    });
+
+    // DESCARTAR / ELIMINAR AMIIBO
+    modalDiscardBtn.addEventListener('click', () => {
+      if (!activeAmiibo) return;
+      deleteConfirmText.innerHTML = `¿Estás seguro de que deseas descartar a <strong>${activeAmiibo.name}</strong> de tu colección? Ya no aparecerá en tu bóveda.`;
+      modalActionsGroup.classList.add('hidden');
+      deleteConfirmBox.classList.remove('hidden');
+    });
+
+    btnCancelDelete.addEventListener('click', () => {
+      deleteConfirmBox.classList.add('hidden');
+      modalActionsGroup.classList.remove('hidden');
+    });
+
+    btnConfirmDelete.addEventListener('click', () => {
+      if (!activeAmiibo) return;
+      const removedName = activeAmiibo.name;
+      const targetId = activeAmiibo.id;
+
+      deletedAmiiboIds.add(targetId);
+      saveDeletedStorage();
+
+      if (favoriteAmiiboIds.has(targetId)) {
+        favoriteAmiiboIds.delete(targetId);
+        saveFavoritesStorage();
+      }
+
+      customAmiibos = customAmiibos.filter(a => a.id !== targetId);
+      saveCustomStorage();
+
+      closeDetailModal();
+      renderCards();
+      notify(`"${removedName}" fue descartado de tu colección.`, 'info');
+    });
+
+    // ========================================================
+    // GESTIÓN BLUETOOTH Y DIAGNÓSTICO
+    // ========================================================
+    function updateBtUiConnected(deviceName) {
+      headerBtDot.className = "w-2.5 h-2.5 rounded-full bg-emerald-500 shadow-[0_0_10px_rgba(34,197,94,0.8)]";
+      headerBtLabel.innerText = deviceName;
+      directBtConnectBtn.classList.remove('pulse-connect-btn');
+      directBtConnectBtn.classList.add('border-emerald-500', 'text-emerald-700', 'bg-emerald-50');
+    }
+
+    function updateBtUiDisconnected() {
+      headerBtDot.className = "w-2.5 h-2.5 rounded-full bg-gray-400";
+      headerBtLabel.innerText = bleDevice ? `${bleDevice.name || 'AmiiboLink'} (En espera)` : 'Conectar AmiiboLink';
+      directBtConnectBtn.classList.add('pulse-connect-btn');
+      directBtConnectBtn.classList.remove('border-emerald-500', 'text-emerald-700', 'bg-emerald-50');
+    }
+
+    function onBleDisconnect() {
+      updateBtUiDisconnected();
+      // Mantenemos bleDevice en memoria para reanudar conexión en segundo plano
+      bleServer = null;
+      bleWriteChar = null;
+      bleNotifyChar = null;
+    }
+
+    function forceResetBluetooth() {
+      try {
+        if (bleDevice && bleDevice.gatt) {
+          bleDevice.gatt.disconnect();
+        }
+      } catch (e) {}
+      bleDevice = null;
+      bleServer = null;
+      bleWriteChar = null;
+      bleNotifyChar = null;
+      updateBtUiDisconnected();
+      headerBtLabel.innerText = 'Conectar AmiiboLink';
+      notify('Conexión reiniciada. Ya puedes vincular de nuevo.', 'info');
+    }
+
+    directBtConnectBtn.addEventListener('click', async () => {
+      // Si ya está conectado, ofrecer reiniciar
+      if (bleServer && bleServer.connected) {
+        forceResetBluetooth();
+        return;
+      }
+      await connectAmiiboLinkBLE();
+    });
+
+    async function setupAmiiboLinkCharacteristics(server) {
+      bleWriteChar = null;
+      bleNotifyChar = null;
+
+      try {
+        const nus = await server.getPrimaryService(NUS_SERVICE);
+        try {
+          bleWriteChar = await nus.getCharacteristic(NUS_TX_WRITE);
+        } catch (e) {}
+        try {
+          bleNotifyChar = await nus.getCharacteristic(NUS_RX_NOTIFY);
+          if (bleNotifyChar) {
+            await bleNotifyChar.startNotifications();
+          }
+        } catch (e) {
+          console.warn('startNotifications error:', e);
+        }
+        if (bleWriteChar) return true;
+      } catch (e) {
+        console.log('NUS directo no encontrado, buscando en otros servicios...');
+      }
+
+      // Búsqueda inteligente en otros servicios registrados
+      try {
+        const services = await server.getPrimaryServices();
+        for (const s of services) {
+          try {
+            const chars = await s.getCharacteristics();
+            for (const c of chars) {
+              if (!bleWriteChar && (c.properties.write || c.properties.writeWithoutResponse)) {
+                bleWriteChar = c;
+              }
+              if (!bleNotifyChar && (c.properties.notify || c.properties.indicate)) {
+                bleNotifyChar = c;
+                try { await c.startNotifications(); } catch (err) {}
+              }
+            }
+          } catch (err) {}
+        }
+      } catch (err) {
+        console.warn('Error al enumerar servicios:', err);
+      }
+      return !!bleWriteChar;
+    }
+
+    async function ensureAmiiboLinkConnected() {
+      // Caso 1: Si ya está conectado y con canal activo, transferir DIRECTO (cero ventanas)
+      if (bleDevice && bleDevice.gatt && bleDevice.gatt.connected && bleWriteChar) {
+        return true;
+      }
+
+      // Caso 2: Si ya fue vinculado en esta sesión pero entró en reposo:
+      // Reconectar DIRECTAMENTE en segundo plano al dispositivo sin pedir selección
+      if (bleDevice && bleDevice.gatt) {
+        try {
+          writeProgressStatus.innerText = 'Reactivando conexión con tu AmiiboLink...';
+          writeLogDetail.innerText = 'Reanudando enlace sin pedir selección...';
+          
+          if (!bleDevice.gatt.connected) {
+            bleServer = await bleDevice.gatt.connect();
+          } else {
+            bleServer = bleDevice.gatt;
+          }
+
+          const ready = await setupAmiiboLinkCharacteristics(bleServer);
+          if (ready) {
+            updateBtUiConnected(bleDevice.name || 'AmiiboLink');
+            return true;
+          }
+        } catch (err) {
+          console.warn('Reconexión directa falló, intentando dispositivos recordados...', err);
+        }
+      }
+
+      // Caso 3: En Chrome/Edge, comprobar si el navegador recuerda el dispositivo previamente vinculado
+      if (navigator.bluetooth && navigator.bluetooth.getDevices) {
+        try {
+          const remembered = await navigator.bluetooth.getDevices();
+          if (remembered && remembered.length > 0) {
+            writeProgressStatus.innerText = 'Reconectando dispositivo recordado...';
+            const dev = remembered.find(d => d.name && d.name.toLowerCase().includes('amiibo')) || remembered[0];
+            if (dev) {
+              bleDevice = dev;
+              bleDevice.addEventListener('gattserverdisconnected', onBleDisconnect);
+              bleServer = await bleDevice.gatt.connect();
+              const ready = await setupAmiiboLinkCharacteristics(bleServer);
+              if (ready) {
+                updateBtUiConnected(bleDevice.name || 'AmiiboLink');
+                return true;
+              }
+            }
+          }
+        } catch (e) {
+          console.log('getDevices no disponible o error:', e);
+        }
+      }
+
+      // Caso 4: Solo si NO hay ningún dispositivo previo en esta sesión, pedir al usuario seleccionarlo
+      return await connectAmiiboLinkBLE(false);
+    }
+
+    function withTimeout(promise, ms, label) {
+      return Promise.race([
+        promise,
+        new Promise((_, reject) => setTimeout(() => reject(new Error(`Tiempo agotado en ${label} (${ms / 1000}s). Pulsa el botón del llavero y reintenta.`)), ms))
+      ]);
+    }
+
+    async function connectAmiiboLinkBLE(isTest = false) {
+      if (!navigator.bluetooth) {
+        notify('Tu navegador tiene el Bluetooth bloqueado o no lo soporta. Abre en Google Chrome o Edge.', 'error');
+        braveHintBanner.classList.remove('hidden');
+        return false;
+      }
+
+      // Si ya está conectado y listo
+      if (bleDevice && bleDevice.gatt && bleDevice.gatt.connected && bleWriteChar) {
+        playAudioTone('success');
+        notify(`"${bleDevice.name || 'AmiiboLink'}" ya está listo y conectado.`, 'info');
+        return true;
+      }
+
+      // Si ya tenemos bleDevice, intentar reconexión sin ventana emergente
+      if (bleDevice && bleDevice.gatt && !isTest) {
+        try {
+          bleServer = await bleDevice.gatt.connect();
+          await setupAmiiboLinkCharacteristics(bleServer);
+          updateBtUiConnected(bleDevice.name || 'AmiiboLink');
+          playAudioTone('success');
+          notify(`¡${bleDevice.name || 'AmiiboLink'} conectado!`, 'success');
+          return true;
+        } catch(e) {}
+      }
+
+      try {
+        headerBtLabel.innerText = 'Buscando...';
+        headerBtDot.className = "w-2.5 h-2.5 rounded-full bg-amber-400 animate-pulse";
+        notify('Presiona el botón del ojo Sheikah en tu llavero y elígelo en la lista.', 'info');
+
+        // Disparo de la ventana nativa de Bluetooth
+        // Filtrado como en el proyecto original (DanTheMan827): solo dispositivos AmiiboLink
+        bleDevice = await navigator.bluetooth.requestDevice({
+          filters: [
+            { name: 'amiibolink' },
+            { namePrefix: 'amiibolink' },
+            { namePrefix: 'Amiibolink' },
+            { namePrefix: 'AmiiboLink' },
+            { namePrefix: 'AMIIBOLINK' },
+            { namePrefix: 'Amiibo' }
+          ],
+          optionalServices: [
+            NUS_SERVICE,
+            '0000fee7-0000-1000-8000-00805f9b34fb',
+            '0000ffe0-0000-1000-8000-00805f9b34fb',
+            '0000ffe5-0000-1000-8000-00805f9b34fb',
+            '0000fff0-0000-1000-8000-00805f9b34fb',
+            '0000180a-0000-1000-8000-00805f9b34fb'
+          ]
+        });
+
+        bleDevice.addEventListener('gattserverdisconnected', onBleDisconnect);
+
+        headerBtLabel.innerText = 'Conectando...';
+
+        // Limpiar cualquier conexión GATT a medias (como hace el original) y conectar con timeout
+        try { bleDevice.gatt.disconnect(); } catch (e) {}
+        await new Promise(r => setTimeout(r, 300));
+        console.log('[BLE] gatt.connect() a', bleDevice.name, bleDevice.id);
+        // Reintentos: en macOS el primer gatt.connect() a veces se cuelga y el segundo entra
+        let connectErr = null;
+        for (let attempt = 1; attempt <= 3; attempt++) {
+          try {
+            headerBtLabel.innerText = `Conectando (${attempt}/3)...`;
+            bleServer = await withTimeout(bleDevice.gatt.connect(), 8000, 'gatt.connect');
+            connectErr = null;
+            break;
+          } catch (e) {
+            connectErr = e;
+            console.warn(`[BLE] intento ${attempt} falló:`, e.message);
+            try { bleDevice.gatt.disconnect(); } catch (_) {}
+            await new Promise(r => setTimeout(r, 800));
+          }
+        }
+        if (connectErr) throw connectErr;
+        console.log('[BLE] GATT conectado, buscando servicios...');
+        const bleReady = await withTimeout(setupAmiiboLinkCharacteristics(bleServer), 12000, 'servicios/características');
+        if (!bleReady) throw new Error('No se encontró la característica de escritura (¿servicio NUS?)');
+        console.log('[BLE] listo. write:', bleWriteChar && bleWriteChar.uuid, 'notify:', bleNotifyChar && bleNotifyChar.uuid);
+
+        updateBtUiConnected(bleDevice.name || 'AmiiboLink');
+
+        playAudioTone('success');
+        if (isTest) {
+          notify(`¡Prueba exitosa! "${bleDevice.name || 'AmiiboLink'}" está listo.`, 'success');
+        } else {
+          notify(`¡AmiiboLink vinculado y conectado!`, 'success');
+        }
+        return true;
+      } catch (err) {
+        updateBtUiDisconnected();
+
+        if (err.name === 'NotFoundError') {
+          console.warn('Emparejamiento cancelado por el usuario.');
+          notify('No seleccionaste ningún dispositivo o se canceló la ventana.', 'info');
+        } else if (err.name === 'SecurityError') {
+          console.warn('Acceso Bluetooth bloqueado:', err);
+          notify('El navegador bloqueó el acceso Bluetooth.', 'error');
+          braveHintBanner.classList.remove('hidden');
+        } else {
+          console.error('Error BLE:', err);
+          notify('No se pudo conectar: ' + err.message, 'error');
+        }
+        return false;
+      }
+    }
+
+    // ========================================================
+    // PROTOCOLO OFICIAL DE ESCRITURA AMIIBOLINK
+    // ========================================================
+    function processDumpToAmiiboLinkCommands(inputArray) {
+      const writeCommands = [];
+
+      // Tamaño exacto de 540 bytes (volcado estándar NTAG215)
+      const workingArray = new Uint8Array(540);
+      workingArray.set(inputArray.slice(0, Math.min(540, inputArray.length)), 0);
+
+      // 1. Comandos iniciales de preparación del chip en el hardware
+      writeCommands.push(Uint8Array.from([0xA0, 0xB0]));
+      writeCommands.push(Uint8Array.from([0xAC, 0xAC, 0x00, 0x04, 0x00, 0x00, 0x02, 0x1C]));
+      writeCommands.push(Uint8Array.from([0xAB, 0xAB, 0x02, 0x1C]));
+
+      // 2. 27 bloques empaquetados con cabecera DD AA y número de iteración
+      for (let i = 0; i < workingArray.length; i += 20) {
+        const slice = workingArray.slice(i, i + 20);
+        const iteration = Math.floor(i / 20) + 1; // 1 hasta 27
+
+        const tempArray = Uint8Array.from([
+          0xDD, 0xAA, 0x00, 0x14,
+          ...slice,
+          0x00,
+          iteration
+        ]);
+
+        writeCommands.push(tempArray);
+      }
+
+      // 3. Comandos finales de confirmación y fijado en memoria
+      writeCommands.push(Uint8Array.from([0xBC, 0xBC]));
+      writeCommands.push(Uint8Array.from([0xCC, 0xDD]));
+
+      return writeCommands;
+    }
+
+    // ENVÍO CON CONFIRMACIÓN OFICIAL AMIIBOLINK (sendAndWait)
+    function sendAndWaitAmiiboLink(txChar, rxChar, data) {
+      if (!rxChar) {
+        return new Promise(async (resolve, reject) => {
+          try {
+            if (txChar.properties.write) {
+              await txChar.writeValueWithResponse(data);
+            } else {
+              await txChar.writeValueWithoutResponse(data);
+            }
+            setTimeout(resolve, 45);
+          } catch (err) {
+            reject(err);
+          }
+        });
+      }
+
+      return new Promise(async (resolve, reject) => {
+        let timer = null;
+        let resolved = false;
+
+        function innerResolve(event) {
+          if (!resolved) {
+            resolved = true;
+            if (timer) clearTimeout(timer);
+            try { rxChar.removeEventListener('characteristicvaluechanged', innerResolve); } catch (e) {}
+            resolve(event ? event.target.value : null);
+          }
+        }
+
+        // Timeout generoso de 3.5 segundos para dar tiempo al chip a flashear cada bloque
+        timer = setTimeout(() => {
+          if (!resolved) {
+            resolved = true;
+            try { rxChar.removeEventListener('characteristicvaluechanged', innerResolve); } catch (e) {}
+            reject(new Error('El llavero tardó en confirmar el bloque. Presiona el botón del ojo Sheikah y vuelve a intentar.'));
+          }
+        }, 3500);
+
+        try {
+          rxChar.addEventListener('characteristicvaluechanged', innerResolve);
+          if (txChar.properties.write) {
+            await txChar.writeValueWithResponse(data);
+          } else if (txChar.properties.writeWithoutResponse) {
+            await txChar.writeValueWithoutResponse(data);
+          } else {
+            await txChar.writeValue(data);
+          }
+        } catch (error) {
+          if (!resolved) {
+            resolved = true;
+            if (timer) clearTimeout(timer);
+            try { rxChar.removeEventListener('characteristicvaluechanged', innerResolve); } catch (e) {}
+            reject(error);
+          }
+        }
+      });
+    }
+
+    // ========================================================
+    // PROCESO DE ESCRITURA
+    // ========================================================
+    modalWriteBtn.addEventListener('click', async () => {
+      if (!activeAmiibo) return;
+
+      if (!navigator.bluetooth) {
+        notify('Abre en Google Chrome o Microsoft Edge para escribir por Bluetooth.', 'error');
+        braveHintBanner.classList.remove('hidden');
+        return;
+      }
+
+      successBanner.classList.add('hidden');
+      errorBanner.classList.add('hidden');
+      writeProgressBarContainer.classList.remove('hidden');
+      writeProgressFill.style.width = '10%';
+      writeProgressPercent.innerText = '10%';
+      writeProgressStatus.innerText = 'Verificando conexión con AmiiboLink...';
+      writeLogDetail.innerText = 'Comprobando enlace activo...';
+      modalWriteBtn.disabled = true;
+
+      try {
+        // Conexión inteligente: si ya estás vinculado, ¡NO vuelve a pedir la ventana!
+        const ok = await ensureAmiiboLinkConnected();
+        if (!ok || !bleWriteChar) {
+          throw new Error('No se pudo establecer comunicación con tu AmiiboLink. Presiona el botón físico del llavero.');
+        }
+
+        writeProgressFill.style.width = '25%';
+        writeProgressPercent.innerText = '25%';
+        writeProgressStatus.innerText = 'Preparando volcado NFC y comandos oficiales...';
+
+        const rawBuffer = getAmiiboUint8Buffer(activeAmiibo);
+        const amiiboCommands = processDumpToAmiiboLinkCommands(rawBuffer);
+        const totalCommands = amiiboCommands.length; // 32 paquetes oficiales
+
+        writeLogDetail.innerText = `Protocolo AmiiboLink: transmitiendo ${totalCommands} paquetes...`;
+
+        for (let idx = 0; idx < totalCommands; idx++) {
+          const cmd = amiiboCommands[idx];
+
+          await sendAndWaitAmiiboLink(bleWriteChar, bleNotifyChar, cmd);
+
+          const pct = Math.floor(25 + ((idx + 1) / totalCommands) * 75);
+          writeProgressFill.style.width = `${pct}%`;
+          writeProgressPercent.innerText = `${pct}%`;
+          writeProgressStatus.innerText = `Escribiendo bloque ${idx + 1} de ${totalCommands}...`;
+          writeLogDetail.innerText = `Confirmado por AmiiboLink: bloque ${idx + 1} de ${totalCommands}`;
+        }
+
+        // Pausa de seguridad para que el microcontrolador termine el commit de memoria
+        await new Promise(r => setTimeout(r, 350));
+
+        writeProgressBarContainer.classList.add('hidden');
+        modalActionsGroup.classList.add('hidden');
+
+        successAmiiboNameText.innerHTML = `¡Los datos de <strong>"${activeAmiibo.name}"</strong> se grabaron exitosamente en tu AmiiboLink!`;
+        successBanner.classList.remove('hidden');
+
+        playAudioTone('success');
+        notify(`✅ ¡Éxito! "${activeAmiibo.name}" transferido a tu AmiiboLink.`, 'success');
+
+      } catch (err) {
+        console.error('Error durante escritura:', err);
+        writeProgressBarContainer.classList.add('hidden');
+
+        errorReasonText.innerText = err.message || 'Se perdió la comunicación con el dispositivo.';
+        errorBanner.classList.remove('hidden');
+
+        // Desconectamos para que el siguiente intento no quede en estado corrupto
+        try {
+          if (bleDevice && bleDevice.gatt) bleDevice.gatt.disconnect();
+        } catch(e) {}
+        onBleDisconnect();
+
+        playAudioTone('error');
+        notify('❌ No se pudo completar la transferencia.', 'error');
+      } finally {
+        modalWriteBtn.disabled = false;
+      }
+    });
+
+    // BUFFER
+    function getAmiiboUint8Buffer(amiibo) {
+      if (amiibo.rawBase64) {
+        return base64ToUint8Array(amiibo.rawBase64);
+      }
+
+      if (amiibo.rawBytes) {
+        if (amiibo.rawBytes instanceof Uint8Array) return amiibo.rawBytes;
+        const vals = Object.values(amiibo.rawBytes);
+        return new Uint8Array(vals);
+      }
+
+      const buf = new Uint8Array(540);
+      buf[0] = 0x04;
+      buf[1] = Math.floor(Math.random() * 255);
+      buf[2] = Math.floor(Math.random() * 255);
+      buf[3] = 0xE2;
+
+      if (amiibo.id && amiibo.id.length >= 16) {
+        for (let i = 0; i < 8; i++) {
+          const byteHex = amiibo.id.substr(i * 2, 2);
+          buf[84 + i] = parseInt(byteHex, 16) || 0;
+        }
+      }
+      return buf;
+    }
+
+    function base64ToUint8Array(base64) {
+      const clean = base64.includes(',') ? base64.split(',')[1] : base64;
+      const binStr = atob(clean);
+      const len = binStr.length;
+      const bytes = new Uint8Array(len);
+      for (let i = 0; i < len; i++) {
+        bytes[i] = binStr.charCodeAt(i);
+      }
+      return bytes;
+    }
+
+    function fileToBase64(file) {
+      return new Promise((resolve, reject) => {
+        const reader = new FileReader();
+        reader.readAsDataURL(file);
+        reader.onload = () => resolve(reader.result);
+        reader.onerror = err => reject(err);
+      });
+    }
+
+    // Auto-optimización y estandarización de imágenes al tamaño oficial de Mario
+    function processAndOptimizeImage(file) {
+      return new Promise((resolve) => {
+        const reader = new FileReader();
+        reader.onload = (e) => {
+          const img = new Image();
+          img.onload = () => {
+            // Escala estándar de 600px de altura máxima (idéntico a las figuras oficiales)
+            const maxDim = 600;
+            let width = img.width;
+            let height = img.height;
+
+            if (width > maxDim || height > maxDim) {
+              if (width > height) {
+                height = Math.round((height * maxDim) / width);
+                width = maxDim;
+              } else {
+                width = Math.round((width * maxDim) / height);
+                height = maxDim;
+              }
+            }
+
+            const canvas = document.createElement('canvas');
+            canvas.width = width;
+            canvas.height = height;
+            const ctx = canvas.getContext('2d');
+            ctx.imageSmoothingEnabled = true;
+            ctx.imageSmoothingQuality = 'high';
+            ctx.drawImage(img, 0, 0, width, height);
+
+            const isPng = file.type === 'image/png';
+            const outputType = isPng ? 'image/png' : 'image/webp';
+            try {
+              const dataUrl = canvas.toDataURL(outputType, 0.92);
+              resolve(dataUrl);
+            } catch (err) {
+              resolve(e.target.result);
+            }
+          };
+          img.onerror = () => resolve(e.target.result);
+          img.src = e.target.result;
+        };
+        reader.onerror = () => resolve(null);
+        reader.readAsDataURL(file);
+      });
+    }
+
+    // REGISTRO
+    function checkRegisterVillagerAutoDetect() {
+      const isAC = amiiboFranchise.value === 'Animal Crossing' || amiiboFranchise.value === 'Sanrio';
+      if (!isAC) return;
+      const detected = lookupAcVillager(amiiboName.value);
+      if (detected) {
+        registerAcSpecies.value = detected.species;
+        registerAcPersonality.value = detected.personality;
+        registerAcAutoDetectStatus.textContent = `✨ Reconocido: ${detected.species} • ${detected.personality}`;
+        registerAcAutoDetectStatus.className = 'text-[10px] text-[#2D354A] bg-[#D0E7F9] font-bold px-2 py-0.5 rounded-full border border-[#4F5A78]/20';
+      } else {
+        registerAcAutoDetectStatus.textContent = 'Personalizado o manual';
+        registerAcAutoDetectStatus.className = 'text-[10px] text-gray-600 bg-gray-200/80 font-medium px-2 py-0.5 rounded-full';
+      }
+    }
+
+    function updateRegisterAcFields() {
+      const isAC = amiiboFranchise.value === 'Animal Crossing' || amiiboFranchise.value === 'Sanrio';
+      if (isAC) {
+        registerAcVillagerFields.classList.remove('hidden');
+        checkRegisterVillagerAutoDetect();
+      } else {
+        registerAcVillagerFields.classList.add('hidden');
+      }
+    }
+
+    amiiboFranchise.addEventListener('change', updateRegisterAcFields);
+    amiiboName.addEventListener('input', checkRegisterVillagerAutoDetect);
+
+    function openRegisterModal() {
+      uploadedBinFile = null;
+      uploadedPhotoBase64 = null;
+      amiiboName.value = '';
+      amiiboUid.value = '';
+      dropzoneMainText.innerText = 'Subir archivo de volcado (.bin / .dump)';
+      dropzoneSubText.innerText = 'Arrastra el archivo aquí o haz clic para examinar (máx. 1MB)';
+      
+      photoPreviewImg.src = '';
+      photoPreviewImg.classList.add('hidden');
+      photoPlaceholderIcon.classList.remove('hidden');
+      photoStatusText.innerText = 'Selecciona la imagen para que aparezca en tu tarjeta';
+      photoStatusText.style.color = '';
+
+      if (currentFilter === 'Animal Crossing' || currentFilter === 'Sanrio') {
+        amiiboFranchise.value = currentFilter;
+      } else if (currentFilter === 'Especiales') {
+        amiiboFranchise.value = 'Especiales';
+      } else if (currentFilter === 'Kirby') {
+        amiiboFranchise.value = 'Kirby';
+      }
+      registerAcSpecies.value = 'Vecino';
+      registerAcPersonality.value = 'Estándar';
+      updateRegisterAcFields();
+
+      registerModal.classList.remove('hidden');
+      registerModal.classList.add('flex');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeRegisterModal() {
+      registerModal.classList.add('hidden');
+      registerModal.classList.remove('flex');
+      if (amiiboModal.classList.contains('hidden')) {
+        document.body.style.overflow = '';
+      }
+    }
+
+    openRegisterBtn.addEventListener('click', openRegisterModal);
+    closeRegisterModalBtn.addEventListener('click', closeRegisterModal);
+    cancelRegisterBtn.addEventListener('click', closeRegisterModal);
+
+    registerModal.addEventListener('click', (e) => {
+      if (e.target === registerModal) closeRegisterModal();
+    });
+
+    // FOTO
+    choosePhotoBtn.addEventListener('click', () => amiiboPhotoInput.click());
+
+    amiiboPhotoInput.addEventListener('change', async (e) => {
+      if (e.target.files && e.target.files[0]) {
+        const file = e.target.files[0];
+        try {
+          uploadedPhotoBase64 = await processAndOptimizeImage(file);
+          photoPreviewImg.src = uploadedPhotoBase64;
+          photoPreviewImg.classList.remove('hidden');
+          photoPlaceholderIcon.classList.add('hidden');
+          photoStatusText.innerText = `✓ Foto cargada: ${file.name}`;
+          photoStatusText.style.color = '#4F5A78';
+        } catch (err) {
+          notify('Error al procesar la imagen.', 'error');
+        }
+      }
+    });
+
+    // ARCHIVO .BIN
+    dropzoneArea.addEventListener('click', () => amiiboFileInput.click());
+
+    dropzoneArea.addEventListener('dragover', (e) => {
+      e.preventDefault();
+      dropzoneArea.classList.add('border-[#4F5A78]', 'bg-slate-50');
+    });
+
+    dropzoneArea.addEventListener('dragleave', () => {
+      dropzoneArea.classList.remove('border-[#4F5A78]', 'bg-slate-50');
+    });
+
+    dropzoneArea.addEventListener('drop', (e) => {
+      e.preventDefault();
+      dropzoneArea.classList.remove('border-[#4F5A78]', 'bg-slate-50');
+      if (e.dataTransfer.files && e.dataTransfer.files[0]) {
+        handleBinFile(e.dataTransfer.files[0]);
+      }
+    });
+
+    amiiboFileInput.addEventListener('change', (e) => {
+      if (e.target.files && e.target.files[0]) {
+        handleBinFile(e.target.files[0]);
+      }
+    });
+
+    function handleBinFile(file) {
+      uploadedBinFile = file;
+      dropzoneMainText.innerText = `✓ ${file.name}`;
+      dropzoneSubText.innerText = `${(file.size / 1024).toFixed(1)} KB - Volcado válido`;
+      if (!amiiboName.value) {
+        amiiboName.value = file.name.replace(/\.[^/.]+$/, "");
+        checkRegisterVillagerAutoDetect();
+      }
+    }
+
+    // SUBMIT
+    submitRegisterBtn.addEventListener('click', async () => {
+      const name = amiiboName.value.trim();
+      if (!name) {
+        notify('Escribe un nombre para el Amiibo.', 'error');
+        return;
+      }
+
+      let binBase64 = null;
+      if (uploadedBinFile) {
+        binBase64 = await fileToBase64(uploadedBinFile);
+      }
+
+      const finalImage = uploadedPhotoBase64 || DEFAULT_AMIIBO_IMAGE;
+
+      const isAC = amiiboFranchise.value === 'Animal Crossing' || amiiboFranchise.value === 'Sanrio';
+      let villagerSpecies = null;
+      let villagerPersonality = null;
+      if (isAC) {
+        const chosenSpecies = registerAcSpecies.value;
+        const chosenPersonality = registerAcPersonality.value;
+        const detected = lookupAcVillager(name);
+        villagerSpecies = (chosenSpecies && chosenSpecies !== 'Vecino') ? chosenSpecies : (detected ? detected.species : 'Vecino');
+        villagerPersonality = (chosenPersonality && chosenPersonality !== 'Estándar') ? chosenPersonality : (detected ? detected.personality : 'Estándar');
+      }
+
+      const newAmiibo = {
+        id: amiiboUid.value.trim() || 'CUSTOM_' + Date.now(),
+        name: name,
+        series: amiiboFranchise.value,
+        displaySeries: amiiboFranchise.value.toUpperCase(),
+        game: amiiboFranchise.value,
+        isCustom: true,
+        image: finalImage,
+        rawBase64: binBase64,
+        ...(isAC ? { species: villagerSpecies, personality: villagerPersonality } : {})
+      };
+
+      if (deletedAmiiboIds.has(newAmiibo.id)) {
+        deletedAmiiboIds.delete(newAmiibo.id);
+        saveDeletedStorage();
+      }
+
+      customAmiibos.unshift(newAmiibo);
+      saveCustomStorage();
+      closeRegisterModal();
+      notify(`¡"${name}" registrado con éxito!`, 'success');
+
+      currentFilter = amiiboFranchise.value;
+      mainHeaderTitle.innerText = currentFilter;
+      breadcrumbSub.innerText = currentFilter.toUpperCase();
+      updateFranchiseHeroBanner(currentFilter);
+
+      navFilters.forEach(b => {
+        b.classList.remove('active-franchise');
+        b.style.backgroundColor = '';
+        b.style.color = '';
+        b.style.fontWeight = '';
+        if (b.getAttribute('data-filter') === currentFilter) {
+          b.classList.add('active-franchise');
+          b.style.backgroundColor = 'rgb(208, 231, 249)';
+          b.style.color = 'rgb(43, 56, 89)';
+          b.style.fontWeight = '700';
+        }
+      });
+
+      if (currentFilter === 'Animal Crossing' || currentFilter === 'Sanrio') {
+        openAcSidebarSubmenu();
+      } else {
+        closeAcSidebarSubmenu();
+      }
+
+      updateAcFilterButtonState();
+
+      renderCards();
+    });
+
+    // ========================================================
+    // MODAL EDITAR AMIIBO (LÁPIZ)
+    // ========================================================
+    function checkEditVillagerAutoDetect() {
+      const isAC = editAmiiboFranchise.value === 'Animal Crossing' || editAmiiboFranchise.value === 'Sanrio';
+      if (!isAC) return;
+      const detected = lookupAcVillager(editAmiiboName.value);
+      if (detected) {
+        editAcSpecies.value = detected.species;
+        editAcPersonality.value = detected.personality;
+        editAcAutoDetectStatus.textContent = `✨ Reconocido: ${detected.species} • ${detected.personality}`;
+        editAcAutoDetectStatus.className = 'text-[10px] text-[#2D354A] bg-[#D0E7F9] font-bold px-2 py-0.5 rounded-full border border-[#4F5A78]/20';
+      } else {
+        editAcAutoDetectStatus.textContent = 'Personalizado o manual';
+        editAcAutoDetectStatus.className = 'text-[10px] text-gray-600 bg-gray-200/80 font-medium px-2 py-0.5 rounded-full';
+      }
+    }
+
+    function updateEditAcFields() {
+      const isAC = editAmiiboFranchise.value === 'Animal Crossing' || editAmiiboFranchise.value === 'Sanrio';
+      if (isAC) {
+        editAcVillagerFields.classList.remove('hidden');
+        checkEditVillagerAutoDetect();
+      } else {
+        editAcVillagerFields.classList.add('hidden');
+      }
+    }
+
+    editAmiiboFranchise.addEventListener('change', updateEditAcFields);
+    editAmiiboName.addEventListener('input', checkEditVillagerAutoDetect);
+
+    function openEditModal(item) {
+      editingAmiibo = item;
+      editUploadedPhotoBase64 = null;
+      editUploadedBinBase64 = null;
+
+      editAmiiboName.value = item.name || '';
+
+      // Preseleccionar la franquicia/categoría actual
+      let matched = false;
+      const itemSeries = (item.series || '').toLowerCase();
+      for (const opt of editAmiiboFranchise.options) {
+        const val = opt.value.toLowerCase();
+        if (val === itemSeries || itemSeries.includes(val) || (val === 'sanrio' && itemSeries.includes('sanrio')) || (val === 'especiales' && (itemSeries.includes('especial') || itemSeries.includes('resident') || itemSeries.includes('otra')))) {
+          editAmiiboFranchise.value = opt.value;
+          matched = true;
+          break;
+        }
+      }
+      if (!matched) {
+        editAmiiboFranchise.value = 'Especiales';
+      }
+
+      // Datos de vecino Animal Crossing
+      const isItemAC = (itemSeries.includes('animal crossing') || itemSeries.includes('sanrio'));
+      if (isItemAC) {
+        editAcVillagerFields.classList.remove('hidden');
+        const villager = getVillagerInfo(item);
+        editAcSpecies.value = (villager && villager.species && villager.species !== 'Vecino') ? villager.species : 'Vecino';
+        editAcPersonality.value = (villager && villager.personality && villager.personality !== 'Estándar') ? villager.personality : 'Estándar';
+        if (villager && villager.species && villager.species !== 'Vecino') {
+          editAcAutoDetectStatus.textContent = `✨ ${villager.species} • ${villager.personality}`;
+          editAcAutoDetectStatus.className = 'text-[10px] text-[#2D354A] bg-[#D0E7F9] font-bold px-2 py-0.5 rounded-full border border-[#4F5A78]/20';
+        } else {
+          editAcAutoDetectStatus.textContent = 'Personalizado o manual';
+          editAcAutoDetectStatus.className = 'text-[10px] text-gray-600 bg-gray-200/80 font-medium px-2 py-0.5 rounded-full';
+        }
+      } else {
+        editAcVillagerFields.classList.add('hidden');
+      }
+
+      // Foto
+      editPhotoPreviewImg.src = item.image || DEFAULT_AMIIBO_IMAGE;
+      editPhotoPreviewImg.onerror = function() { this.onerror = null; this.src = DEFAULT_AMIIBO_IMAGE; };
+      editPhotoStatusText.innerText = 'Mantener actual o subir una nueva';
+      editPhotoStatusText.style.color = '';
+
+      // Estado del archivo .bin
+      if (item.rawBase64) {
+        editDropzoneMainText.innerText = '✓ Archivo .bin cargado (540 bytes)';
+        editDropzoneSubText.innerText = 'Haz clic si deseas reemplazar el archivo existente';
+      } else {
+        editDropzoneMainText.innerText = 'Sin archivo .bin propio (usa datos estándar)';
+        editDropzoneSubText.innerText = 'Haz clic para subir un archivo .bin si lo tienes';
+      }
+
+      editModal.classList.remove('hidden');
+      editModal.classList.add('flex');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeEditModal() {
+      editModal.classList.add('hidden');
+      editModal.classList.remove('flex');
+      editingAmiibo = null;
+      if (amiiboModal.classList.contains('hidden') && registerModal.classList.contains('hidden')) {
+        document.body.style.overflow = '';
+      }
+    }
+
+    closeEditModalBtn.addEventListener('click', closeEditModal);
+    cancelEditBtn.addEventListener('click', closeEditModal);
+
+    editModal.addEventListener('click', (e) => {
+      if (e.target === editModal) closeEditModal();
+    });
+
+    // Subir foto en edición
+    editChoosePhotoBtn.addEventListener('click', () => editAmiiboPhotoInput.click());
+    editAmiiboPhotoInput.addEventListener('change', async (e) => {
+      if (e.target.files && e.target.files[0]) {
+        const file = e.target.files[0];
+        try {
+          editUploadedPhotoBase64 = await processAndOptimizeImage(file);
+          editPhotoPreviewImg.src = editUploadedPhotoBase64;
+          editPhotoStatusText.innerText = `✓ Foto cargada: ${file.name}`;
+          editPhotoStatusText.style.color = '#4F5A78';
+        } catch (err) {
+          notify('Error al procesar la imagen.', 'error');
+        }
+      }
+    });
+
+    // Dropzone archivo .bin en edición
+    editDropzoneArea.addEventListener('click', () => editAmiiboFileInput.click());
+    editAmiiboFileInput.addEventListener('change', async (e) => {
+      if (e.target.files && e.target.files[0]) {
+        const file = e.target.files[0];
+        try {
+          editUploadedBinBase64 = await fileToBase64(file);
+          editDropzoneMainText.innerText = `✓ ${file.name}`;
+          editDropzoneSubText.innerText = `${(file.size / 1024).toFixed(1)} KB - Listo para guardar`;
+        } catch (err) {
+          notify('Error al leer el archivo .bin.', 'error');
+        }
+      }
+    });
+
+    // Guardar cambios
+    submitEditBtn.addEventListener('click', () => {
+      if (!editingAmiibo) return;
+      const newName = editAmiiboName.value.trim();
+      const newFranchise = editAmiiboFranchise.value;
+
+      if (!newName) {
+        notify('Escribe un nombre para el Amiibo.', 'error');
+        return;
+      }
+
+      const isAC = newFranchise === 'Animal Crossing' || newFranchise === 'Sanrio';
+      let editSpecies = null;
+      let editPersonality = null;
+      if (isAC) {
+        const chosenSpecies = editAcSpecies.value;
+        const chosenPersonality = editAcPersonality.value;
+        const detected = lookupAcVillager(newName);
+        editSpecies = (chosenSpecies && chosenSpecies !== 'Vecino') ? chosenSpecies : (detected ? detected.species : 'Vecino');
+        editPersonality = (chosenPersonality && chosenPersonality !== 'Estándar') ? chosenPersonality : (detected ? detected.personality : 'Estándar');
+      }
+
+      const customIndex = customAmiibos.findIndex(a => a.id === editingAmiibo.id);
+
+      if (customIndex !== -1) {
+        // Actualizar Amiibo personalizado existente
+        customAmiibos[customIndex].name = newName;
+        customAmiibos[customIndex].series = newFranchise;
+        customAmiibos[customIndex].displaySeries = newFranchise.toUpperCase();
+        customAmiibos[customIndex].game = newFranchise;
+        if (isAC) {
+          customAmiibos[customIndex].species = editSpecies;
+          customAmiibos[customIndex].personality = editPersonality;
+        } else {
+          delete customAmiibos[customIndex].species;
+          delete customAmiibos[customIndex].personality;
+        }
+        if (editUploadedPhotoBase64) {
+          customAmiibos[customIndex].image = editUploadedPhotoBase64;
+        }
+        if (editUploadedBinBase64) {
+          customAmiibos[customIndex].rawBase64 = editUploadedBinBase64;
+        }
+      } else {
+        // Si era de la lista base de catálogo, convertir a personalizado para persistir cambios
+        deletedAmiiboIds.add(editingAmiibo.id);
+        saveDeletedStorage();
+
+        const editedItem = {
+          ...editingAmiibo,
+          id: 'CUSTOM_' + editingAmiibo.id + '_' + Date.now(),
+          name: newName,
+          series: newFranchise,
+          displaySeries: newFranchise.toUpperCase(),
+          game: newFranchise,
+          isCustom: true,
+          image: editUploadedPhotoBase64 || editingAmiibo.image || DEFAULT_AMIIBO_IMAGE,
+          ...(isAC ? { species: editSpecies, personality: editPersonality } : {})
+        };
+        if (editUploadedBinBase64) {
+          editedItem.rawBase64 = editUploadedBinBase64;
+        }
+        customAmiibos.unshift(editedItem);
+      }
+
+      saveCustomStorage();
+      closeEditModal();
+      renderCards();
+      playAudioTone('success');
+      notify(`¡"${newName}" actualizado a ${newFranchise}!`, 'success');
+    });
+
+    // ESCAPE
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        if (!editModal.classList.contains('hidden')) {
+          closeEditModal();
+        } else if (!registerModal.classList.contains('hidden')) {
+          closeRegisterModal();
+        } else if (!amiiboModal.classList.contains('hidden')) {
+          closeDetailModal();
+        }
+      }
+    });
+  </script>
+</body>
+</html>
