@@ -9,6 +9,9 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
   <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <!-- Animación de captura (núcleo compartido con la composición HyperFrames) -->
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <script src="hyperframes/captura-amiibolink/capture-core.js"></script>
   <script>
     tailwind.config = {
       theme: {
@@ -781,8 +784,10 @@
         <span class="text-[11px] font-semibold uppercase tracking-wider text-gray-500 bg-gray-100 px-3 py-1 rounded-full" id="modalSeries" style="background-color: rgb(208, 231, 249); color: rgb(43, 56, 89); font-weight: 700;">SUPER SMASH BROS. SERIES</span>
       </div>
 
-      <div class="w-full h-60 bg-gray-50 rounded-2xl flex items-center justify-center p-6 mb-5">
-        <img alt="Amiibo" class="h-52 max-w-full object-contain mx-auto drop-shadow-xl transition-all duration-300" id="modalImg" src="">
+      <div class="relative overflow-hidden w-full h-60 bg-gray-50 rounded-2xl flex items-center justify-center p-6 mb-5">
+        <img alt="Amiibo" class="h-52 max-w-full object-contain mx-auto drop-shadow-xl" id="modalImg" src="">
+        <!-- Escenario de la animación de captura del llavero -->
+        <div id="captureStage" aria-hidden="true"></div>
       </div>
 
       <div class="flex items-start justify-between gap-2 mb-5">
@@ -928,6 +933,18 @@
             osc.start(audioCtx.currentTime + idx * 0.08);
             osc.stop(audioCtx.currentTime + idx * 0.08 + 0.35);
           });
+        } else if (type === 'tick') {
+          // "Clic" corto de cada meneo del llavero
+          const osc = audioCtx.createOscillator();
+          const gain = audioCtx.createGain();
+          osc.type = 'square';
+          osc.frequency.value = 220;
+          gain.gain.setValueAtTime(0.05, audioCtx.currentTime);
+          gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.08);
+          osc.connect(gain);
+          gain.connect(audioCtx.destination);
+          osc.start();
+          osc.stop(audioCtx.currentTime + 0.08);
         } else if (type === 'error') {
           // Melodía descendente suave estilo Nintendo (Sol-Mi-Do, mismo estilo que éxito pero bajando)
           const notes = [783.99, 523.25, 392.00];
@@ -2041,6 +2058,16 @@
     const errorReasonText = document.getElementById('errorReasonText');
     const btnRetryWrite = document.getElementById('btnRetryWrite');
 
+    // ANIMACIÓN DE CAPTURA: el llavero absorbe al Amiibo, se mueve 3 veces y suelta estrellitas
+    const captureAnim = window.AmiiboCapture
+      ? AmiiboCapture.createController(document.getElementById('captureStage'), {
+          size: 118,
+          top: '60%',
+          onWobble: () => playAudioTone('tick'),
+          onCatch: () => playAudioTone('success')
+        })
+      : { start() {}, progress() {}, succeed: async () => {}, fail: async () => {}, reset() {} };
+
     // MODAL REGISTRO
     const registerModal = document.getElementById('registerModal');
     const openRegisterBtn = document.getElementById('openRegisterBtn');
@@ -2599,6 +2626,7 @@
     // MODAL DE DETALLE
     // ========================================================
     function resetModalBanners() {
+      captureAnim.reset();
       writeProgressBarContainer.classList.add('hidden');
       successBanner.classList.add('hidden');
       errorBanner.classList.add('hidden');
@@ -3118,6 +3146,7 @@
       writeProgressStatus.innerText = 'Verificando conexión con AmiiboLink...';
       writeLogDetail.innerText = 'Comprobando enlace activo...';
       modalWriteBtn.disabled = true;
+      captureAnim.start(modalImg);
 
       try {
         // Conexión inteligente: si ya estás vinculado, ¡NO vuelve a pedir la ventana!
@@ -3144,6 +3173,7 @@
           const pct = Math.floor(25 + ((idx + 1) / totalCommands) * 75);
           writeProgressFill.style.width = `${pct}%`;
           writeProgressPercent.innerText = `${pct}%`;
+          captureAnim.progress(pct);
           writeProgressStatus.innerText = `Escribiendo bloque ${idx + 1} de ${totalCommands}...`;
           writeLogDetail.innerText = `Confirmado por AmiiboLink: bloque ${idx + 1} de ${totalCommands}`;
         }
@@ -3151,17 +3181,23 @@
         // Pausa de seguridad para que el microcontrolador termine el commit de memoria
         await new Promise(r => setTimeout(r, 350));
 
+        // Termina los meneos pendientes y "atrapa" el Amiibo (suena la melodía de éxito al hacer clic)
+        writeProgressStatus.innerText = '¡Casi listo!...';
+        await captureAnim.succeed();
+
         writeProgressBarContainer.classList.add('hidden');
         modalActionsGroup.classList.add('hidden');
 
         successAmiiboNameText.innerHTML = `¡Los datos de <strong>"${activeAmiibo.name}"</strong> se grabaron exitosamente en tu AmiiboLink!`;
         successBanner.classList.remove('hidden');
 
-        playAudioTone('success');
+        if (!window.AmiiboCapture || !window.gsap) playAudioTone('success');
         notify(`✅ ¡Éxito! "${activeAmiibo.name}" transferido a tu AmiiboLink.`, 'success');
 
       } catch (err) {
         console.error('Error durante escritura:', err);
+        // El llavero tiembla en rojo y el Amiibo "escapa"
+        await captureAnim.fail();
         writeProgressBarContainer.classList.add('hidden');
 
         errorReasonText.innerText = err.message || 'Se perdió la comunicación con el dispositivo.';
