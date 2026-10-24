@@ -1,0 +1,61 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; overflow: hidden; font-family: "Inter", sans-serif; }
+    #s6-mark { position: absolute; left: 240px; top: 190px; width: 190px; height: 190px; }
+    #s6-mark svg { width: 100%; height: 100%; display: block; overflow: visible; }
+    #s6-wm { position: absolute; left: 470px; top: 232px; font-size: 100px; font-weight: 800; letter-spacing: -0.04em; color: #131B2E; white-space: nowrap; }
+    #s6-l1, #s6-l2 { position: absolute; left: 240px; font-size: 128px; font-weight: 800; letter-spacing: -0.045em; color: #131B2E; white-space: nowrap; line-height: 1; }
+    #s6-l1 { top: 480px; }
+    #s6-l2 { top: 630px; }
+    #s6-l1 span, #s6-l2 span { display: inline-block; }
+    #s6-l2 span:last-child, #s6-l2 span:nth-last-child(2) { color: #4F5A78; }
+    #s6-uline { position: absolute; left: 244px; top: 780px; width: 790px; height: 18px; border-radius: 999px; background: #7BDF96; transform-origin: 0 50%; }
+    .s6-star { position: absolute; left: 335px; top: 285px; width: 44px; height: 44px; margin: -22px 0 0 -22px; opacity: 0; }
+    .s6-star svg { width: 100%; height: 100%; display: block; }
+    #s6-wrap { position: absolute; inset: 0; background: #EAF3FB; }
+  </style>
+  <div id="root" data-composition-id="s6-cierre" data-width="1920" data-height="1080">
+    <div id="s6-wrap">
+    <div id="s6-mark">
+      <svg viewBox="0 0 220 220" fill="none">
+        <rect width="220" height="220" rx="56" fill="#4F5A78" />
+        <ellipse cx="110" cy="160" rx="56" ry="15" fill="#D0E7F9" />
+        <circle cx="110" cy="82" r="31" fill="#FFFFFF" />
+        <path d="M70 152 Q70 116 110 116 Q150 116 150 152 Z" fill="#FFFFFF" />
+        <path d="M156 56 a30 30 0 0 1 0 44" stroke="#7BDF96" stroke-width="9" stroke-linecap="round" />
+        <path d="M170 42 a48 48 0 0 1 0 72" stroke="#7BDF96" stroke-width="9" stroke-linecap="round" />
+      </svg>
+    </div>
+    <div id="s6-wm">Amiibo Vault</div>
+    <div id="s6-l1"><span>Tu</span> <span>colección</span> <span>de</span> <span>Amiibos,</span></div>
+    <div id="s6-l2"><span>siempre</span> <span>lista.</span></div>
+    <div id="s6-uline"></div>
+    <div class="s6-star"><svg viewBox="0 0 24 24"><path d="M12 1.5l3.1 6.6 7.2.9-5.3 5 1.4 7.1L12 17.6 5.6 21.1 7 14 1.7 9l7.2-.9z" fill="#F2C230"/></svg></div>
+    <div class="s6-star"><svg viewBox="0 0 24 24"><path d="M12 1.5l3.1 6.6 7.2.9-5.3 5 1.4 7.1L12 17.6 5.6 21.1 7 14 1.7 9l7.2-.9z" fill="#29B6F0"/></svg></div>
+    <div class="s6-star"><svg viewBox="0 0 24 24"><path d="M12 1.5l3.1 6.6 7.2.9-5.3 5 1.4 7.1L12 17.6 5.6 21.1 7 14 1.7 9l7.2-.9z" fill="#F2C230"/></svg></div>
+    <div class="s6-star"><svg viewBox="0 0 24 24"><path d="M12 1.5l3.1 6.6 7.2.9-5.3 5 1.4 7.1L12 17.6 5.6 21.1 7 14 1.7 9l7.2-.9z" fill="#7BDF96"/></svg></div>
+    <div class="s6-star"><svg viewBox="0 0 24 24"><path d="M12 1.5l3.1 6.6 7.2.9-5.3 5 1.4 7.1L12 17.6 5.6 21.1 7 14 1.7 9l7.2-.9z" fill="#F2C230"/></svg></div>
+    </div>
+  </div>
+  <script>
+    (function () {
+      const tl = gsap.timeline({ paused: true });
+      // Cambio de escena con desenfoque sobre el mismo fondo
+      tl.fromTo("#s6-wrap", { opacity: 0, filter: "blur(10px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.3, ease: "power2.out" }, 0);
+      tl.fromTo("#s6-mark", { scale: 0, rotation: -25, transformOrigin: "50% 50%" }, { scale: 1, rotation: 0, duration: 0.6, ease: "back.out(1.8)" }, 0.2);
+      tl.fromTo("#s6-wm", { opacity: 0, x: -30 }, { opacity: 1, x: 0, duration: 0.45, ease: "power3.out" }, 0.55);
+      const dirs = [-90, -30, -150, 20, -60];
+      document.querySelectorAll("#root .s6-star").forEach((el, i) => {
+        const a = dirs[i] * Math.PI / 180, d = 150 + (i % 3) * 30;
+        tl.fromTo(el, { x: 0, y: 0, scale: 0, rotation: 0, opacity: 1 },
+          { x: Math.cos(a) * d, y: Math.sin(a) * d, scale: 1, rotation: i % 2 ? 150 : -150, duration: 0.55, ease: "power3.out" }, 0.45 + i * 0.03);
+        tl.to(el, { y: Math.sin(a) * d + 36, scale: 0.4, opacity: 0, duration: 0.4, ease: "power1.in" }, 1.05 + i * 0.03);
+      });
+      // La frase, palabra a palabra
+      tl.fromTo("#s6-l1 span", { opacity: 0, filter: "blur(10px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.2, ease: "power2.out", stagger: 0.12 }, 1.0);
+      tl.fromTo("#s6-l2 span", { opacity: 0, filter: "blur(10px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.2, ease: "power2.out", stagger: 0.14 }, 1.6);
+      tl.fromTo("#s6-uline", { scaleX: 0 }, { scaleX: 1, duration: 0.5, ease: "power3.inOut" }, 2.0);
+      window.__timelines["s6-cierre"] = tl;
+    })();
+  </script>
+</template>

@@ -1,0 +1,146 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; overflow: hidden; font-family: "Inter", sans-serif; }
+    #s3-wrap { position: absolute; inset: 0; background: #EAF3FB; overflow: hidden; }
+    #s3-side { position: absolute; left: 0; top: 0; width: 340px; height: 1080px; background: #FFFFFF; border-right: 2px solid #E5E7EB; z-index: 5; }
+    #s3-brand { position: absolute; left: 40px; top: 44px; display: flex; align-items: center; gap: 18px; font-size: 32px; font-weight: 800; color: #131B2E; letter-spacing: -0.02em; white-space: nowrap; }
+    #s3-brand i { width: 64px; height: 64px; border-radius: 18px; background: #4F5A78; display: block; }
+    .s3-nav { position: absolute; left: 24px; width: 292px; padding: 16px 20px; border-radius: 16px; font-size: 28px; font-weight: 600; color: #4B5563; white-space: nowrap; }
+    #s3-nav-on { background: #D0E7F9; color: #2B3859; font-weight: 800; }
+    #s3-sidelabel { position: absolute; left: 44px; top: 410px; font-size: 24px; font-weight: 700; letter-spacing: 0.08em; color: #6B7280; }
+    #s3-reg { position: absolute; left: 24px; top: 940px; width: 292px; padding: 22px 0; border-radius: 20px; background: #4F5A78; color: #FFFFFF; font-size: 28px; white-space: nowrap; font-weight: 700; text-align: center; }
+    #s3-cam { position: absolute; inset: 0; }
+    #s3-crumb { position: absolute; left: 420px; top: 96px; font-size: 26px; font-weight: 700; letter-spacing: 0.06em; color: #6B7280; }
+    #s3-h1 { position: absolute; left: 420px; top: 140px; font-size: 92px; font-weight: 800; letter-spacing: -0.035em; color: #131B2E; white-space: nowrap; }
+    #s3-chip { position: absolute; left: 420px; top: 262px; padding: 10px 26px; border-radius: 999px; background: #D0E7F9; color: #2B3859; font-size: 28px; font-weight: 800; white-space: nowrap; }
+    .s3-card { position: absolute; top: 340px; width: 320px; height: 520px; border-radius: 40px; background: #FFFFFF; border: 2px solid #E5E7EB; box-shadow: 0 10px 30px -12px rgba(19, 27, 46, 0.25); }
+    .s3-fig { position: absolute; left: 20px; top: 64px; width: 280px; height: 300px; object-fit: contain; }
+    .s3-ser { position: absolute; left: 28px; top: 396px; font-size: 24px; font-weight: 700; letter-spacing: 0.04em; color: #6B7280; white-space: nowrap; }
+    .s3-nm { position: absolute; left: 28px; top: 436px; font-size: 42px; font-weight: 800; letter-spacing: -0.02em; color: #131B2E; white-space: nowrap; }
+    .s3-heart { position: absolute; right: 20px; top: 20px; width: 64px; height: 64px; border-radius: 50%; background: rgba(204, 139, 134, 0.18); display: grid; place-items: center; }
+    .s3-heart svg { width: 34px; height: 34px; display: block; }
+    #s3-hbg { position: absolute; inset: 0; border-radius: 50%; background: #F43F5E; opacity: 0; }
+    #s3-fx { position: absolute; left: 0; top: 0; width: 0; height: 0; z-index: 20; }
+    .s3-fxs { position: absolute; left: -22px; top: -22px; width: 44px; height: 44px; opacity: 0; }
+    .s3-fxs svg { width: 100%; height: 100%; display: block; }
+    #s3-fring { position: absolute; left: -60px; top: -60px; width: 120px; height: 120px; border-radius: 50%; border: 7px solid #F43F5E; opacity: 0; }
+    #s3-cur { position: absolute; left: 0; top: 0; width: 96px; height: 123px; z-index: 30; pointer-events: none; }
+    #s3-cur img { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+    #s3-cur2 { opacity: 0; }
+    #s3-crip { position: absolute; left: 0; top: 0; width: 100px; height: 100px; margin: -50px 0 0 -50px; border-radius: 50%; border: 6px solid #4F5A78; opacity: 0; z-index: 25; }
+  </style>
+  <div id="root" data-composition-id="s3-dashboard" data-width="1920" data-height="1080">
+    <div id="s3-wrap">
+      <div id="s3-side">
+        <div id="s3-brand"><i></i>Amiibo Vault</div>
+        <div class="s3-nav" style="top:170px">Inicio</div>
+        <div class="s3-nav" style="top:244px">Favoritos</div>
+        <div id="s3-sidelabel" data-layout-ignore>FRANQUICIAS</div>
+        <div class="s3-nav" id="s3-nav-on" style="top:462px">Super Smash Bros.</div>
+        <div class="s3-nav" style="top:536px">The Legend of Zelda</div>
+        <div class="s3-nav" style="top:610px">Super Mario</div>
+        <div class="s3-nav" style="top:684px">Animal Crossing</div>
+        <div class="s3-nav" style="top:758px">Splatoon</div>
+        <div id="s3-reg">+ Registrar Amiibo</div>
+      </div>
+      <div id="s3-cam">
+        <div id="s3-crumb" data-layout-ignore>COLECCIÓN</div>
+        <div id="s3-h1">Super Smash Bros.</div>
+        <div id="s3-chip">4 archivos registrados</div>
+        <div class="s3-card" id="s3-c0" style="left:420px">
+          <div class="s3-heart" id="s3-h0"><div id="s3-hbg"></div><svg viewBox="0 0 24 24" style="position:relative"><path id="s3-hpath" d="M12 21s-7.5-4.6-9.6-9.2C.9 8.4 2.7 4.5 6.3 4.5c2 0 3.7 1.1 5.7 3.3 2-2.2 3.7-3.3 5.7-3.3 3.6 0 5.4 3.9 3.9 7.3C19.5 16.4 12 21 12 21z" fill="#CC8B86"/></svg></div>
+          <img class="s3-fig" id="s3-f0" src="assets/figuras/sephiroth.png" /><div class="s3-ser" data-layout-ignore>SUPER SMASH BROS.</div><div class="s3-nm">Sephiroth</div>
+        </div>
+        <div class="s3-card" id="s3-c1" style="left:772px">
+          <div class="s3-heart"><svg viewBox="0 0 24 24"><path d="M12 21s-7.5-4.6-9.6-9.2C.9 8.4 2.7 4.5 6.3 4.5c2 0 3.7 1.1 5.7 3.3 2-2.2 3.7-3.3 5.7-3.3 3.6 0 5.4 3.9 3.9 7.3C19.5 16.4 12 21 12 21z" fill="#CC8B86"/></svg></div>
+          <img class="s3-fig" src="assets/figuras/inkling_chica.png" /><div class="s3-ser" data-layout-ignore>SPLATOON</div><div class="s3-nm">Inkling Chica</div>
+        </div>
+        <div class="s3-card" id="s3-c2" style="left:1124px">
+          <div class="s3-heart"><svg viewBox="0 0 24 24"><path d="M12 21s-7.5-4.6-9.6-9.2C.9 8.4 2.7 4.5 6.3 4.5c2 0 3.7 1.1 5.7 3.3 2-2.2 3.7-3.3 5.7-3.3 3.6 0 5.4 3.9 3.9 7.3C19.5 16.4 12 21 12 21z" fill="#CC8B86"/></svg></div>
+          <img class="s3-fig" src="assets/figuras/mario_icon.png" /><div class="s3-ser" data-layout-ignore>SUPER MARIO</div><div class="s3-nm">Mario</div>
+        </div>
+        <div class="s3-card" id="s3-c3" style="left:1476px">
+          <div class="s3-heart"><svg viewBox="0 0 24 24"><path d="M12 21s-7.5-4.6-9.6-9.2C.9 8.4 2.7 4.5 6.3 4.5c2 0 3.7 1.1 5.7 3.3 2-2.2 3.7-3.3 5.7-3.3 3.6 0 5.4 3.9 3.9 7.3C19.5 16.4 12 21 12 21z" fill="#CC8B86"/></svg></div>
+          <img class="s3-fig" src="assets/figuras/kirby_icon.png" /><div class="s3-ser" data-layout-ignore>KIRBY</div><div class="s3-nm">Kirby</div>
+        </div>
+      </div>
+      <div id="s3-fx"><div id="s3-fring"></div>
+        <div class="s3-fxs"><svg viewBox="0 0 24 24"><path d="M12 21s-7.5-4.6-9.6-9.2C.9 8.4 2.7 4.5 6.3 4.5c2 0 3.7 1.1 5.7 3.3 2-2.2 3.7-3.3 5.7-3.3 3.6 0 5.4 3.9 3.9 7.3C19.5 16.4 12 21 12 21z" fill="#F43F5E"/></svg></div>
+        <div class="s3-fxs"><svg viewBox="0 0 24 24"><path d="M12 1.5l3.1 6.6 7.2.9-5.3 5 1.4 7.1L12 17.6 5.6 21.1 7 14 1.7 9l7.2-.9z" fill="#F2C230"/></svg></div>
+        <div class="s3-fxs"><svg viewBox="0 0 24 24"><path d="M12 21s-7.5-4.6-9.6-9.2C.9 8.4 2.7 4.5 6.3 4.5c2 0 3.7 1.1 5.7 3.3 2-2.2 3.7-3.3 5.7-3.3 3.6 0 5.4 3.9 3.9 7.3C19.5 16.4 12 21 12 21z" fill="#F43F5E"/></svg></div>
+        <div class="s3-fxs"><svg viewBox="0 0 24 24"><path d="M12 1.5l3.1 6.6 7.2.9-5.3 5 1.4 7.1L12 17.6 5.6 21.1 7 14 1.7 9l7.2-.9z" fill="#29B6F0"/></svg></div>
+        <div class="s3-fxs"><svg viewBox="0 0 24 24"><path d="M12 1.5l3.1 6.6 7.2.9-5.3 5 1.4 7.1L12 17.6 5.6 21.1 7 14 1.7 9l7.2-.9z" fill="#F2C230"/></svg></div>
+        <div class="s3-fxs"><svg viewBox="0 0 24 24"><path d="M12 21s-7.5-4.6-9.6-9.2C.9 8.4 2.7 4.5 6.3 4.5c2 0 3.7 1.1 5.7 3.3 2-2.2 3.7-3.3 5.7-3.3 3.6 0 5.4 3.9 3.9 7.3C19.5 16.4 12 21 12 21z" fill="#F43F5E"/></svg></div>
+        <div class="s3-fxs"><svg viewBox="0 0 24 24"><path d="M12 1.5l3.1 6.6 7.2.9-5.3 5 1.4 7.1L12 17.6 5.6 21.1 7 14 1.7 9l7.2-.9z" fill="#F2C230"/></svg></div>
+      </div>
+      <div id="s3-crip"></div>
+      <div id="s3-cur"><img id="s3-cur1" src="assets/cursores/hand_default.png" /><img id="s3-cur2" src="assets/cursores/hand_pointer.png" /></div>
+    </div>
+  </div>
+  <script>
+    (function () {
+      const tl = gsap.timeline({ paused: true });
+      const HOT = { x: 42, y: 6 };                    // punta del dedo dentro del cursor (96x123)
+      const curAt = (p) => ({ x: p.x - HOT.x, y: p.y - HOT.y });
+      // Cámara: punch-in sobre la tarjeta 1 (origen en su centro)
+      const ORG = { x: 580, y: 600 }, SC = 1.45, SHIFT = { x: 380, y: 20 };
+      const camPt = (p) => ({ x: ORG.x + (p.x - ORG.x) * SC + SHIFT.x, y: ORG.y + (p.y - ORG.y) * SC + SHIFT.y });
+
+      // Entrada: barrido horizontal con desenfoque
+      tl.fromTo("#s3-wrap", { x: 1920, filter: "blur(18px)" }, { x: 0, filter: "blur(0px)", duration: 0.45, ease: "power3.out" }, 0);
+
+      // Las tarjetas aparecen una a una
+      for (let i = 0; i < 4; i++) {
+        tl.fromTo("#s3-c" + i, { y: 50, scale: 0.86, opacity: 0, transformOrigin: "50% 50%" },
+          { y: 0, scale: 1, opacity: 1, duration: 0.5, ease: "back.out(1.5)" }, 0.7 + i * 0.22);
+      }
+      tl.fromTo("#s3-h1, #s3-chip, #s3-crumb", { opacity: 0, x: -30 }, { opacity: 1, x: 0, duration: 0.45, ease: "power3.out", stagger: 0.08 }, 0.5);
+
+      // Cursor entra desde abajo a la derecha hasta la tarjeta 1
+      const p0 = curAt({ x: 1500, y: 1040 }), p1 = curAt({ x: 640, y: 640 });
+      tl.set("#s3-cur", { x: p0.x, y: p0.y }, 0);
+      tl.to("#s3-cur", { x: p1.x, y: p1.y, duration: 1.0, ease: "power2.inOut" }, 1.7);
+      // Hover de la tarjeta
+      tl.to("#s3-c0", { y: -16, duration: 0.25, ease: "power2.out" }, 2.55);
+      tl.to("#s3-f0", { scale: 1.06, duration: 0.3, ease: "power2.out", transformOrigin: "50% 60%" }, 2.55);
+      // Clic en la tarjeta
+      const click = (t, at) => {
+        tl.set("#s3-cur1", { opacity: 0 }, t);
+        tl.set("#s3-cur2", { opacity: 1 }, t);
+        tl.to("#s3-cur", { scale: 0.88, duration: 0.07, transformOrigin: HOT.x + "px " + HOT.y + "px" }, t);
+        tl.to("#s3-cur", { scale: 1, duration: 0.12 }, t + 0.07);
+        tl.set("#s3-cur1", { opacity: 1 }, t + 0.16);
+        tl.set("#s3-cur2", { opacity: 0 }, t + 0.16);
+        tl.fromTo("#s3-crip", { x: at.x, y: at.y, scale: 0.3, opacity: 0.9 }, { immediateRender: false, scale: 1.6, opacity: 0, duration: 0.4, ease: "power2.out" }, t);
+      };
+      click(2.75, { x: 640, y: 640 });
+      tl.to("#s3-c0", { scale: 1.04, duration: 0.12, transformOrigin: "50% 50%", yoyo: true, repeat: 1 }, 2.75);
+
+      // Punch-in de cámara hacia la tarjeta
+      tl.to("#s3-h1, #s3-chip, #s3-crumb", { opacity: 0, duration: 0.3, ease: "power1.in" }, 3.15);
+      tl.to("#s3-cam", { scale: SC, x: SHIFT.x, y: SHIFT.y, transformOrigin: ORG.x + "px " + ORG.y + "px", duration: 0.65, ease: "power2.inOut" }, 3.15);
+      // El cursor viaja al corazón
+      const heart = camPt({ x: 420 + 320 - 20 - 32, y: 340 + 20 + 32 });
+      const ph = curAt(heart);
+      tl.to("#s3-cur", { x: ph.x, y: ph.y, duration: 0.7, ease: "power2.inOut" }, 3.35);
+      click(4.15, heart);
+      // Corazón se llena y ráfaga
+      tl.to("#s3-hbg", { opacity: 1, duration: 0.12 }, 4.2);
+      tl.to("#s3-hpath", { fill: "#FFFFFF", duration: 0.12 }, 4.2);
+      tl.fromTo("#s3-h0", { scale: 1 }, { scale: 1.25, duration: 0.18, ease: "power2.out", yoyo: true, repeat: 1 }, 4.2);
+      tl.set("#s3-fx", { x: heart.x, y: heart.y }, 4.2);
+      tl.set("#s3-fring, #root .s3-fxs, #s3-crip", { opacity: 0 }, 0);
+      tl.fromTo("#s3-fring", { scale: 0.3, opacity: 0.95 }, { immediateRender: false, scale: 2.2, opacity: 0, duration: 0.5, ease: "power2.out" }, 4.2);
+      const dirs = [-90, -40, -140, -65, -115, 0, 180];
+      document.querySelectorAll("#root .s3-fxs").forEach((el, i) => {
+        const a = dirs[i] * Math.PI / 180, d = 100 + (i % 3) * 30;
+        tl.fromTo(el, { x: 0, y: 0, scale: 0.2, rotation: 0, opacity: 1 },
+          { immediateRender: false, x: Math.cos(a) * d, y: Math.sin(a) * d - 20, scale: 1.1, rotation: i % 2 ? 90 : -90, duration: 0.5, ease: "power2.out" }, 4.2 + i * 0.02);
+        tl.to(el, { y: Math.sin(a) * d - 20 + 40, scale: 0, opacity: 0, duration: 0.35, ease: "power1.in" }, 4.72 + i * 0.02);
+      });
+      // Cursor se retira un poco
+      tl.to("#s3-cur", { x: ph.x + 120, y: ph.y + 90, opacity: 0, duration: 0.5, ease: "power2.in" }, 5.2);
+      window.__timelines["s3-dashboard"] = tl;
+    })();
+  </script>
+</template>

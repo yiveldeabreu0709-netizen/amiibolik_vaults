@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1920, height=1080" />
+    <script src="assets/gsap.min.js"></script>
+    <script src="assets/capture-core.js"></script>
+    <style>
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html, body { width: 1920px; height: 1080px; overflow: hidden; background: #EAF3FB; }
+      #root { position: relative; width: 1920px; height: 1080px; overflow: hidden; background: #EAF3FB; font-family: "Inter", sans-serif; }
+    </style>
+  </head>
+  <body>
+    <div id="root" data-composition-id="main" data-start="0" data-duration="33" data-width="1920" data-height="1080">
+      <div id="s1-intro" class="clip" data-composition-id="s1-intro" data-composition-src="compositions/s1-intro.html" data-start="0" data-duration="3.7" data-track-index="1" data-track-kind="graphics" data-width="1920" data-height="1080" style="z-index:1"></div>
+      <div id="s2-franquicias" class="clip" data-composition-id="s2-franquicias" data-composition-src="compositions/s2-franquicias.html" data-start="3.5" data-duration="6.2" data-track-index="2" data-track-kind="graphics" data-width="1920" data-height="1080" style="z-index:2"></div>
+      <div id="s3-dashboard" class="clip" data-composition-id="s3-dashboard" data-composition-src="compositions/s3-dashboard.html" data-start="9.4" data-duration="6.3" data-track-index="1" data-track-kind="graphics" data-width="1920" data-height="1080" style="z-index:3"></div>
+      <div id="s4-registro" class="clip" data-composition-id="s4-registro" data-composition-src="compositions/s4-registro.html" data-start="15.4" data-duration="5.4" data-track-index="2" data-track-kind="graphics" data-width="1920" data-height="1080" style="z-index:4"></div>
+      <div id="s5-captura" class="clip" data-composition-id="s5-captura" data-composition-src="compositions/s5-captura.html" data-start="20.6" data-duration="8.6" data-track-index="1" data-track-kind="graphics" data-width="1920" data-height="1080" style="z-index:5"></div>
+      <div id="s6-cierre" class="clip" data-composition-id="s6-cierre" data-composition-src="compositions/s6-cierre.html" data-start="29" data-duration="4" data-track-index="2" data-track-kind="graphics" data-width="1920" data-height="1080" style="z-index:6"></div>
+
+      <!-- Música: chiptune suave, compuesta en código (make_music.py). Original, sin licencia de terceros. -->
+      <audio id="music" class="clip" src="assets/music.mp3" data-start="0" data-duration="33" data-track-index="2" data-volume="0.85"></audio>
+      <!-- Efectos de sonido: biblioteca de HyperFrames (Pixabay Content License), uno por acción visible -->
+<!--AUDIO-->
+    </div>
+    <script>
+      window.__timelines = window.__timelines || {};
+      const tl = gsap.timeline({ paused: true });
+      window.__timelines["main"] = tl;
+    </script>
+  </body>
+</html>

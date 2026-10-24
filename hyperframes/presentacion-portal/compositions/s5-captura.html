@@ -1,0 +1,60 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; overflow: hidden; font-family: "Inter", sans-serif; }
+    #s5-ground { position: absolute; inset: 0; background: #EAF3FB; }
+    #s5-world { position: absolute; inset: 0; }
+    #s5-card { position: absolute; left: 50%; top: 250px; width: 640px; margin-left: -320px; padding: 24px 34px; border-radius: 36px; background: #FFFFFF; box-shadow: 0 24px 60px -18px rgba(19, 27, 46, 0.4); border: 2px solid #D0E7F9; display: flex; align-items: center; gap: 26px; }
+    #s5-card img { width: 120px; height: 150px; object-fit: contain; display: block; flex-shrink: 0; }
+    #s5-nm { font-size: 54px; font-weight: 800; color: #131B2E; letter-spacing: -0.03em; line-height: 1.05; }
+    #s5-meta { font-size: 30px; font-weight: 600; color: #4F5A78; margin-top: 8px; }
+    #s5-stage { position: absolute; inset: 0; }
+    #s5-status { position: absolute; left: 0; right: 0; top: 880px; text-align: center; }
+    #s5-st, #s5-done { font-size: 56px; font-weight: 800; letter-spacing: -0.03em; color: #131B2E; }
+    #s5-done { position: absolute; left: 0; right: 0; top: 0; color: #2B3859; opacity: 0; }
+    #s5-done b { color: #3FA865; }
+    #s5-bar { width: 600px; height: 16px; margin: 26px auto 0; border-radius: 999px; background: rgba(79, 90, 120, 0.2); overflow: hidden; }
+    #s5-fill { width: 100%; height: 100%; background: #4F5A78; border-radius: 999px; transform-origin: 0 50%; }
+  </style>
+  <div id="root" data-composition-id="s5-captura" data-width="1920" data-height="1080" data-layout-allow-overlap>
+    <div id="s5-world">
+    <div id="s5-ground"></div>
+    <div id="s5-card">
+      <img src="assets/figuras/sephiroth.png" />
+      <div><div id="s5-nm">Sephiroth</div><div id="s5-meta">NTAG215 · 540 bytes</div></div>
+    </div>
+    <div id="s5-stage"></div>
+    <div id="s5-status">
+      <div id="s5-st">Transfiriendo a tu AmiiboLink…</div>
+      <div id="s5-done">¡Amiibo <b>transferido</b>!</div>
+      <div id="s5-bar"><div id="s5-fill"></div></div>
+    </div>
+    </div>
+  </div>
+  <script>
+    (function () {
+      const tl = gsap.timeline({ paused: true });
+      const refs = AmiiboCapture.mount(document.getElementById("s5-stage"), { size: 380, top: "52%", visible: true });
+      const card = document.getElementById("s5-card");
+
+      // El mundo nuevo se abre desde el clic de "Guardar" (iris)
+      tl.fromTo("#s5-world", { clipPath: "circle(0px at 1350px 865px)" }, { clipPath: "circle(2300px at 1350px 865px)", duration: 0.7, ease: "power2.inOut" }, 0);
+      tl.fromTo("#s5-card", { opacity: 0, y: 40, scale: 0.9 }, { opacity: 1, y: 0, scale: 1, duration: 0.5, ease: "back.out(1.4)" }, 0.12);
+      tl.fromTo("#s5-st, #s5-bar", { opacity: 0 }, { opacity: 1, duration: 0.35 }, 0.7);
+      tl.set("#s5-fill", { scaleX: 0 }, 0);
+
+      // Llavero: entra, absorbe a Sephiroth y cae rebotando
+      tl.add(AmiiboCapture.enter(refs, card), 1.0);
+      // Barra y los 3 meneos
+      tl.to("#s5-fill", { scaleX: 1, duration: 3.5, ease: "none" }, 2.1);
+      tl.add(AmiiboCapture.wobble(refs, 0), 2.3);
+      tl.add(AmiiboCapture.wobble(refs, 1), 3.46);
+      tl.add(AmiiboCapture.wobble(refs, 2), 4.62);
+      // ¡Atrapado!
+      tl.add(AmiiboCapture.success(refs), 5.78);
+      tl.to("#s5-st", { opacity: 0, y: -16, duration: 0.2 }, 5.6);
+      tl.fromTo("#s5-done", { opacity: 0, scale: 0.7 }, { opacity: 1, scale: 1, duration: 0.45, ease: "back.out(2)" }, 5.85);
+      tl.to("#s5-bar", { opacity: 0, duration: 0.3 }, 5.9);
+      window.__timelines["s5-captura"] = tl;
+    })();
+  </script>
+</template>

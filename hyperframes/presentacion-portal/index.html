@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1920, height=1080" />
+    <script src="assets/gsap.min.js"></script>
+    <script src="assets/capture-core.js"></script>
+    <style>
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html, body { width: 1920px; height: 1080px; overflow: hidden; background: #EAF3FB; }
+      #root { position: relative; width: 1920px; height: 1080px; overflow: hidden; background: #EAF3FB; font-family: "Inter", sans-serif; }
+    </style>
+  </head>
+  <body>
+    <div id="root" data-composition-id="main" data-start="0" data-duration="33" data-width="1920" data-height="1080">
+      <div id="s1-intro" class="clip" data-composition-id="s1-intro" data-composition-src="compositions/s1-intro.html" data-start="0" data-duration="3.7" data-track-index="1" data-track-kind="graphics" data-width="1920" data-height="1080" style="z-index:1"></div>
+      <div id="s2-franquicias" class="clip" data-composition-id="s2-franquicias" data-composition-src="compositions/s2-franquicias.html" data-start="3.5" data-duration="6.2" data-track-index="2" data-track-kind="graphics" data-width="1920" data-height="1080" style="z-index:2"></div>
+      <div id="s3-dashboard" class="clip" data-composition-id="s3-dashboard" data-composition-src="compositions/s3-dashboard.html" data-start="9.4" data-duration="6.3" data-track-index="1" data-track-kind="graphics" data-width="1920" data-height="1080" style="z-index:3"></div>
+      <div id="s4-registro" class="clip" data-composition-id="s4-registro" data-composition-src="compositions/s4-registro.html" data-start="15.4" data-duration="5.4" data-track-index="2" data-track-kind="graphics" data-width="1920" data-height="1080" style="z-index:4"></div>
+      <div id="s5-captura" class="clip" data-composition-id="s5-captura" data-composition-src="compositions/s5-captura.html" data-start="20.6" data-duration="8.6" data-track-index="1" data-track-kind="graphics" data-width="1920" data-height="1080" style="z-index:5"></div>
+      <div id="s6-cierre" class="clip" data-composition-id="s6-cierre" data-composition-src="compositions/s6-cierre.html" data-start="29" data-duration="4" data-track-index="2" data-track-kind="graphics" data-width="1920" data-height="1080" style="z-index:6"></div>
+
+      <!-- Música: chiptune suave, compuesta en código (make_music.py). Original, sin licencia de terceros. -->
+      <audio id="music" class="clip" src="assets/music.mp3" data-start="0" data-duration="33" data-track-index="2" data-volume="0.85"></audio>
+      <!-- Efectos de sonido: biblioteca de HyperFrames (Pixabay Content License), uno por acción visible -->
+      <audio id="fx01" class="clip" src="assets/sfx/pop.mp3" data-start="0.413" data-duration="0.72" data-track-index="3" data-volume="0.45"></audio> <!-- La marca salta -->
+      <audio id="fx02" class="clip" src="assets/sfx/sparkle.mp3" data-start="0.503" data-duration="1.8" data-track-index="4" data-volume="0.35"></audio> <!-- Estrellitas del logo -->
+      <audio id="fx03" class="clip" src="assets/sfx/whoosh.mp3" data-start="3.173" data-duration="0.57" data-track-index="3" data-volume="0.35"></audio> <!-- La marca crece y se vuelve el fondo -->
+      <audio id="fx04" class="clip" src="assets/sfx/pop.mp3" data-start="3.713" data-duration="0.72" data-track-index="4" data-volume="0.3"></audio> <!-- Entra el marco -->
+      <audio id="fx05" class="clip" src="assets/sfx/whoosh-short.mp3" data-start="4.823" data-duration="0.57" data-track-index="3" data-volume="0.2"></audio> <!-- Barrido del banner 2 -->
+      <audio id="fx06" class="clip" src="assets/sfx/whoosh.mp3" data-start="5.473" data-duration="0.57" data-track-index="3" data-volume="0.2"></audio> <!-- Barrido del banner 3 -->
+      <audio id="fx07" class="clip" src="assets/sfx/whoosh-short.mp3" data-start="6.123" data-duration="0.57" data-track-index="3" data-volume="0.2"></audio> <!-- Barrido del banner 4 -->
+      <audio id="fx08" class="clip" src="assets/sfx/whoosh.mp3" data-start="6.773" data-duration="0.57" data-track-index="3" data-volume="0.2"></audio> <!-- Barrido del banner 5 -->
+      <audio id="fx09" class="clip" src="assets/sfx/whoosh-short.mp3" data-start="7.423" data-duration="0.57" data-track-index="3" data-volume="0.2"></audio> <!-- Barrido del banner 6 -->
+      <audio id="fx10" class="clip" src="assets/sfx/whoosh.mp3" data-start="8.073" data-duration="0.57" data-track-index="3" data-volume="0.2"></audio> <!-- Barrido del banner 7 -->
+      <audio id="fx11" class="clip" src="assets/sfx/whoosh-short.mp3" data-start="8.723" data-duration="0.57" data-track-index="3" data-volume="0.2"></audio> <!-- Barrido del banner 8 -->
+      <audio id="fx12" class="clip" src="assets/sfx/whoosh.mp3" data-start="9.373" data-duration="0.57" data-track-index="3" data-volume="0.4"></audio> <!-- Barrido de entrada -->
+      <audio id="fx13" class="clip" src="assets/sfx/pop.mp3" data-start="10.163" data-duration="0.72" data-track-index="3" data-volume="0.35"></audio> <!-- Aparece la tarjeta 1 -->
+      <audio id="fx14" class="clip" src="assets/sfx/pop.mp3" data-start="10.383" data-duration="0.72" data-track-index="4" data-volume="0.35"></audio> <!-- Aparece la tarjeta 2 -->
+      <audio id="fx15" class="clip" src="assets/sfx/pop.mp3" data-start="10.603" data-duration="0.72" data-track-index="5" data-volume="0.35"></audio> <!-- Aparece la tarjeta 3 -->
+      <audio id="fx16" class="clip" src="assets/sfx/pop.mp3" data-start="10.823" data-duration="0.72" data-track-index="6" data-volume="0.35"></audio> <!-- Aparece la tarjeta 4 -->
+      <audio id="fx17" class="clip" src="assets/sfx/click.mp3" data-start="12.133" data-duration="0.37" data-track-index="3" data-volume="0.55"></audio> <!-- Clic en Sephiroth -->
+      <audio id="fx18" class="clip" src="assets/sfx/whoosh-short.mp3" data-start="12.723" data-duration="0.57" data-track-index="3" data-volume="0.2"></audio> <!-- Zoom de cámara -->
+      <audio id="fx19" class="clip" src="assets/sfx/ping.mp3" data-start="13.303" data-duration="1.32" data-track-index="3" data-volume="0.25"></audio> <!-- Campanita de favorito -->
+      <audio id="fx20" class="clip" src="assets/sfx/click.mp3" data-start="13.533" data-duration="0.37" data-track-index="4" data-volume="0.55"></audio> <!-- Clic en el corazón -->
+      <audio id="fx21" class="clip" src="assets/sfx/sparkle.mp3" data-start="13.533" data-duration="1.8" data-track-index="5" data-volume="0.4"></audio> <!-- Ráfaga de favorito -->
+      <audio id="fx22" class="clip" src="assets/sfx/whoosh.mp3" data-start="15.373" data-duration="0.57" data-track-index="3" data-volume="0.4"></audio> <!-- Empuje vertical -->
+      <audio id="fx23" class="clip" src="assets/sfx/click.mp3" data-start="16.333" data-duration="0.37" data-track-index="3" data-volume="0.55"></audio> <!-- Clic en Registrar Amiibo -->
+      <audio id="fx24" class="clip" src="assets/sfx/pop.mp3" data-start="16.613" data-duration="0.72" data-track-index="4" data-volume="0.45"></audio> <!-- Nace la ventana -->
+      <audio id="fx25" class="clip" src="assets/sfx/pop.mp3" data-start="18.313" data-duration="0.72" data-track-index="3" data-volume="0.4"></audio> <!-- Aterriza la foto -->
+      <audio id="fx26" class="clip" src="assets/sfx/pop.mp3" data-start="18.763" data-duration="0.72" data-track-index="4" data-volume="0.4"></audio> <!-- Aterriza el .bin -->
+      <audio id="fx27" class="clip" src="assets/sfx/click.mp3" data-start="19.533" data-duration="0.37" data-track-index="3" data-volume="0.55"></audio> <!-- Clic en Guardar -->
+      <audio id="fx28" class="clip" src="assets/sfx/whoosh-short.mp3" data-start="19.623" data-duration="0.57" data-track-index="4" data-volume="0.2"></audio> <!-- Se guarda la ventana -->
+      <audio id="fx29" class="clip" src="assets/sfx/notification.mp3" data-start="19.803" data-duration="2.4" data-track-index="5" data-volume="0.3"></audio> <!-- Aviso: registrada -->
+      <audio id="fx30" class="clip" src="assets/sfx/whoosh.mp3" data-start="20.723" data-duration="0.57" data-track-index="3" data-volume="0.35"></audio> <!-- Iris desde el clic -->
+      <audio id="fx31" class="clip" src="assets/sfx/pop.mp3" data-start="21.013" data-duration="0.72" data-track-index="4" data-volume="0.3"></audio> <!-- Entra la tarjeta -->
+      <audio id="fx32" class="clip" src="assets/sfx/whoosh-short.mp3" data-start="21.723" data-duration="0.57" data-track-index="3" data-volume="0.35"></audio> <!-- El llavero entra girando -->
+      <audio id="fx33" class="clip" src="assets/sfx/whoosh.mp3" data-start="22.273" data-duration="0.57" data-track-index="4" data-volume="0.35"></audio> <!-- Absorbe a Sephiroth -->
+      <audio id="fx34" class="clip" src="assets/sfx/pop.mp3" data-start="22.763" data-duration="0.72" data-track-index="3" data-volume="0.35"></audio> <!-- El llavero cae y rebota -->
+      <audio id="fx35" class="clip" src="assets/sfx/click-soft.mp3" data-start="22.943" data-duration="0.37" data-track-index="4" data-volume="0.5"></audio> <!-- Tic del meneo 1 -->
+      <audio id="fx36" class="clip" src="assets/sfx/riser.mp3" data-start="23.373" data-duration="4.6" data-track-index="4" data-volume="0.22" data-fade-out="0.8"></audio> <!-- Tensión antes de atrapar -->
+      <audio id="fx37" class="clip" src="assets/sfx/click-soft.mp3" data-start="24.103" data-duration="0.37" data-track-index="3" data-volume="0.5"></audio> <!-- Tic del meneo 2 -->
+      <audio id="fx38" class="clip" src="assets/sfx/click-soft.mp3" data-start="25.263" data-duration="0.37" data-track-index="3" data-volume="0.5"></audio> <!-- Tic del meneo 3 -->
+      <audio id="fx39" class="clip" src="assets/sfx/chime.mp3" data-start="25.993" data-duration="2.5" data-track-index="3" data-volume="0.6"></audio> <!-- ¡Atrapado!: campanita -->
+      <audio id="fx40" class="clip" src="assets/sfx/impact-bass-1.mp3" data-start="26.38" data-duration="2.1" data-track-index="5" data-volume="0.32"></audio> <!-- ¡Atrapado!: golpe grave -->
+      <audio id="fx41" class="clip" src="assets/sfx/sparkle.mp3" data-start="26.433" data-duration="1.8" data-track-index="6" data-volume="0.4"></audio> <!-- Brillo de las estrellitas -->
+      <audio id="fx42" class="clip" src="assets/sfx/sparkle.mp3" data-start="29.383" data-duration="1.8" data-track-index="3" data-volume="0.3"></audio> <!-- Estrellitas del cierre -->
+      <audio id="fx43" class="clip" src="assets/sfx/pop.mp3" data-start="29.413" data-duration="0.72" data-track-index="4" data-volume="0.4"></audio> <!-- La marca salta -->
+      <audio id="fx44" class="clip" src="assets/sfx/key-press.mp3" data-start="29.953" data-duration="0.4" data-track-index="5" data-volume="0.3"></audio> <!-- Entra la primera línea -->
+      <audio id="fx45" class="clip" src="assets/sfx/key-press.mp3" data-start="30.553" data-duration="0.4" data-track-index="4" data-volume="0.3"></audio> <!-- Entra la segunda línea -->
+      <audio id="fx46" class="clip" src="assets/sfx/whoosh-short.mp3" data-start="31.123" data-duration="0.57" data-track-index="4" data-volume="0.25"></audio> <!-- Barre el subrayado -->
+    </div>
+    <script>
+      window.__timelines = window.__timelines || {};
+      const tl = gsap.timeline({ paused: true });
+      window.__timelines["main"] = tl;
+    </script>
+  </body>
+</html>

@@ -1,0 +1,61 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; background: #EAF3FB; overflow: hidden; font-family: "Inter", sans-serif; }
+    #s1-mark { position: absolute; left: 250px; top: 330px; width: 300px; height: 300px; }
+    #s1-mark svg { width: 100%; height: 100%; display: block; overflow: visible; }
+    #s1-flood { position: absolute; left: 250px; top: 330px; width: 300px; height: 300px; border-radius: 80px; background: #4F5A78; opacity: 0; }
+    #s1-word { position: absolute; left: 610px; top: 340px; font-size: 190px; font-weight: 800; letter-spacing: -0.04em; color: #131B2E; line-height: 1; white-space: nowrap; }
+    #s1-word span { display: inline-block; }
+    #s1-tag { position: absolute; left: 616px; top: 560px; font-size: 50px; font-weight: 600; color: #4F5A78; letter-spacing: -0.01em; white-space: nowrap; }
+    #s1-tag b { color: #131B2E; font-weight: 700; }
+    .s1-star { position: absolute; left: 400px; top: 480px; width: 44px; height: 44px; margin: -22px 0 0 -22px; opacity: 0; }
+    .s1-star svg { width: 100%; height: 100%; display: block; }
+    #s1-ring { position: absolute; left: 400px; top: 480px; width: 300px; height: 300px; margin: -150px 0 0 -150px; border-radius: 50%; border: 8px solid #29B6F0; opacity: 0; }
+  </style>
+  <div id="root" data-composition-id="s1-intro" data-width="1920" data-height="1080">
+    <div id="s1-ring"></div>
+    <div id="s1-mark">
+      <svg viewBox="0 0 220 220" fill="none">
+        <rect width="220" height="220" rx="56" fill="#4F5A78" />
+        <ellipse cx="110" cy="160" rx="56" ry="15" fill="#D0E7F9" />
+        <circle cx="110" cy="82" r="31" fill="#FFFFFF" />
+        <path d="M70 152 Q70 116 110 116 Q150 116 150 152 Z" fill="#FFFFFF" />
+        <path d="M156 56 a30 30 0 0 1 0 44" stroke="#7BDF96" stroke-width="9" stroke-linecap="round" />
+        <path d="M170 42 a48 48 0 0 1 0 72" stroke="#7BDF96" stroke-width="9" stroke-linecap="round" />
+      </svg>
+    </div>
+    <div id="s1-flood"></div>
+    <div id="s1-word"><span>A</span><span>m</span><span>i</span><span>i</span><span>b</span><span>o</span><span>&nbsp;</span><span>V</span><span>a</span><span>u</span><span>l</span><span>t</span></div>
+    <div id="s1-tag">Tu baúl de Amiibos para el <b>AmiiboLink</b></div>
+    <div class="s1-star"><svg viewBox="0 0 24 24"><path d="M12 1.5l3.1 6.6 7.2.9-5.3 5 1.4 7.1L12 17.6 5.6 21.1 7 14 1.7 9l7.2-.9z" fill="#F2C230"/></svg></div>
+    <div class="s1-star"><svg viewBox="0 0 24 24"><path d="M12 1.5l3.1 6.6 7.2.9-5.3 5 1.4 7.1L12 17.6 5.6 21.1 7 14 1.7 9l7.2-.9z" fill="#29B6F0"/></svg></div>
+    <div class="s1-star"><svg viewBox="0 0 24 24"><path d="M12 1.5l3.1 6.6 7.2.9-5.3 5 1.4 7.1L12 17.6 5.6 21.1 7 14 1.7 9l7.2-.9z" fill="#F2C230"/></svg></div>
+    <div class="s1-star"><svg viewBox="0 0 24 24"><path d="M12 1.5l3.1 6.6 7.2.9-5.3 5 1.4 7.1L12 17.6 5.6 21.1 7 14 1.7 9l7.2-.9z" fill="#7BDF96"/></svg></div>
+    <div class="s1-star"><svg viewBox="0 0 24 24"><path d="M12 1.5l3.1 6.6 7.2.9-5.3 5 1.4 7.1L12 17.6 5.6 21.1 7 14 1.7 9l7.2-.9z" fill="#F2C230"/></svg></div>
+    <div class="s1-star"><svg viewBox="0 0 24 24"><path d="M12 1.5l3.1 6.6 7.2.9-5.3 5 1.4 7.1L12 17.6 5.6 21.1 7 14 1.7 9l7.2-.9z" fill="#29B6F0"/></svg></div>
+  </div>
+  <script>
+    (function () {
+      const tl = gsap.timeline({ paused: true });
+      // La marca salta con un resorte y suelta estrellitas
+      tl.fromTo("#s1-mark", { scale: 0.55, rotation: -14, transformOrigin: "50% 50%" },
+        { scale: 1, rotation: 0, duration: 0.8, ease: "back.out(1.8)" }, 0);
+      tl.fromTo("#s1-ring", { scale: 0.3, opacity: 0.9 }, { scale: 2.4, opacity: 0, duration: 0.6, ease: "power2.out" }, 0.55);
+      const dirs = [-90, -40, -140, -10, -170, 30];
+      document.querySelectorAll("#root .s1-star").forEach((el, i) => {
+        const a = dirs[i] * Math.PI / 180, d = 230 + (i % 3) * 40;
+        tl.fromTo(el, { x: 0, y: 0, scale: 0, rotation: 0, opacity: 1 },
+          { x: Math.cos(a) * d, y: Math.sin(a) * d, scale: 1, rotation: i % 2 ? 160 : -160, duration: 0.6, ease: "power3.out" }, 0.55 + i * 0.03);
+        tl.to(el, { y: Math.sin(a) * d + 40, scale: 0.4, opacity: 0, duration: 0.4, ease: "power1.in" }, 1.2 + i * 0.03);
+      });
+      // Nombre letra a letra
+      tl.fromTo("#s1-word span", { opacity: 0, filter: "blur(10px)" },
+        { opacity: 1, filter: "blur(0px)", duration: 0.2, ease: "power2.out", stagger: 0.06 }, 0.8);
+      tl.fromTo("#s1-tag", { opacity: 0, filter: "blur(8px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.35, ease: "power2.out" }, 1.4);
+      // La marca crece hasta ser el mundo siguiente
+      tl.set("#s1-flood", { opacity: 1 }, 2.75);
+      tl.fromTo("#s1-flood", { scale: 1, transformOrigin: "50% 50%" }, { scale: 24, duration: 0.7, ease: "power3.in" }, 2.8);
+      window.__timelines["s1-intro"] = tl;
+    })();
+  </script>
+</template>

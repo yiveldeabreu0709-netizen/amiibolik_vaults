@@ -284,6 +284,7 @@
       <!-- BANNER PANORÁMICO DE FRANQUICIA (PERSONALIZABLE & REPOSICIONABLE) -->
       <div id="franchiseHeroContainer" class="relative w-full h-44 sm:h-52 md:h-60 rounded-3xl overflow-hidden mb-6 shadow-sm border border-gray-200/80 bg-slate-900 group transition-all duration-300 select-none">
         <!-- Imagen del Banner (Móvil con translate & zoom) -->
+        <img id="franchiseHeroBlur" src="" alt="" aria-hidden="true" class="hidden absolute inset-0 w-full h-full object-cover pointer-events-none select-none" style="filter: blur(28px) brightness(0.75); transform: scale(1.25);">
         <img id="franchiseHeroImg" src="banners/banner_zelda.jpg" alt="Banner de Franquicia" class="w-full h-full object-cover object-center will-change-transform pointer-events-none select-none transition-transform duration-200" style="transform: translate(0px, 0px) scale(1); transform-origin: center center;">
         
         <!-- Video del Banner (Para mini-videos y clips MP4/WebM en bucle continuo) -->
@@ -1613,6 +1614,39 @@
       "FAVORITOS": "Favoritos"
     };
 
+    // Ajuste inteligente: si el medio NO es panorámico (GIF/foto casi cuadrado o 16:9),
+    // "cover" lo recorta a una franja. En ese caso se muestra completo (contain)
+    // sobre un fondo difuminado de la misma imagen.
+    function fitBannerMedia(el, w, h, blurSrc) {
+      const container = document.getElementById('franchiseHeroContainer');
+      const blurEl = document.getElementById('franchiseHeroBlur');
+      if (!el || !container || !w || !h) return;
+      const cr = container.clientWidth / Math.max(1, container.clientHeight);
+      const mediaRatio = w / h;
+      const useContain = mediaRatio < cr * 0.85;
+      el.classList.toggle('object-cover', !useContain);
+      el.classList.toggle('object-contain', useContain);
+      if (blurEl) {
+        if (useContain && blurSrc) {
+          blurEl.src = blurSrc;
+          blurEl.classList.remove('hidden');
+        } else {
+          blurEl.classList.add('hidden');
+          blurEl.removeAttribute('src');
+        }
+      }
+    }
+    function refitBanner() {
+      if (franchiseHeroImg && !franchiseHeroImg.classList.contains('hidden') && franchiseHeroImg.naturalWidth) {
+        fitBannerMedia(franchiseHeroImg, franchiseHeroImg.naturalWidth, franchiseHeroImg.naturalHeight, franchiseHeroImg.currentSrc || franchiseHeroImg.src);
+      } else if (franchiseHeroVideo && !franchiseHeroVideo.classList.contains('hidden') && franchiseHeroVideo.videoWidth) {
+        fitBannerMedia(franchiseHeroVideo, franchiseHeroVideo.videoWidth, franchiseHeroVideo.videoHeight, null);
+      }
+    }
+    if (franchiseHeroImg) franchiseHeroImg.addEventListener('load', refitBanner);
+    if (franchiseHeroVideo) franchiseHeroVideo.addEventListener('loadedmetadata', refitBanner);
+    window.addEventListener('resize', refitBanner);
+
     function applyBannerTransform() {
       const x = Math.round(currentBannerPos.x);
       const y = Math.round(currentBannerPos.y);
@@ -2391,7 +2425,6 @@
               notify(`"${item.name}" quitado de Favoritos`, 'info');
             } else {
               favoriteAmiiboIds.add(item.id);
-              playAudioTone('success');
               notify(`❤️ "${item.name}" agregado a Favoritos`, 'success');
             }
             saveFavoritesStorage();
@@ -2710,7 +2743,6 @@
       } else {
         favoriteAmiiboIds.add(activeAmiibo.id);
         updateModalFavUi(true);
-        playAudioTone('success');
         notify(`❤️ "${activeAmiibo.name}" agregado a Favoritos`, 'success');
       }
       saveFavoritesStorage();
@@ -3740,5 +3772,6 @@
       }
     });
   </script>
+  <script src="vault-fx.js"></script>
 </body>
 </html>

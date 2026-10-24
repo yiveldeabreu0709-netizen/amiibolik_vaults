@@ -1,0 +1,63 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; background: #4F5A78; overflow: hidden; font-family: "Inter", sans-serif; }
+    #s2-title { position: absolute; left: 140px; top: 78px; font-size: 64px; font-weight: 800; letter-spacing: -0.03em; color: #FFFFFF; white-space: nowrap; }
+    #s2-title em { font-style: normal; color: #7BDF96; }
+    #s2-card { position: absolute; left: 140px; top: 190px; width: 1640px; height: 720px; border-radius: 56px; overflow: hidden; background: #2D354A; box-shadow: 0 30px 70px -20px rgba(8, 12, 24, 0.55); }
+    .s2-b { position: absolute; inset: 0; overflow: hidden; }
+    .s2-b img { position: absolute; display: block; }
+    .s2-cover { left: 0; top: 0; width: 1640px; height: 720px; object-fit: cover; }
+    .s2-fg { left: 0; top: 50%; width: 1640px; height: auto; margin-top: -240px; }
+    .s2-name { position: absolute; left: 48px; bottom: 44px; padding: 16px 34px; border-radius: 999px; background: rgba(19, 27, 46, 0.82); color: #FFFFFF; font-size: 48px; font-weight: 800; letter-spacing: -0.02em; white-space: nowrap; }
+    #s2-dots { position: absolute; left: 140px; top: 960px; display: flex; gap: 18px; }
+    .s2-dot { width: 18px; height: 18px; border-radius: 50%; background: rgba(255, 255, 255, 0.3); }
+  </style>
+  <div id="root" data-composition-id="s2-franquicias" data-width="1920" data-height="1080">
+    <div id="s2-title">Cada franquicia, <em>en su sitio</em></div>
+    <div id="s2-card">
+      <div class="s2-b" id="s2-b0"><img class="s2-cover" src="assets/banners/bg_zelda.jpg" /><img class="s2-fg" src="assets/banners/banner_zelda.jpg" /><div class="s2-name">The Legend of Zelda</div></div>
+      <div class="s2-b" id="s2-b1"><img class="s2-cover" src="assets/banners/bg_smash.jpg" /><img class="s2-fg" style="margin-top:-152px" src="assets/banners/banner_smash.png" /><div class="s2-name">Super Smash Bros.</div></div>
+      <div class="s2-b" id="s2-b2"><img class="s2-cover" src="assets/banners/banner_mario.jpg" /><div class="s2-name">Super Mario</div></div>
+      <div class="s2-b" id="s2-b3"><img class="s2-cover" src="assets/banners/banner_animal_crossing.jpg" /><div class="s2-name">Animal Crossing</div></div>
+      <div class="s2-b" id="s2-b4"><img class="s2-cover" src="assets/banners/banner_sanrio.jpg" /><div class="s2-name">Sanrio</div></div>
+      <div class="s2-b" id="s2-b5"><img class="s2-cover" src="assets/banners/banner_splatoon.jpg" /><div class="s2-name">Splatoon</div></div>
+      <div class="s2-b" id="s2-b6"><img class="s2-cover" src="assets/banners/banner_kirby.jpg" /><div class="s2-name">Kirby</div></div>
+      <div class="s2-b" id="s2-b7"><img class="s2-cover" src="assets/banners/banner_especiales.jpg" /><div class="s2-name">Especiales</div></div>
+    </div>
+    <div id="s2-dots"><div class="s2-dot"></div><div class="s2-dot"></div><div class="s2-dot"></div><div class="s2-dot"></div><div class="s2-dot"></div><div class="s2-dot"></div><div class="s2-dot"></div><div class="s2-dot"></div></div>
+  </div>
+  <script>
+    (function () {
+      const tl = gsap.timeline({ paused: true });
+      const STEP = 0.65, T0 = 0.7;
+      tl.fromTo("#s2-title", { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 0.5, ease: "power3.out" }, 0.1);
+      tl.fromTo("#s2-card", { scale: 0.86, opacity: 0, transformOrigin: "50% 50%" }, { scale: 1, opacity: 1, duration: 0.55, ease: "power3.out" }, 0.15);
+      tl.fromTo("#s2-dots", { opacity: 0 }, { opacity: 1, duration: 0.3 }, 0.4);
+      const dots = document.querySelectorAll("#root .s2-dot");
+      for (let i = 0; i < 8; i++) {
+        const b = "#s2-b" + i, t = T0 + i * STEP;
+        // Cada banner entra con un barrido distinto, sobre el anterior
+        const wipes = [
+          ["inset(0 100% 0 0)", "inset(0 0% 0 0)"],
+          ["inset(100% 0 0 0)", "inset(0% 0 0 0)"],
+          ["inset(0 0 0 100%)", "inset(0 0 0 0%)"],
+          ["circle(0px at 50% 50%)", "circle(1200px at 50% 50%)"]
+        ][i % 4];
+        if (i === 0) {
+          tl.fromTo(b, { scale: 1.12, transformOrigin: "50% 50%" }, { scale: 1, duration: 1.0, ease: "power2.out" }, 0.3);
+        } else {
+          tl.set(b, { zIndex: i }, 0);
+          tl.fromTo(b, { clipPath: wipes[0] }, { clipPath: wipes[1], duration: 0.3, ease: "power3.inOut" }, t - 0.05);
+          tl.fromTo(b + " .s2-cover, " + b + " .s2-fg", { scale: 1.14 }, { scale: 1, duration: 0.75, ease: "power2.out", transformOrigin: "50% 50%" }, t - 0.05);
+        }
+        if (i > 1) tl.set("#s2-b" + (i - 2), { autoAlpha: 0 }, t + 0.3);
+        tl.fromTo(b + " .s2-name", { x: -40, opacity: 0 }, { x: 0, opacity: 1, duration: 0.3, ease: "back.out(1.6)" }, t + 0.12);
+        tl.to(dots[i], { backgroundColor: "#7BDF96", scale: 1.35, duration: 0.15 }, t);
+        if (i > 0) tl.to(dots[i - 1], { backgroundColor: "rgba(255,255,255,0.7)", scale: 1, duration: 0.15 }, t);
+      }
+      // Salida: el siguiente mundo entra con un barrido; este se desliza un poco
+      tl.to("#s2-card", { x: -260, duration: 0.4, ease: "power2.in" }, 5.75);
+      window.__timelines["s2-franquicias"] = tl;
+    })();
+  </script>
+</template>
